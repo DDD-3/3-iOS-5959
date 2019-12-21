@@ -14,6 +14,8 @@
 		717F3932239A104B008DA87A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 717F3931239A104B008DA87A /* Assets.xcassets */; };
 		717F3935239A104B008DA87A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 717F3933239A104B008DA87A /* LaunchScreen.storyboard */; };
 		717F3940239A104B008DA87A /* iOS5959Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717F393F239A104B008DA87A /* iOS5959Tests.swift */; };
+		FA4E5AF023AE10DD0038FD6E /* ItemAdd.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA4E5AEF23AE10DD0038FD6E /* ItemAdd.storyboard */; };
+		FA4E5AF223AE13950038FD6E /* ItemMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4E5AF123AE13950038FD6E /* ItemMainVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +40,8 @@
 		717F393B239A104B008DA87A /* iOS5959Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOS5959Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		717F393F239A104B008DA87A /* iOS5959Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS5959Tests.swift; sourceTree = "<group>"; };
 		717F3941239A104B008DA87A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA4E5AEF23AE10DD0038FD6E /* ItemAdd.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ItemAdd.storyboard; sourceTree = "<group>"; };
+		FA4E5AF123AE13950038FD6E /* ItemMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemMainVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +83,7 @@
 		717F3927239A103F008DA87A /* iOS5959 */ = {
 			isa = PBXGroup;
 			children = (
+				FA4E5AF323AE139A0038FD6E /* ItemView */,
 				717F3928239A103F008DA87A /* AppDelegate.swift */,
 				717F392A239A103F008DA87A /* SceneDelegate.swift */,
 				717F392C239A103F008DA87A /* ViewController.swift */,
@@ -97,6 +102,15 @@
 				717F3941239A104B008DA87A /* Info.plist */,
 			);
 			path = iOS5959Tests;
+			sourceTree = "<group>";
+		};
+		FA4E5AF323AE139A0038FD6E /* ItemView */ = {
+			isa = PBXGroup;
+			children = (
+				FA4E5AEF23AE10DD0038FD6E /* ItemAdd.storyboard */,
+				FA4E5AF123AE13950038FD6E /* ItemMainVC.swift */,
+			);
+			path = ItemView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,6 +195,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				717F3935239A104B008DA87A /* LaunchScreen.storyboard in Resources */,
+				FA4E5AF023AE10DD0038FD6E /* ItemAdd.storyboard in Resources */,
 				717F3932239A104B008DA87A /* Assets.xcassets in Resources */,
 				717F3930239A103F008DA87A /* Main.storyboard in Resources */,
 			);
@@ -200,6 +215,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA4E5AF223AE13950038FD6E /* ItemMainVC.swift in Sources */,
 				717F392D239A103F008DA87A /* ViewController.swift in Sources */,
 				717F3929239A103F008DA87A /* AppDelegate.swift in Sources */,
 				717F392B239A103F008DA87A /* SceneDelegate.swift in Sources */,
