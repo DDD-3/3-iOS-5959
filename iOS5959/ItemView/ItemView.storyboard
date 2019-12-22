@@ -10,7 +10,7 @@
         <!--Item MainVC-->
         <scene sceneID="udT-Q4-W2P">
             <objects>
-                <viewController storyboardIdentifier="ItemMainVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="X4i-TZ-F8J" customClass="ItemMainVC" customModule="iOS5959" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ItemMainVC" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="X4i-TZ-F8J" customClass="ItemMainVC" customModule="iOS5959" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="f8R-tV-19S">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -25,8 +25,11 @@
                                         </constraints>
                                         <state key="normal" title="open"/>
                                     </button>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="eYS-j5-xYd">
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="eYS-j5-xYd">
                                         <rect key="frame" x="46" y="102" width="322" height="31"/>
+                                        <connections>
+                                            <action selector="sliderValueChanged:" destination="X4i-TZ-F8J" eventType="valueChanged" id="lSz-Ee-lPc"/>
+                                        </connections>
                                     </slider>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="사고 싶은 것을 입력하세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dkf-Eo-xqi">
                                         <rect key="frame" x="16" y="52" width="382" height="34"/>
@@ -48,14 +51,20 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="LIG-xD-oGz" firstAttribute="bottom" secondItem="XjR-Il-gqM" secondAttribute="bottom" id="CkU-c4-mFB"/>
+                            <constraint firstItem="LIG-xD-oGz" firstAttribute="bottom" secondItem="f8R-tV-19S" secondAttribute="bottom" constant="-34" id="CkU-c4-mFB"/>
                             <constraint firstItem="LIG-xD-oGz" firstAttribute="leading" secondItem="XjR-Il-gqM" secondAttribute="leading" id="sT2-uA-ENt"/>
                             <constraint firstItem="XjR-Il-gqM" firstAttribute="trailing" secondItem="LIG-xD-oGz" secondAttribute="trailing" id="wGX-dY-sYX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="XjR-Il-gqM"/>
                     </view>
+                    <connections>
+                        <outlet property="keyboardExtensionView" destination="LIG-xD-oGz" id="DtR-Fg-wcC"/>
+                        <outlet property="keyboardExtensionViewBottomConstraint" destination="CkU-c4-mFB" id="776-Cp-oCU"/>
+                        <outlet property="keyboardExtensionViewTextField" destination="dkf-Eo-xqi" id="Iwl-Jp-b0t"/>
+                        <outlet property="slider" destination="eYS-j5-xYd" id="06B-Pr-FC1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iTI-2g-Cyo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
