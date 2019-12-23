@@ -59,10 +59,14 @@ class ItemMainVC: UIViewController, UIGestureRecognizerDelegate {
             let numberToolbar = UIToolbar(frame:CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 56))
             numberToolbar.barStyle = .default
             numberToolbar.items = [
-                UIBarButtonItem(title: "Title", style: .plain, target: self, action: #selector(respondFirstTextField)),
-            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
-            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
-            UIBarButtonItem(title: "Done", style: .plain, target: self, action: nil)]
+                UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
+                UIBarButtonItem(title: "more", style: .plain, target: self, action: #selector(respondFirstTextField)),
+                UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
+                UIBarButtonItem(title: "price", style: .plain, target: self, action: #selector(respondFirstTextField)),
+                UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
+                UIBarButtonItem(title: "title", style: .plain, target: self, action: nil),
+                UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+            ]
             numberToolbar.barTintColor = UIColor(displayP3Red: 210/255, green: 210/255, blue: 210/255, alpha: 1)
             numberToolbar.sizeToFit()
 
