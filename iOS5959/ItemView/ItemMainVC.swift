@@ -60,11 +60,11 @@ class ItemMainVC: UIViewController, UIGestureRecognizerDelegate {
             numberToolbar.barStyle = .default
             numberToolbar.items = [
                 UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
-                UIBarButtonItem(title: "more", style: .plain, target: self, action: #selector(respondFirstTextField)),
+                UIBarButtonItem(title: "subTitle", style: .plain, target: self, action: #selector(didTouchSubTitle)),
                 UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
-                UIBarButtonItem(title: "price", style: .plain, target: self, action: #selector(respondFirstTextField)),
+                UIBarButtonItem(title: "price", style: .plain, target: self, action: #selector(didTouchPrice)),
                 UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
-                UIBarButtonItem(title: "title", style: .plain, target: self, action: nil),
+                UIBarButtonItem(title: "title", style: .plain, target: self, action: #selector(didTouchTitle)),
                 UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
             ]
             numberToolbar.barTintColor = UIColor(displayP3Red: 210/255, green: 210/255, blue: 210/255, alpha: 1)
@@ -73,9 +73,20 @@ class ItemMainVC: UIViewController, UIGestureRecognizerDelegate {
             keyboardExtensionViewTextField.inputAccessoryView = numberToolbar
         }
         
-        @objc func respondFirstTextField(){
-            keyboardExtensionViewTextField.becomeFirstResponder()
+        @objc func didTouchSubTitle(){
+            keyboardExtensionViewTextField.keyboardType = .default
+            keyboardExtensionViewTextField.reloadInputViews()
         }
+        @objc func didTouchPrice(){
+            keyboardExtensionViewTextField.keyboardType = .decimalPad
+            keyboardExtensionViewTextField.reloadInputViews()
+        }
+        @objc func didTouchTitle(){
+            keyboardExtensionViewTextField.keyboardType = .default
+            keyboardExtensionViewTextField.reloadInputViews()
+        }
+
+
 
         override func viewWillAppear(_ animated: Bool) {
             
