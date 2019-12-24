@@ -35,6 +35,9 @@
                                         <rect key="frame" x="16" y="52" width="382" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="didTextEditing:" destination="X4i-TZ-F8J" eventType="editingChanged" id="jwu-HD-hHb"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
@@ -50,6 +53,18 @@
                                     <constraint firstItem="sNL-hK-qEO" firstAttribute="centerX" secondItem="LIG-xD-oGz" secondAttribute="centerX" id="yst-Tu-zjK"/>
                                 </constraints>
                             </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Hqk-22-NQB">
+                                <rect key="frame" x="175" y="144.5" width="64" height="63"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5bc-9A-TCl">
+                                <rect key="frame" x="186" y="166" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -63,6 +78,8 @@
                         <outlet property="keyboardExtensionView" destination="LIG-xD-oGz" id="DtR-Fg-wcC"/>
                         <outlet property="keyboardExtensionViewBottomConstraint" destination="CkU-c4-mFB" id="776-Cp-oCU"/>
                         <outlet property="keyboardExtensionViewTextField" destination="dkf-Eo-xqi" id="Iwl-Jp-b0t"/>
+                        <outlet property="newItemImage" destination="Hqk-22-NQB" id="trd-lC-ic5"/>
+                        <outlet property="newItemLabel" destination="5bc-9A-TCl" id="Qw6-CI-qFN"/>
                         <outlet property="slider" destination="eYS-j5-xYd" id="06B-Pr-FC1"/>
                     </connections>
                 </viewController>
@@ -71,4 +88,7 @@
             <point key="canvasLocation" x="-183" y="-413"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="circle.fill" catalog="system" width="64" height="60"/>
+    </resources>
 </document>

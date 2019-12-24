@@ -15,10 +15,20 @@ class ItemMainVC: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet var keyboardExtensionView: UIView!
     @IBOutlet var keyboardExtensionViewBottomConstraint: NSLayoutConstraint!
     
+    @IBOutlet var newItemImage: UIImageView!
+    @IBOutlet var newItemLabel: UILabel!
     @IBOutlet var slider: UISlider!
     @IBAction func sliderValueChanged(_ sender: UISlider) {
         let roundedValue = round((sender.value/5) * 5)
             sender.value = roundedValue
+        print(roundedValue)
+        // base size = 64/64
+        let imageSize: CGFloat = CGFloat(64 * (roundedValue + 1))
+        newItemImage.frame = CGRect(x: UIScreen.main.bounds.midX - CGFloat(imageSize/2), y: UIScreen.main.bounds.midY - 150 - CGFloat(imageSize/2), width: imageSize, height: imageSize)
+        newItemLabel.frame = CGRect(x: newItemImage.frame.midX - imageSize/2, y: newItemImage.frame.midY - 17/2, width: imageSize, height: 17)
+    }
+    @IBAction func didTextEditing(_ sender: UITextField) {
+        newItemLabel.text = sender.text
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
