@@ -39,11 +39,25 @@
                                             <action selector="didTextEditing:" destination="X4i-TZ-F8J" eventType="editingChanged" id="jwu-HD-hHb"/>
                                         </connections>
                                     </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y6T-ew-D8i">
+                                        <rect key="frame" x="376" y="58" width="22" height="22"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="22" id="aKc-a9-0Md"/>
+                                            <constraint firstAttribute="height" constant="22" id="su1-W2-wH7"/>
+                                        </constraints>
+                                        <state key="normal" image="arrow.up" catalog="system"/>
+                                        <connections>
+                                            <action selector="textFieldReturnBtn:" destination="X4i-TZ-F8J" eventType="touchUpInside" id="35I-TP-1vz"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="Y6T-ew-D8i" firstAttribute="trailing" secondItem="dkf-Eo-xqi" secondAttribute="trailing" id="9ET-Dd-g6K"/>
                                     <constraint firstItem="eYS-j5-xYd" firstAttribute="leading" secondItem="LIG-xD-oGz" secondAttribute="leading" constant="48" id="BGc-R2-afy"/>
                                     <constraint firstAttribute="height" constant="148" id="Ccp-rU-vFY"/>
+                                    <constraint firstItem="Y6T-ew-D8i" firstAttribute="centerY" secondItem="dkf-Eo-xqi" secondAttribute="centerY" id="OU8-2Z-UL5"/>
                                     <constraint firstItem="dkf-Eo-xqi" firstAttribute="top" secondItem="sNL-hK-qEO" secondAttribute="bottom" constant="16" id="aJD-pQ-ugV"/>
                                     <constraint firstAttribute="trailing" secondItem="dkf-Eo-xqi" secondAttribute="trailing" constant="16" id="czo-Lb-kiI"/>
                                     <constraint firstAttribute="trailing" secondItem="eYS-j5-xYd" secondAttribute="trailing" constant="48" id="h9g-FL-dNT"/>
@@ -58,11 +72,18 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5bc-9A-TCl">
-                                <rect key="frame" x="186" y="166" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5bc-9A-TCl">
+                                <rect key="frame" x="208" y="158" width="0.0" height="0.0"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hi5-7f-S9e">
+                                <rect key="frame" x="186" y="177" width="0.0" height="0.0"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -79,16 +100,19 @@
                         <outlet property="keyboardExtensionViewBottomConstraint" destination="CkU-c4-mFB" id="776-Cp-oCU"/>
                         <outlet property="keyboardExtensionViewTextField" destination="dkf-Eo-xqi" id="Iwl-Jp-b0t"/>
                         <outlet property="newItemImage" destination="Hqk-22-NQB" id="trd-lC-ic5"/>
-                        <outlet property="newItemLabel" destination="5bc-9A-TCl" id="Qw6-CI-qFN"/>
+                        <outlet property="newItemPriceLabel" destination="Hi5-7f-S9e" id="Y5u-hS-TYm"/>
+                        <outlet property="newItemTitleLabel" destination="5bc-9A-TCl" id="End-wV-pJ4"/>
                         <outlet property="slider" destination="eYS-j5-xYd" id="06B-Pr-FC1"/>
+                        <outlet property="textFieldReturnBtn" destination="Y6T-ew-D8i" id="nNi-Zu-dNJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iTI-2g-Cyo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-183" y="-413"/>
+            <point key="canvasLocation" x="-184.05797101449278" y="-413.16964285714283"/>
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.up" catalog="system" width="60" height="64"/>
         <image name="circle.fill" catalog="system" width="64" height="60"/>
     </resources>
 </document>

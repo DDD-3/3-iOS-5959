@@ -10,13 +10,15 @@ import Foundation
 import UIKit
 
 class ItemMainVC: UIViewController, UIGestureRecognizerDelegate {
-    
+    var numberToolbar: UIToolbar!
     @IBOutlet var keyboardExtensionViewTextField: UITextField!
     @IBOutlet var keyboardExtensionView: UIView!
     @IBOutlet var keyboardExtensionViewBottomConstraint: NSLayoutConstraint!
     
+    @IBOutlet var textFieldReturnBtn: UIButton!
     @IBOutlet var newItemImage: UIImageView!
-    @IBOutlet var newItemLabel: UILabel!
+    @IBOutlet var newItemTitleLabel: UILabel!
+    @IBOutlet var newItemPriceLabel: UILabel!
     @IBOutlet var slider: UISlider!
     @IBAction func sliderValueChanged(_ sender: UISlider) {
         let roundedValue = round((sender.value/5) * 5)
@@ -25,11 +27,34 @@ class ItemMainVC: UIViewController, UIGestureRecognizerDelegate {
         // base size = 64/64
         let imageSize: CGFloat = CGFloat(64 * (roundedValue + 1))
         newItemImage.frame = CGRect(x: UIScreen.main.bounds.midX - CGFloat(imageSize/2), y: UIScreen.main.bounds.midY - 150 - CGFloat(imageSize/2), width: imageSize, height: imageSize)
-        newItemLabel.frame = CGRect(x: newItemImage.frame.midX - imageSize/2, y: newItemImage.frame.midY - 17/2, width: imageSize, height: 17)
+        newItemTitleLabel.frame = CGRect(x: newItemImage.frame.midX - imageSize/2, y: newItemImage.frame.midY - 17, width: imageSize, height: 17)
+        newItemPriceLabel.frame = CGRect(x: newItemImage.frame.midX - imageSize/2, y: newItemImage.frame.midY - 17/3, width: imageSize, height: 17)
+        
     }
     @IBAction func didTextEditing(_ sender: UITextField) {
-        newItemLabel.text = sender.text
+        textFieldReturnBtn.isEnabled = true
+//        if newItemTitleLabel.text!.isEmpty && newItemPriceLabel.text!.isEmpty{
+//            newItemTitleLabel.text = sender.text
+//        }else if !newItemTitleLabel.text!.isEmpty && newItemPriceLabel.text!.isEmpty{
+//            newItemPriceLabel.text = sender.text
+//        }else{
+//
+//        }
     }
+    @IBAction func textFieldReturnBtn(_ sender: Any) {
+        if newItemTitleLabel.text!.isEmpty && newItemPriceLabel.text!.isEmpty{
+            newItemTitleLabel.text = keyboardExtensionViewTextField.text
+            numberToolbar.items![3].isEnabled = true
+        }else if !newItemTitleLabel.text!.isEmpty && newItemPriceLabel.text!.isEmpty{
+            newItemPriceLabel.text = keyboardExtensionViewTextField.text
+            numberToolbar.items![1].isEnabled = true
+        }else{
+//            numberToolbar.items![1].isEnabled = true
+        }
+        textFieldReturnBtn.isEnabled = false
+        keyboardExtensionViewTextField.text = ""
+    }
+    
     
     @objc func keyboardWillShow(notification: NSNotification) {
             if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
@@ -61,12 +86,14 @@ class ItemMainVC: UIViewController, UIGestureRecognizerDelegate {
             keyboardExtensionViewTextField.resignFirstResponder()
         }
         override func viewDidLoad() {
+            textFieldReturnBtn.isEnabled = false
+            
             var tap = UITapGestureRecognizer(target: self, action: #selector(didTapGestureOnScreen(_:)))
             tap.delegate = self
             self.view.addGestureRecognizer(tap)
             
             // UIToolBar
-            let numberToolbar = UIToolbar(frame:CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 56))
+            numberToolbar = UIToolbar(frame:CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 56))
             numberToolbar.barStyle = .default
             numberToolbar.items = [
                 UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
@@ -79,6 +106,8 @@ class ItemMainVC: UIViewController, UIGestureRecognizerDelegate {
             ]
             numberToolbar.barTintColor = UIColor(displayP3Red: 210/255, green: 210/255, blue: 210/255, alpha: 1)
             numberToolbar.sizeToFit()
+            numberToolbar.items![1].isEnabled = false
+            numberToolbar.items![3].isEnabled = false
 
             keyboardExtensionViewTextField.inputAccessoryView = numberToolbar
         }
