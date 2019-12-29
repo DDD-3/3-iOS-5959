@@ -11,6 +11,7 @@
 		7156BCC323B7A5E8001072CC /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7156BCC223B7A5E8001072CC /* SideMenuViewController.swift */; };
 		7156BCC523B7A60F001072CC /* SideMenuTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7156BCC423B7A60F001072CC /* SideMenuTableView.swift */; };
 		7156BCC723B7A619001072CC /* SideMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7156BCC623B7A619001072CC /* SideMenuTableViewCell.swift */; };
+		7156BCCC23B8A4E6001072CC /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7156BCCB23B8A4E6001072CC /* Colors.swift */; };
 		717F3929239A103F008DA87A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717F3928239A103F008DA87A /* AppDelegate.swift */; };
 		717F392B239A103F008DA87A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717F392A239A103F008DA87A /* SceneDelegate.swift */; };
 		717F392D239A103F008DA87A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717F392C239A103F008DA87A /* ViewController.swift */; };
@@ -39,6 +40,7 @@
 		7156BCC223B7A5E8001072CC /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		7156BCC423B7A60F001072CC /* SideMenuTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTableView.swift; sourceTree = "<group>"; };
 		7156BCC623B7A619001072CC /* SideMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewCell.swift; sourceTree = "<group>"; };
+		7156BCCB23B8A4E6001072CC /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		717F3925239A103F008DA87A /* iOS5959.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOS5959.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		717F3928239A103F008DA87A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		717F392A239A103F008DA87A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -108,6 +110,14 @@
 			path = SideMenu;
 			sourceTree = "<group>";
 		};
+		7156BCCA23B8A4D9001072CC /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				7156BCCB23B8A4E6001072CC /* Colors.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		717F391C239A103F008DA87A = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +141,7 @@
 		717F3927239A103F008DA87A /* iOS5959 */ = {
 			isa = PBXGroup;
 			children = (
+				7156BCCA23B8A4D9001072CC /* Util */,
 				7156BCC123B7A5DB001072CC /* SideMenu */,
 				FA4E5AF323AE139A0038FD6E /* ItemView */,
 				717F3928239A103F008DA87A /* AppDelegate.swift */,
@@ -332,6 +343,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA4E5AF223AE13950038FD6E /* ItemMainVC.swift in Sources */,
+				7156BCCC23B8A4E6001072CC /* Colors.swift in Sources */,
 				717F392D239A103F008DA87A /* ViewController.swift in Sources */,
 				717F3929239A103F008DA87A /* AppDelegate.swift in Sources */,
 				7156BCC323B7A5E8001072CC /* SideMenuViewController.swift in Sources */,
