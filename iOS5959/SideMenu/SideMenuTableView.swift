@@ -10,10 +10,11 @@ import UIKit
 
 class SideMenuTableView: UITableView {
     
+    weak var itemDelegate: SideMenuItemDelegate?
+    
     private func configure() {
         self.delegate = self
         self.dataSource = self
-        
     }
     
     override init(frame: CGRect, style: UITableView.Style) {
@@ -34,6 +35,8 @@ class SideMenuTableView: UITableView {
 extension SideMenuTableView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "sideMenuCell", for: indexPath) as? SideMenuTableViewCell {
+            cell.delegate = self
+            cell.tag = indexPath.row
             cell.selectionStyle = .none
             cell.collectionName = "TEST \(indexPath.row)"
             return cell
@@ -70,5 +73,17 @@ extension SideMenuTableView: UITableViewDataSource {
 extension SideMenuTableView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("사이드 메뉴 선택 \(indexPath.row)")
+        itemDelegate?.selectCollection(index: indexPath.row)
+    }
+}
+
+extension SideMenuTableView: SideMenuItemDelegate {
+    func selectCollection(index: Int) {
+        itemDelegate?.selectCollection(index: index)
+    }
+    
+    func modifyCollection(index: Int) {
+        print("콜렉션 설정 \(index)")
+        itemDelegate?.modifyCollection(index: index)
     }
 }

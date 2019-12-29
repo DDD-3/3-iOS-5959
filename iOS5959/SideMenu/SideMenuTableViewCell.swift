@@ -8,7 +8,14 @@
 
 import UIKit
 
+protocol SideMenuItemDelegate: class {
+    func modifyCollection(index: Int)
+    func selectCollection(index: Int)
+}
+
 class SideMenuTableViewCell: UITableViewCell {
+    
+    weak var delegate: SideMenuItemDelegate?
     
     private let colorChipView: UIView = {
        let lv = UIView()
@@ -42,7 +49,6 @@ class SideMenuTableViewCell: UITableViewCell {
         }
     }
     
-    
     private func configure() {
         addSubview(colorChipView)
         addSubview(collectionNameLabel)
@@ -59,6 +65,11 @@ class SideMenuTableViewCell: UITableViewCell {
         
         moreButton.centerYAnchor.constraint(equalTo: colorChipView.centerYAnchor).isActive = true
         moreButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -24.0).isActive = true
+        moreButton.addTarget(self, action: #selector(touchedMoreButton(_:)), for: .touchUpInside)
+    }
+    
+    @objc private func touchedMoreButton(_ sender: UIButton) {
+        delegate?.modifyCollection(index: tag)
     }
     
     override func awakeFromNib() {
