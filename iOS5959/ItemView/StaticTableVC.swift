@@ -12,6 +12,9 @@ import UIKit
 class StaticTableVC: UITableViewController {
     @IBOutlet var itemTitleTextField: UITextField!
     
+    @IBAction func imageSelectBtn(_ sender: Any) {
+        print("click!")
+    }
     override func viewDidLoad() {
     }
 }
