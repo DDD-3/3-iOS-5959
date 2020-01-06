@@ -22,10 +22,7 @@ class ItemMainVC: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet var newItemPriceLabel: UILabel!
     @IBOutlet var slider: UISlider!
     
-    @IBAction func openDetailVCBtn(_ sender: Any) {
-        guard let ItemDetailVC = storyboard?.instantiateViewController(identifier: "ItemDetailVC") as? ItemDetailVC else {return}
-        present(ItemDetailVC, animated: true, completion: nil)
-    }
+
     
     @IBAction func sliderValueChanged(_ sender: UISlider) {
         let roundedValue = round((sender.value/5) * 5)
