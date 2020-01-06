@@ -11,4 +11,7 @@ import UIKit
 
 class ItemDetailVC: UIViewController {
     
+    override func viewDidLoad() {
+        
+    }
 }

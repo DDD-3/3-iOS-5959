@@ -17,6 +17,7 @@
 		FA4E5AF023AE10DD0038FD6E /* ItemView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA4E5AEF23AE10DD0038FD6E /* ItemView.storyboard */; };
 		FA4E5AF223AE13950038FD6E /* ItemMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4E5AF123AE13950038FD6E /* ItemMainVC.swift */; };
 		FA83A10723C1BFA10073D438 /* ItemDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA83A10623C1BFA10073D438 /* ItemDetailVC.swift */; };
+		FA83A10923C39A530073D438 /* StaticTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA83A10823C39A530073D438 /* StaticTableVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		FA4E5AEF23AE10DD0038FD6E /* ItemView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ItemView.storyboard; sourceTree = "<group>"; };
 		FA4E5AF123AE13950038FD6E /* ItemMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemMainVC.swift; sourceTree = "<group>"; };
 		FA83A10623C1BFA10073D438 /* ItemDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailVC.swift; sourceTree = "<group>"; };
+		FA83A10823C39A530073D438 /* StaticTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticTableVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 				FA4E5AEF23AE10DD0038FD6E /* ItemView.storyboard */,
 				FA4E5AF123AE13950038FD6E /* ItemMainVC.swift */,
 				FA83A10623C1BFA10073D438 /* ItemDetailVC.swift */,
+				FA83A10823C39A530073D438 /* StaticTableVC.swift */,
 			);
 			path = ItemView;
 			sourceTree = "<group>";
@@ -223,6 +226,7 @@
 				717F3929239A103F008DA87A /* AppDelegate.swift in Sources */,
 				FA83A10723C1BFA10073D438 /* ItemDetailVC.swift in Sources */,
 				717F392B239A103F008DA87A /* SceneDelegate.swift in Sources */,
+				FA83A10923C39A530073D438 /* StaticTableVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
