@@ -16,6 +16,7 @@
 		717F3940239A104B008DA87A /* iOS5959Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717F393F239A104B008DA87A /* iOS5959Tests.swift */; };
 		FA4E5AF023AE10DD0038FD6E /* ItemView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA4E5AEF23AE10DD0038FD6E /* ItemView.storyboard */; };
 		FA4E5AF223AE13950038FD6E /* ItemMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4E5AF123AE13950038FD6E /* ItemMainVC.swift */; };
+		FA83A10723C1BFA10073D438 /* ItemDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA83A10623C1BFA10073D438 /* ItemDetailVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		717F3941239A104B008DA87A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA4E5AEF23AE10DD0038FD6E /* ItemView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ItemView.storyboard; sourceTree = "<group>"; };
 		FA4E5AF123AE13950038FD6E /* ItemMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemMainVC.swift; sourceTree = "<group>"; };
+		FA83A10623C1BFA10073D438 /* ItemDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 			children = (
 				FA4E5AEF23AE10DD0038FD6E /* ItemView.storyboard */,
 				FA4E5AF123AE13950038FD6E /* ItemMainVC.swift */,
+				FA83A10623C1BFA10073D438 /* ItemDetailVC.swift */,
 			);
 			path = ItemView;
 			sourceTree = "<group>";
@@ -218,6 +221,7 @@
 				FA4E5AF223AE13950038FD6E /* ItemMainVC.swift in Sources */,
 				717F392D239A103F008DA87A /* ViewController.swift in Sources */,
 				717F3929239A103F008DA87A /* AppDelegate.swift in Sources */,
+				FA83A10723C1BFA10073D438 /* ItemDetailVC.swift in Sources */,
 				717F392B239A103F008DA87A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

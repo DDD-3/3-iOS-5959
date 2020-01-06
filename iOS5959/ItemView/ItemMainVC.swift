@@ -11,6 +11,7 @@ import UIKit
 
 class ItemMainVC: UIViewController, UIGestureRecognizerDelegate {
     var numberToolbar: UIToolbar!
+    @IBOutlet var openDetailVCBtn: UIButton!
     @IBOutlet var keyboardExtensionViewTextField: UITextField!
     @IBOutlet var keyboardExtensionView: UIView!
     @IBOutlet var keyboardExtensionViewBottomConstraint: NSLayoutConstraint!
@@ -20,6 +21,12 @@ class ItemMainVC: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet var newItemTitleLabel: UILabel!
     @IBOutlet var newItemPriceLabel: UILabel!
     @IBOutlet var slider: UISlider!
+    
+    @IBAction func openDetailVCBtn(_ sender: Any) {
+        guard let ItemDetailVC = storyboard?.instantiateViewController(identifier: "ItemDetailVC") as? ItemDetailVC else {return}
+        present(ItemDetailVC, animated: true, completion: nil)
+    }
+    
     @IBAction func sliderValueChanged(_ sender: UISlider) {
         let roundedValue = round((sender.value/5) * 5)
             sender.value = roundedValue
@@ -70,66 +77,71 @@ class ItemMainVC: UIViewController, UIGestureRecognizerDelegate {
                 })
             }
         }
-        @objc func keyboardWillHide(notification: NSNotification) {
-            if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-                let keyboardRectangle = keyboardFrame.cgRectValue
-                
-                keyboardExtensionViewBottomConstraint.constant = 0
-                
-                UIView.animate(withDuration: 0, animations: {
-                    self.view.layoutIfNeeded()
-                    }, completion: { (completion) in
-                })
-            }
-        }
-        @objc func didTapGestureOnScreen(_ sender: UITapGestureRecognizer?){
-            keyboardExtensionViewTextField.resignFirstResponder()
-        }
-        override func viewDidLoad() {
-            textFieldReturnBtn.isEnabled = false
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+    
+            keyboardExtensionViewBottomConstraint.constant = 0
             
-            var tap = UITapGestureRecognizer(target: self, action: #selector(didTapGestureOnScreen(_:)))
-            tap.delegate = self
-            self.view.addGestureRecognizer(tap)
-            
-            // UIToolBar
-            numberToolbar = UIToolbar(frame:CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 56))
-            numberToolbar.barStyle = .default
-            numberToolbar.items = [
-                UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
-                UIBarButtonItem(title: "subTitle", style: .plain, target: self, action: #selector(didTouchSubTitle)),
-                UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
-                UIBarButtonItem(title: "price", style: .plain, target: self, action: #selector(didTouchPrice)),
-                UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
-                UIBarButtonItem(title: "title", style: .plain, target: self, action: #selector(didTouchTitle)),
-                UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-            ]
-            numberToolbar.barTintColor = UIColor(displayP3Red: 210/255, green: 210/255, blue: 210/255, alpha: 1)
-            numberToolbar.sizeToFit()
-            numberToolbar.items![1].isEnabled = false
-            numberToolbar.items![3].isEnabled = false
-
-            keyboardExtensionViewTextField.inputAccessoryView = numberToolbar
+            UIView.animate(withDuration: 0, animations: {
+                self.view.layoutIfNeeded()
+                }, completion: { (completion) in
+            })
         }
+    }
+    @objc func didTapGestureOnScreen(_ sender: UITapGestureRecognizer?){
+        keyboardExtensionViewTextField.resignFirstResponder()
+    }
+    override func viewDidLoad() {
+        textFieldReturnBtn.isEnabled = false
+        let swipeUpGesture: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipeUpBtn))
+        swipeUpGesture.direction = .up
+        swipeUpGesture.delegate = self
+        self.openDetailVCBtn.addGestureRecognizer(swipeUpGesture)
+            
+        var tap = UITapGestureRecognizer(target: self, action: #selector(didTapGestureOnScreen(_:)))
+        tap.delegate = self
+        self.view.addGestureRecognizer(tap)
+            
+        // UIToolBar
+        numberToolbar = UIToolbar(frame:CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 56))
+        numberToolbar.barStyle = .default
+        numberToolbar.items = [
+            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
+            UIBarButtonItem(title: "subTitle", style: .plain, target: self, action: #selector(didTouchSubTitle)),
+            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
+            UIBarButtonItem(title: "price", style: .plain, target: self, action: #selector(didTouchPrice)),
+            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
+            UIBarButtonItem(title: "title", style: .plain, target: self, action: #selector(didTouchTitle)),
+            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        ]
+        numberToolbar.barTintColor = UIColor(displayP3Red: 210/255, green: 210/255, blue: 210/255, alpha: 1)
+        numberToolbar.sizeToFit()
+        numberToolbar.items![1].isEnabled = false
+        numberToolbar.items![3].isEnabled = false
         
-        @objc func didTouchSubTitle(){
-            keyboardExtensionViewTextField.keyboardType = .default
-            keyboardExtensionViewTextField.reloadInputViews()
-        }
-        @objc func didTouchPrice(){
-            keyboardExtensionViewTextField.keyboardType = .decimalPad
-            keyboardExtensionViewTextField.reloadInputViews()
-        }
-        @objc func didTouchTitle(){
-            keyboardExtensionViewTextField.keyboardType = .default
-            keyboardExtensionViewTextField.reloadInputViews()
-        }
+        keyboardExtensionViewTextField.inputAccessoryView = numberToolbar
+    }
+    
+    @objc func swipeUpBtn(){
+        print("swipeUP")
+    }
+    
+    @objc func didTouchSubTitle(){
+        keyboardExtensionViewTextField.keyboardType = .default
+        keyboardExtensionViewTextField.reloadInputViews()
+    }
+    @objc func didTouchPrice(){
+        keyboardExtensionViewTextField.keyboardType = .decimalPad
+        keyboardExtensionViewTextField.reloadInputViews()
+    }
+    @objc func didTouchTitle(){
+        keyboardExtensionViewTextField.keyboardType = .default
+        keyboardExtensionViewTextField.reloadInputViews()
+    }
 
-
-
-        override func viewWillAppear(_ animated: Bool) {
-            
-            NotificationCenter.default.addObserver(self, selector:#selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-            NotificationCenter.default.addObserver(self, selector:#selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        }
+    override func viewWillAppear(_ animated: Bool) {
+        NotificationCenter.default.addObserver(self, selector:#selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
 }
