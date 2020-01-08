@@ -106,19 +106,34 @@ class ItemMainVC: UIViewController, UIGestureRecognizerDelegate {
         // UIToolBar
         numberToolbar = UIToolbar(frame:CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 56))
         numberToolbar.barStyle = .default
+        
+        let reasonBarButtonItem = UIBarButtonItem(title: "이유", style: .plain, target: self, action: #selector(didTouchReason))
+        reasonBarButtonItem.tintColor = UIColor.darkGray
+        reasonBarButtonItem.isEnabled = false
+        
+        let priceBarbuttonItem = UIBarButtonItem(title: "가격", style: .plain, target: self, action: #selector(didTouchPrice))
+        priceBarbuttonItem.tintColor = UIColor.darkGray
+        priceBarbuttonItem.isEnabled = false
+        
+        let titleBarButtonItem = UIBarButtonItem(title: "상품명", style: .plain, target: self, action: #selector(didTouchTitle))
+        titleBarButtonItem.tintColor = UIColor.red
+        
+        let fixedSpace = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
+        let fixedSpace2 = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
+        fixedSpace.width = 75
+        fixedSpace2.width = 70
         numberToolbar.items = [
             UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
-            UIBarButtonItem(title: "reason", style: .plain, target: self, action: #selector(didTouchReason)),
-            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
-            UIBarButtonItem(title: "price", style: .plain, target: self, action: #selector(didTouchPrice)),
-            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
-            UIBarButtonItem(title: "title", style: .plain, target: self, action: #selector(didTouchTitle)),
+            reasonBarButtonItem,
+            fixedSpace,
+            priceBarbuttonItem,
+            fixedSpace2,
+            titleBarButtonItem,
             UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         ]
+
         numberToolbar.barTintColor = UIColor(displayP3Red: 210/255, green: 210/255, blue: 210/255, alpha: 1)
         numberToolbar.sizeToFit()
-        numberToolbar.items![1].isEnabled = false
-        numberToolbar.items![3].isEnabled = false
         
         keyboardExtensionViewTextField.inputAccessoryView = numberToolbar
     }
