@@ -137,6 +137,10 @@ class ItemMainVC: UIViewController, UIGestureRecognizerDelegate {
         
         keyboardExtensionViewTextField.inputAccessoryView = numberToolbar
     }
+    override func viewWillAppear(_ animated: Bool) {
+        NotificationCenter.default.addObserver(self, selector:#selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
     
     @objc func swipeUpBtn(){
         print("swipeUP")
@@ -160,9 +164,15 @@ class ItemMainVC: UIViewController, UIGestureRecognizerDelegate {
         keyboardExtensionViewTextField.text = ""
         keyboardExtensionViewTextField.reloadInputViews()
     }
-
-    override func viewWillAppear(_ animated: Bool) {
-        NotificationCenter.default.addObserver(self, selector:#selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector:#selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ItemDetailSegue"{
+            let ItemDetailVC = segue.destination as! ItemDetailVC
+            if !newItemTitleLabel.text!.isEmpty && (newItemTitleLabel.text != "이름입력"){
+                ItemDetailVC.newItemTitle = newItemTitleLabel.text
+            }
+            if !newItemPriceLabel.text!.isEmpty && (newItemPriceLabel.text != "가격미정"){
+                ItemDetailVC.newItemPrice = newItemPriceLabel.text
+            }
+        }
     }
 }

@@ -10,8 +10,11 @@ import Foundation
 import UIKit
 
 class ItemDetailVC: UIViewController {
-    
+    var newItemTitle: String?
+    var newItemPrice: String?
     override func viewDidLoad() {
         
+    }
+    override func viewDidAppear(_ animated: Bool) {
     }
 }
