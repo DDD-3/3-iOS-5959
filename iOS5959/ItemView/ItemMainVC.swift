@@ -11,6 +11,7 @@ import UIKit
 
 class ItemMainVC: UIViewController, UIGestureRecognizerDelegate {
     var numberToolbar: UIToolbar!
+    var inputState = itemInputState.title
     @IBOutlet var openDetailVCBtn: UIButton!
     @IBOutlet var keyboardExtensionViewTextField: UITextField!
     @IBOutlet var keyboardExtensionView: UIView!
@@ -22,38 +23,40 @@ class ItemMainVC: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet var newItemPriceLabel: UILabel!
     @IBOutlet var slider: UISlider!
     
-
+    @IBOutlet var newItemHeightConstraint: NSLayoutConstraint!
+    @IBOutlet var newItemWidthConstraint: NSLayoutConstraint!
     
     @IBAction func sliderValueChanged(_ sender: UISlider) {
-        let roundedValue = round((sender.value/5) * 5)
+        let roundedValue = round((sender.value/4) * 4)
             sender.value = roundedValue
-        print(roundedValue)
-        // base size = 64/64
-        let imageSize: CGFloat = CGFloat(64 * (roundedValue + 1))
-        newItemImage.frame = CGRect(x: UIScreen.main.bounds.midX - CGFloat(imageSize/2), y: UIScreen.main.bounds.midY - 150 - CGFloat(imageSize/2), width: imageSize, height: imageSize)
-        newItemTitleLabel.frame = CGRect(x: newItemImage.frame.midX - imageSize/2, y: newItemImage.frame.midY - 17, width: imageSize, height: 17)
-        newItemPriceLabel.frame = CGRect(x: newItemImage.frame.midX - imageSize/2, y: newItemImage.frame.midY - 17/3, width: imageSize, height: 17)
-        
+        // minSize = 64/64, maxSize = 128/128
+        newItemHeightConstraint.constant = CGFloat(64 + 64 * roundedValue/2)
+        newItemWidthConstraint.constant = CGFloat(64 + 64 * roundedValue/2)
     }
     @IBAction func didTextEditing(_ sender: UITextField) {
         textFieldReturnBtn.isEnabled = true
-//        if newItemTitleLabel.text!.isEmpty && newItemPriceLabel.text!.isEmpty{
-//            newItemTitleLabel.text = sender.text
-//        }else if !newItemTitleLabel.text!.isEmpty && newItemPriceLabel.text!.isEmpty{
-//            newItemPriceLabel.text = sender.text
-//        }else{
-//
-//        }
+        switch inputState {
+        case .title:
+            newItemTitleLabel.text = sender.text
+        case .price:
+            newItemPriceLabel.text = sender.text
+        case .reason:
+            break
+        default:
+            break
+        }
+
     }
     @IBAction func textFieldReturnBtn(_ sender: Any) {
-        if newItemTitleLabel.text!.isEmpty && newItemPriceLabel.text!.isEmpty{
-            newItemTitleLabel.text = keyboardExtensionViewTextField.text
+        switch inputState {
+        case .title:
             numberToolbar.items![3].isEnabled = true
-        }else if !newItemTitleLabel.text!.isEmpty && newItemPriceLabel.text!.isEmpty{
-            newItemPriceLabel.text = keyboardExtensionViewTextField.text
+        case .price:
             numberToolbar.items![1].isEnabled = true
-        }else{
-//            numberToolbar.items![1].isEnabled = true
+        case .reason:
+            break
+        default:
+            break
         }
         textFieldReturnBtn.isEnabled = false
         keyboardExtensionViewTextField.text = ""
@@ -105,7 +108,7 @@ class ItemMainVC: UIViewController, UIGestureRecognizerDelegate {
         numberToolbar.barStyle = .default
         numberToolbar.items = [
             UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
-            UIBarButtonItem(title: "subTitle", style: .plain, target: self, action: #selector(didTouchSubTitle)),
+            UIBarButtonItem(title: "reason", style: .plain, target: self, action: #selector(didTouchReason)),
             UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
             UIBarButtonItem(title: "price", style: .plain, target: self, action: #selector(didTouchPrice)),
             UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
@@ -124,16 +127,22 @@ class ItemMainVC: UIViewController, UIGestureRecognizerDelegate {
         print("swipeUP")
     }
     
-    @objc func didTouchSubTitle(){
+    @objc func didTouchReason(){
         keyboardExtensionViewTextField.keyboardType = .default
+        inputState = .reason
+        keyboardExtensionViewTextField.text = ""
         keyboardExtensionViewTextField.reloadInputViews()
     }
     @objc func didTouchPrice(){
         keyboardExtensionViewTextField.keyboardType = .decimalPad
+        inputState = .price
+        keyboardExtensionViewTextField.text = ""
         keyboardExtensionViewTextField.reloadInputViews()
     }
     @objc func didTouchTitle(){
         keyboardExtensionViewTextField.keyboardType = .default
+        inputState = .title
+        keyboardExtensionViewTextField.text = ""
         keyboardExtensionViewTextField.reloadInputViews()
     }
 

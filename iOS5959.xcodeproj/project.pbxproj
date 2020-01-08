@@ -18,6 +18,7 @@
 		FA4E5AF223AE13950038FD6E /* ItemMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4E5AF123AE13950038FD6E /* ItemMainVC.swift */; };
 		FA83A10723C1BFA10073D438 /* ItemDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA83A10623C1BFA10073D438 /* ItemDetailVC.swift */; };
 		FA83A10923C39A530073D438 /* StaticTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA83A10823C39A530073D438 /* StaticTableVC.swift */; };
+		FA83A10B23C5CEB50073D438 /* Function.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA83A10A23C5CEB50073D438 /* Function.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		FA4E5AF123AE13950038FD6E /* ItemMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemMainVC.swift; sourceTree = "<group>"; };
 		FA83A10623C1BFA10073D438 /* ItemDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailVC.swift; sourceTree = "<group>"; };
 		FA83A10823C39A530073D438 /* StaticTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticTableVC.swift; sourceTree = "<group>"; };
+		FA83A10A23C5CEB50073D438 /* Function.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Function.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				FA4E5AEF23AE10DD0038FD6E /* ItemView.storyboard */,
+				FA83A10A23C5CEB50073D438 /* Function.swift */,
 				FA4E5AF123AE13950038FD6E /* ItemMainVC.swift */,
 				FA83A10623C1BFA10073D438 /* ItemDetailVC.swift */,
 				FA83A10823C39A530073D438 /* StaticTableVC.swift */,
@@ -223,6 +226,7 @@
 			files = (
 				FA4E5AF223AE13950038FD6E /* ItemMainVC.swift in Sources */,
 				717F392D239A103F008DA87A /* ViewController.swift in Sources */,
+				FA83A10B23C5CEB50073D438 /* Function.swift in Sources */,
 				717F3929239A103F008DA87A /* AppDelegate.swift in Sources */,
 				FA83A10723C1BFA10073D438 /* ItemDetailVC.swift in Sources */,
 				717F392B239A103F008DA87A /* SceneDelegate.swift in Sources */,
