@@ -19,6 +19,12 @@ class ItemDetailVC: UIViewController {
     @IBAction func backBtn(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
+    @IBAction func trashBtn(_ sender: Any) {
+        let alert = UIAlertController(title: "상품삭제", message: "해당 상품을 삭제하시겠습니까?\n복구할 수 없습니다", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "아니오", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "예", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
     
     override func viewDidLoad() {
         
