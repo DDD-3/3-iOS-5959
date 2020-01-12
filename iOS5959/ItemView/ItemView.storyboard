@@ -191,16 +191,22 @@
                     </view>
                     <navigationItem key="navigationItem" title="상세입력" id="G9u-XE-2UK">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="yo2-uI-LDp">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="LmO-cz-cM1">
-                                <rect key="frame" x="16" y="0.0" width="48" height="44"/>
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="LmO-cz-cM1">
+                                <rect key="frame" x="16" y="10" width="44" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="20" maxY="0.0"/>
                                 <state key="normal" image="icon_Back"/>
+                                <connections>
+                                    <action selector="backBtn:" destination="3BA-6g-HYu" eventType="touchUpInside" id="rnp-TY-Joh"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" style="plain" id="41d-hv-LUs">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="kyx-Hs-Rdf">
-                                <rect key="frame" x="311" y="0.0" width="48" height="44"/>
+                            <inset key="largeContentSizeImageInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="kyx-Hs-Rdf">
+                                <rect key="frame" x="315" y="10" width="44" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <inset key="contentEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" image="icon_Trash"/>
                             </button>
                         </barButtonItem>

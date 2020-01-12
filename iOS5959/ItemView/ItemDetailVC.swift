@@ -16,6 +16,10 @@ class ItemDetailVC: UIViewController {
     @IBOutlet var confirmBtn: UIButton!
     @IBOutlet var confirmExtensionView: UIView!
     
+    @IBAction func backBtn(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     override func viewDidLoad() {
         
     }
