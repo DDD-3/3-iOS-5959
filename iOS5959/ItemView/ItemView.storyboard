@@ -31,6 +31,9 @@
                                     </button>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="4" translatesAutoresizingMaskIntoConstraints="NO" id="eYS-j5-xYd">
                                         <rect key="frame" x="46" y="102" width="283" height="31"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" image="YES"/>
+                                        </accessibility>
                                         <connections>
                                             <action selector="sliderValueChanged:" destination="X4i-TZ-F8J" eventType="valueChanged" id="lSz-Ee-lPc"/>
                                         </connections>
@@ -224,7 +227,6 @@
                                                 </imageView>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="상품명을 입력하세요" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TvR-t2-fA7">
                                                     <rect key="frame" x="48" y="17.666666666666668" width="137" height="21.000000000000004"/>
-                                                    <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
@@ -256,7 +258,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ItemPriority" translatesAutoresizingMaskIntoConstraints="NO" id="buk-bg-dAK">
-                                                    <rect key="frame" x="19" y="12.333333333333334" width="19.666666666666671" height="19.333333333333329"/>
+                                                    <rect key="frame" x="19" y="12.333333333333332" width="19.666666666666671" height="19.333333333333336"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="19.940000000000001" id="ong-zI-WRY"/>
                                                         <constraint firstAttribute="height" constant="19.199999999999999" id="saG-e7-Q1A"/>
