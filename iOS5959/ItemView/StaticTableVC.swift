@@ -12,11 +12,19 @@ import UIKit
 class StaticTableVC: UITableViewController {
     @IBOutlet var itemTitleTextField: UITextField!
     @IBOutlet var itemPriceTextField: UITextField!
+    @IBOutlet var slider: UISlider!
     
+    @IBAction func sliderValueChanged(_ sender: UISlider) {
+        let roundedValue = round((sender.value/4) * 4)
+        sender.value = roundedValue
+    }
     @IBAction func imageSelectBtn(_ sender: Any) {
         print("click!")
     }
     override func viewDidLoad() {
+        slider.setMinimumTrackImage(UIImage(named: "SliderBackground_Fill"), for: .normal)
+        slider.setMaximumTrackImage(UIImage(named: "SliderBackground"), for: .normal)
+        slider.setThumbImage(UIImage(named: "SliderThumb"), for: .normal)
     }
     override func viewDidAppear(_ animated: Bool) {
         if let ItemDetailVC = self.parent as? ItemDetailVC {

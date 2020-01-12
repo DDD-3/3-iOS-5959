@@ -7,9 +7,23 @@
 //
 
 import Foundation
+import UIKit
 
 enum itemInputState {
     case title
     case price
     case reason
+}
+
+enum AssetsColor{
+    case coralRed
+}
+
+extension UIColor {
+    static func customColor(_ name: AssetsColor) -> UIColor{
+        switch name {
+        case .coralRed:
+            return UIColor(displayP3Red: 255/255, green: 105/255, blue: 97/255, alpha: 1)
+        }
+    }
 }

@@ -48,16 +48,14 @@ class ItemMainVC: UIViewController, UIGestureRecognizerDelegate {
 
     }
     @IBAction func textFieldReturnBtn(_ sender: Any) {
-        switch inputState {
-        case .title:
-            numberToolbar.items![3].isEnabled = true
-        case .price:
-            numberToolbar.items![1].isEnabled = true
-        case .reason:
-            break
-        default:
-            break
-        }
+//        switch inputState {
+//        case .title:
+
+//        case .price:
+
+//        case .reason:
+//            numberToolbar.items![5].tintColor = UIColor.customColor(.coralRed)
+
         textFieldReturnBtn.isEnabled = false
         keyboardExtensionViewTextField.text = ""
     }
@@ -93,6 +91,9 @@ class ItemMainVC: UIViewController, UIGestureRecognizerDelegate {
         keyboardExtensionViewTextField.resignFirstResponder()
     }
     override func viewDidLoad() {
+        slider.setMinimumTrackImage(UIImage(named: "SliderBackground_Fill"), for: .normal)
+        slider.setMaximumTrackImage(UIImage(named: "SliderBackground"), for: .normal)
+        slider.setThumbImage(UIImage(named: "SliderThumb"), for: .normal)
         textFieldReturnBtn.isEnabled = false
         let swipeUpGesture: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipeUpBtn))
         swipeUpGesture.direction = .up
@@ -109,26 +110,24 @@ class ItemMainVC: UIViewController, UIGestureRecognizerDelegate {
         
         let reasonBarButtonItem = UIBarButtonItem(title: "이유", style: .plain, target: self, action: #selector(didTouchReason))
         reasonBarButtonItem.tintColor = UIColor.darkGray
-        reasonBarButtonItem.isEnabled = false
         
         let priceBarbuttonItem = UIBarButtonItem(title: "가격", style: .plain, target: self, action: #selector(didTouchPrice))
         priceBarbuttonItem.tintColor = UIColor.darkGray
-        priceBarbuttonItem.isEnabled = false
         
         let titleBarButtonItem = UIBarButtonItem(title: "상품명", style: .plain, target: self, action: #selector(didTouchTitle))
-        titleBarButtonItem.tintColor = UIColor.red
+        titleBarButtonItem.tintColor = UIColor.customColor(.coralRed)
         
         let fixedSpace = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
         let fixedSpace2 = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
-        fixedSpace.width = 75
-        fixedSpace2.width = 70
+        fixedSpace.width = 70
+        fixedSpace2.width = 75
         numberToolbar.items = [
             UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
-            reasonBarButtonItem,
+            titleBarButtonItem,
             fixedSpace,
             priceBarbuttonItem,
             fixedSpace2,
-            titleBarButtonItem,
+            reasonBarButtonItem,
             UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         ]
 
@@ -147,18 +146,27 @@ class ItemMainVC: UIViewController, UIGestureRecognizerDelegate {
     }
     
     @objc func didTouchReason(){
+        numberToolbar.items![5].tintColor = UIColor.customColor(.coralRed)
+        numberToolbar.items![3].tintColor = UIColor.darkGray
+        numberToolbar.items![1].tintColor = UIColor.darkGray
         keyboardExtensionViewTextField.keyboardType = .default
         inputState = .reason
         keyboardExtensionViewTextField.text = ""
         keyboardExtensionViewTextField.reloadInputViews()
     }
     @objc func didTouchPrice(){
-        keyboardExtensionViewTextField.keyboardType = .decimalPad
+        numberToolbar.items![5].tintColor = UIColor.darkGray
+        numberToolbar.items![3].tintColor = UIColor.customColor(.coralRed)
+        numberToolbar.items![1].tintColor = UIColor.darkGray
+        keyboardExtensionViewTextField.keyboardType = .phonePad
         inputState = .price
         keyboardExtensionViewTextField.text = ""
         keyboardExtensionViewTextField.reloadInputViews()
     }
     @objc func didTouchTitle(){
+        numberToolbar.items![5].tintColor = UIColor.darkGray
+        numberToolbar.items![3].tintColor = UIColor.darkGray
+        numberToolbar.items![1].tintColor = UIColor.customColor(.coralRed)
         keyboardExtensionViewTextField.keyboardType = .default
         inputState = .title
         keyboardExtensionViewTextField.text = ""
