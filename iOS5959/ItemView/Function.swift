@@ -16,14 +16,17 @@ enum itemInputState {
 }
 
 enum AssetsColor{
-    case coralRed
+    case primaryCoral
+    case secondaryCement
 }
 
 extension UIColor {
     static func customColor(_ name: AssetsColor) -> UIColor{
         switch name {
-        case .coralRed:
-            return UIColor(displayP3Red: 255/255, green: 105/255, blue: 97/255, alpha: 1)
+        case .primaryCoral:
+            return UIColor(red: 255/255, green: 105/255, blue: 97/255, alpha: 1)
+        case .secondaryCement:
+            return UIColor(red: 224/255, green: 224/255, blue: 224/255, alpha: 1)
         }
     }
 }

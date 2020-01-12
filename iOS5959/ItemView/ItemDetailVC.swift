@@ -12,6 +12,10 @@ import UIKit
 class ItemDetailVC: UIViewController {
     var newItemTitle: String?
     var newItemPrice: String?
+    
+    @IBOutlet var confirmBtn: UIButton!
+    @IBOutlet var confirmExtensionView: UIView!
+    
     override func viewDidLoad() {
         
     }

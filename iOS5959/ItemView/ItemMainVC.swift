@@ -115,7 +115,7 @@ class ItemMainVC: UIViewController, UIGestureRecognizerDelegate {
         priceBarbuttonItem.tintColor = UIColor.darkGray
         
         let titleBarButtonItem = UIBarButtonItem(title: "상품명", style: .plain, target: self, action: #selector(didTouchTitle))
-        titleBarButtonItem.tintColor = UIColor.customColor(.coralRed)
+        titleBarButtonItem.tintColor = UIColor.customColor(.primaryCoral)
         
         let fixedSpace = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
         let fixedSpace2 = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
@@ -146,7 +146,7 @@ class ItemMainVC: UIViewController, UIGestureRecognizerDelegate {
     }
     
     @objc func didTouchReason(){
-        numberToolbar.items![5].tintColor = UIColor.customColor(.coralRed)
+        numberToolbar.items![5].tintColor = UIColor.customColor(.primaryCoral)
         numberToolbar.items![3].tintColor = UIColor.darkGray
         numberToolbar.items![1].tintColor = UIColor.darkGray
         keyboardExtensionViewTextField.keyboardType = .default
@@ -156,7 +156,7 @@ class ItemMainVC: UIViewController, UIGestureRecognizerDelegate {
     }
     @objc func didTouchPrice(){
         numberToolbar.items![5].tintColor = UIColor.darkGray
-        numberToolbar.items![3].tintColor = UIColor.customColor(.coralRed)
+        numberToolbar.items![3].tintColor = UIColor.customColor(.primaryCoral)
         numberToolbar.items![1].tintColor = UIColor.darkGray
         keyboardExtensionViewTextField.keyboardType = .phonePad
         inputState = .price
@@ -166,7 +166,7 @@ class ItemMainVC: UIViewController, UIGestureRecognizerDelegate {
     @objc func didTouchTitle(){
         numberToolbar.items![5].tintColor = UIColor.darkGray
         numberToolbar.items![3].tintColor = UIColor.darkGray
-        numberToolbar.items![1].tintColor = UIColor.customColor(.coralRed)
+        numberToolbar.items![1].tintColor = UIColor.customColor(.primaryCoral)
         keyboardExtensionViewTextField.keyboardType = .default
         inputState = .title
         keyboardExtensionViewTextField.text = ""

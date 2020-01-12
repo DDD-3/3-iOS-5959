@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class StaticTableVC: UITableViewController {
+class StaticTableVC: UITableViewController, UITextFieldDelegate {
     @IBOutlet var itemTitleTextField: UITextField!
     @IBOutlet var itemPriceTextField: UITextField!
     @IBOutlet var slider: UISlider!
@@ -21,7 +21,21 @@ class StaticTableVC: UITableViewController {
     @IBAction func imageSelectBtn(_ sender: Any) {
         print("click!")
     }
+    
+    @IBAction func itemTitleTextFieldEditingChanged(_ sender: UITextField) {
+        guard let ItemDetailVC = self.parent as? ItemDetailVC else{return}
+        if sender.text!.isEmpty {
+            ItemDetailVC.confirmBtn.isEnabled = false
+            ItemDetailVC.confirmExtensionView.backgroundColor = UIColor.customColor(.secondaryCement)
+        }else{
+            ItemDetailVC.confirmBtn.isEnabled = true
+            ItemDetailVC.confirmExtensionView.backgroundColor = UIColor.customColor(.primaryCoral)
+        }
+    }
+    
+    
     override func viewDidLoad() {
+        
         slider.setMinimumTrackImage(UIImage(named: "SliderBackground_Fill"), for: .normal)
         slider.setMaximumTrackImage(UIImage(named: "SliderBackground"), for: .normal)
         slider.setThumbImage(UIImage(named: "SliderThumb"), for: .normal)

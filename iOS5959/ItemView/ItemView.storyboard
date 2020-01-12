@@ -143,7 +143,7 @@
             </objects>
             <point key="canvasLocation" x="725.60000000000002" y="-413.79310344827587"/>
         </scene>
-        <!--Item DetailVC-->
+        <!--상세입력-->
         <scene sceneID="s2V-oe-eXn">
             <objects>
                 <viewController storyboardIdentifier="ItemDetailVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3BA-6g-HYu" customClass="ItemDetailVC" customModule="iOS5959" customModuleProvider="target" sceneMemberID="viewController">
@@ -152,35 +152,74 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rRo-BR-XTF">
-                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="642"/>
                                 <connections>
                                     <segue destination="ecY-R6-cJh" kind="embed" id="cjX-ML-MSV"/>
                                 </connections>
                             </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sXu-28-dLf">
+                                <rect key="frame" x="0.0" y="730" width="375" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="KfQ-Oz-Oj3"/>
+                                </constraints>
+                                <state key="normal" image="btn_Enable"/>
+                                <state key="disabled" image="btn_Disable"/>
+                            </button>
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ooz-P3-KWR">
+                                <rect key="frame" x="0.0" y="778" width="375" height="34"/>
+                                <color key="backgroundColor" red="0.8784313725490196" green="0.8784313725490196" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Ooz-P3-KWR" secondAttribute="trailing" id="1pq-4q-Sda"/>
                             <constraint firstItem="rRo-BR-XTF" firstAttribute="leading" secondItem="4W0-Ze-BwA" secondAttribute="leading" id="34D-Tc-rrE"/>
+                            <constraint firstItem="Ooz-P3-KWR" firstAttribute="leading" secondItem="4W0-Ze-BwA" secondAttribute="leading" id="6xt-aE-dVn"/>
+                            <constraint firstItem="sXu-28-dLf" firstAttribute="trailing" secondItem="4W0-Ze-BwA" secondAttribute="trailing" id="Brb-AS-jBj"/>
                             <constraint firstItem="rRo-BR-XTF" firstAttribute="top" secondItem="4W0-Ze-BwA" secondAttribute="top" id="DHJ-WG-QKr"/>
-                            <constraint firstItem="rRo-BR-XTF" firstAttribute="bottom" secondItem="4W0-Ze-BwA" secondAttribute="bottom" id="lC1-hJ-GMo"/>
+                            <constraint firstItem="sXu-28-dLf" firstAttribute="top" secondItem="rRo-BR-XTF" secondAttribute="bottom" id="Jai-ai-Ifp"/>
+                            <constraint firstAttribute="bottom" secondItem="Ooz-P3-KWR" secondAttribute="bottom" id="KyM-ZH-BOH"/>
+                            <constraint firstItem="4W0-Ze-BwA" firstAttribute="bottom" secondItem="sXu-28-dLf" secondAttribute="bottom" id="VHg-zC-vOY"/>
+                            <constraint firstItem="Ooz-P3-KWR" firstAttribute="leading" secondItem="4V0-tP-KtR" secondAttribute="leading" id="Ygk-c6-3MF"/>
+                            <constraint firstItem="sXu-28-dLf" firstAttribute="leading" secondItem="4W0-Ze-BwA" secondAttribute="leading" id="bxN-Y3-AfB"/>
+                            <constraint firstItem="Ooz-P3-KWR" firstAttribute="top" secondItem="sXu-28-dLf" secondAttribute="bottom" id="c9j-A0-O3y"/>
+                            <constraint firstAttribute="bottom" secondItem="Ooz-P3-KWR" secondAttribute="bottom" id="cFx-JQ-ECy"/>
+                            <constraint firstItem="4W0-Ze-BwA" firstAttribute="trailing" secondItem="Ooz-P3-KWR" secondAttribute="trailing" id="lYf-qf-Xv7"/>
                             <constraint firstItem="4W0-Ze-BwA" firstAttribute="trailing" secondItem="rRo-BR-XTF" secondAttribute="trailing" id="yfe-oY-DGm"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4W0-Ze-BwA"/>
                     </view>
-                    <navigationItem key="navigationItem" id="G9u-XE-2UK">
-                        <barButtonItem key="rightBarButtonItem" title="ADD" id="2f0-TP-5Wg"/>
+                    <navigationItem key="navigationItem" title="상세입력" id="G9u-XE-2UK">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="yo2-uI-LDp">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="LmO-cz-cM1">
+                                <rect key="frame" x="16" y="0.0" width="48" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="icon_Back"/>
+                            </button>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Item" style="plain" id="41d-hv-LUs">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="kyx-Hs-Rdf">
+                                <rect key="frame" x="311" y="0.0" width="48" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="icon_Trash"/>
+                            </button>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="confirmBtn" destination="sXu-28-dLf" id="UA7-6U-qkm"/>
+                        <outlet property="confirmExtensionView" destination="Ooz-P3-KWR" id="5yz-pU-WgJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ciz-vV-YHm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1518.840579710145" y="-413.16964285714283"/>
+            <point key="canvasLocation" x="1517.5999999999999" y="-413.79310344827587"/>
         </scene>
         <!--Static TableVC-->
         <scene sceneID="5hN-Go-ch0">
             <objects>
                 <tableViewController storyboardIdentifier="StaticTableVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ecY-R6-cJh" customClass="StaticTableVC" customModule="iOS5959" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="6iA-kh-rSJ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="690"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="642"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <inset key="separatorInset" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -201,12 +240,13 @@
                                                         <constraint firstAttribute="width" constant="24" id="fGo-P7-bUq"/>
                                                     </constraints>
                                                 </imageView>
-
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="상품명" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TvR-t2-fA7">
-                                                    <rect key="frame" x="48" y="19.666666666666668" width="36.333333333333343" height="17.000000000000004"/>
+                                                    <rect key="frame" x="48" y="19.666666666666668" width="283" height="17.000000000000004"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="itemTitleTextFieldEditingChanged:" destination="ecY-R6-cJh" eventType="editingChanged" id="xnv-Es-T8q"/>
+                                                    </connections>
                                                 </textField>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="magnifyingglass" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="2rA-Zt-HLC">
                                                     <rect key="frame" x="336" y="17" width="23" height="21.666666666666671"/>
@@ -223,7 +263,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="2rA-Zt-HLC" secondAttribute="trailing" constant="16" id="GXq-j9-TiU"/>
                                                 <constraint firstItem="TvR-t2-fA7" firstAttribute="leading" secondItem="mcF-rp-kaF" secondAttribute="trailing" constant="8" id="WKq-Ko-HoI"/>
                                                 <constraint firstItem="mcF-rp-kaF" firstAttribute="centerY" secondItem="2aq-Um-UI5" secondAttribute="centerY" id="Wrc-ie-H25"/>
-                                                <constraint firstItem="2rA-Zt-HLC" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="TvR-t2-fA7" secondAttribute="trailing" constant="5" id="qIQ-xh-aff"/>
+                                                <constraint firstItem="2rA-Zt-HLC" firstAttribute="leading" secondItem="TvR-t2-fA7" secondAttribute="trailing" constant="5" id="qIQ-xh-aff"/>
                                                 <constraint firstItem="mcF-rp-kaF" firstAttribute="leading" secondItem="2aq-Um-UI5" secondAttribute="leading" constant="16" id="yZe-FN-y6e"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -235,10 +275,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_ItemPriority" translatesAutoresizingMaskIntoConstraints="NO" id="buk-bg-dAK">
                                                     <rect key="frame" x="16" y="19" width="24" height="24"/>
-
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="24" id="ong-zI-WRY"/>
                                                         <constraint firstAttribute="height" constant="24" id="saG-e7-Q1A"/>
@@ -481,7 +519,10 @@
     <resources>
         <image name="AddImagePlaceholder" width="72" height="72"/>
         <image name="TextfieldRetrunBtn" width="24" height="24"/>
+        <image name="btn_Disable" width="375" height="48"/>
+        <image name="btn_Enable" width="375" height="48"/>
         <image name="circle.fill" catalog="system" width="64" height="60"/>
+        <image name="icon_Back" width="24" height="24"/>
         <image name="icon_ItemCollectionSelect" width="24" height="24"/>
         <image name="icon_ItemImage" width="24" height="24"/>
         <image name="icon_ItemPrice" width="24" height="24"/>
@@ -490,6 +531,7 @@
         <image name="icon_ItemTitle" width="24" height="24"/>
         <image name="icon_ItemURL" width="24" height="24"/>
         <image name="icon_Priority_help" width="24" height="24"/>
+        <image name="icon_Trash" width="24" height="24"/>
         <image name="magnifyingglass" catalog="system" width="64" height="56"/>
     </resources>
 </document>
