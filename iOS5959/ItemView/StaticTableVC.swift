@@ -13,6 +13,8 @@ class StaticTableVC: UITableViewController, UITextFieldDelegate, UIImagePickerCo
     @IBOutlet var itemTitleTextField: UITextField!
     @IBOutlet var itemPriceTextField: UITextField!
     @IBOutlet var slider: UISlider!
+    @IBOutlet var itemImageSelectBtn: UIButton!
+    @IBOutlet var imageSelectCell: UITableViewCell!
     
     @IBAction func sliderValueChanged(_ sender: UISlider) {
         let roundedValue = round((sender.value/4) * 4)
@@ -66,5 +68,11 @@ class StaticTableVC: UITableViewController, UITextFieldDelegate, UIImagePickerCo
             imagePickerController.sourceType = sourceType
             self.present(imagePickerController, animated: true, completion: nil)
         }
+    }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage{
+            itemImageSelectBtn.setImage(image, for: .normal)
+        }
+        dismiss(animated: true, completion: nil)
     }
 }
