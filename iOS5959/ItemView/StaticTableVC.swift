@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class StaticTableVC: UITableViewController, UITextFieldDelegate {
+class StaticTableVC: UITableViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet var itemTitleTextField: UITextField!
     @IBOutlet var itemPriceTextField: UITextField!
     @IBOutlet var slider: UISlider!
@@ -19,7 +19,15 @@ class StaticTableVC: UITableViewController, UITextFieldDelegate {
         sender.value = roundedValue
     }
     @IBAction func imageSelectBtn(_ sender: Any) {
-        print("click!")
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "카메라로 촬영", style: .default, handler: {(action: UIAlertAction) in
+            self.getImage(fromSourceType: .camera)
+        }))
+        alert.addAction(UIAlertAction(title: "앨범에서 선택", style: .default, handler: {(action: UIAlertAction) in
+            self.getImage(fromSourceType: .photoLibrary)
+        }))
+        alert.addAction(UIAlertAction(title: "닫기", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
     @IBAction func itemTitleTextFieldEditingChanged(_ sender: UITextField) {
@@ -32,7 +40,6 @@ class StaticTableVC: UITableViewController, UITextFieldDelegate {
             ItemDetailVC.confirmExtensionView.backgroundColor = UIColor.customColor(.primaryCoral)
         }
     }
-    
     
     override func viewDidLoad() {
         
@@ -48,6 +55,16 @@ class StaticTableVC: UITableViewController, UITextFieldDelegate {
             if ItemDetailVC.newItemPrice != nil{
                 itemPriceTextField.text = ItemDetailVC.newItemPrice
             }
+        }
+    }
+    
+    func getImage(fromSourceType sourceType: UIImagePickerController.SourceType) {
+        if UIImagePickerController.isSourceTypeAvailable(sourceType) {
+
+            let imagePickerController = UIImagePickerController()
+            imagePickerController.delegate = self
+            imagePickerController.sourceType = sourceType
+            self.present(imagePickerController, animated: true, completion: nil)
         }
     }
 }

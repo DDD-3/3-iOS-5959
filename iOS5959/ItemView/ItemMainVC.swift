@@ -48,14 +48,6 @@ class ItemMainVC: UIViewController, UIGestureRecognizerDelegate {
 
     }
     @IBAction func textFieldReturnBtn(_ sender: Any) {
-//        switch inputState {
-//        case .title:
-
-//        case .price:
-
-//        case .reason:
-//            numberToolbar.items![5].tintColor = UIColor.customColor(.coralRed)
-
         textFieldReturnBtn.isEnabled = false
         keyboardExtensionViewTextField.text = ""
     }
@@ -64,14 +56,11 @@ class ItemMainVC: UIViewController, UIGestureRecognizerDelegate {
     @objc func keyboardWillShow(notification: NSNotification) {
             if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
                 let keyboardRectangle = keyboardFrame.cgRectValue
-                
-                // 이거 그냥 keyboard.heigth로 주면 공백이 생기는데 왜그러지 ..?
                 keyboardExtensionViewBottomConstraint.constant = -keyboardRectangle.height
                                 
                 UIView.animate(withDuration: 0, animations: {
                     self.view.layoutIfNeeded()
                     }, completion: { (completion) in
-                       
                 })
             }
         }
