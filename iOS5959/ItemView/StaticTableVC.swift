@@ -14,7 +14,6 @@ class StaticTableVC: UITableViewController, UITextFieldDelegate, UIImagePickerCo
     @IBOutlet var itemPriceTextField: UITextField!
     @IBOutlet var slider: UISlider!
     @IBOutlet var itemImageSelectBtn: UIButton!
-    @IBOutlet var imageSelectCell: UITableViewCell!
     
     @IBAction func sliderValueChanged(_ sender: UISlider) {
         let roundedValue = round((sender.value/4) * 4)

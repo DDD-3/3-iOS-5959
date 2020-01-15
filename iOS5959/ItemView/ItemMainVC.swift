@@ -51,6 +51,13 @@ class ItemMainVC: UIViewController, UIGestureRecognizerDelegate {
         textFieldReturnBtn.isEnabled = false
         keyboardExtensionViewTextField.text = ""
     }
+    @IBAction func textFieldEditingChanged(_ sender: UITextField) {
+        if sender.text!.isEmpty{
+            textFieldReturnBtn.isEnabled = false
+        }else{
+            textFieldReturnBtn.isEnabled = true
+        }
+    }
     
     
     @objc func keyboardWillShow(notification: NSNotification) {

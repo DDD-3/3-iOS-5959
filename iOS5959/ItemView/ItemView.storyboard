@@ -44,6 +44,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
                                             <action selector="didTextEditing:" destination="X4i-TZ-F8J" eventType="editingChanged" id="jwu-HD-hHb"/>
+                                            <action selector="textFieldEditingChanged:" destination="X4i-TZ-F8J" eventType="editingChanged" id="Ro0-XF-S4Q"/>
                                         </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y6T-ew-D8i">
@@ -53,7 +54,8 @@
                                             <constraint firstAttribute="width" constant="22" id="aKc-a9-0Md"/>
                                             <constraint firstAttribute="height" constant="22" id="su1-W2-wH7"/>
                                         </constraints>
-                                        <state key="normal" backgroundImage="TextfieldRetrunBtn"/>
+                                        <state key="normal" backgroundImage="TextFieldRetrunBtn"/>
+                                        <state key="disabled" backgroundImage="TextFieldRetrunBtn_Disabled"/>
                                         <connections>
                                             <action selector="textFieldReturnBtn:" destination="X4i-TZ-F8J" eventType="touchUpInside" id="35I-TP-1vz"/>
                                         </connections>
@@ -75,7 +77,7 @@
                                 </constraints>
                             </view>
                             <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Hqk-22-NQB">
-                                <rect key="frame" x="155.66666666666666" y="126" width="64" height="62.666666666666671"/>
+                                <rect key="frame" x="155.66666666666666" y="151" width="64" height="62.666666666666671"/>
                                 <color key="tintColor" red="1" green="0.41176470588235292" blue="0.38039215686274508" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="64" id="bmI-M5-rWM"/>
@@ -83,7 +85,7 @@
                                 </constraints>
                             </imageView>
                             <stackView contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="wxb-ou-3yo">
-                                <rect key="frame" x="161" y="138" width="53" height="38"/>
+                                <rect key="frame" x="161" y="163" width="53" height="38"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이름입력" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5bc-9A-TCl">
                                         <rect key="frame" x="0.0" y="0.0" width="53" height="17"/>
@@ -112,7 +114,7 @@
                         <constraints>
                             <constraint firstItem="LIG-xD-oGz" firstAttribute="bottom" secondItem="XjR-Il-gqM" secondAttribute="bottom" id="CkU-c4-mFB"/>
                             <constraint firstAttribute="bottom" secondItem="5rG-PW-UAb" secondAttribute="bottom" id="KT9-6m-7i9"/>
-                            <constraint firstItem="wxb-ou-3yo" firstAttribute="top" secondItem="XjR-Il-gqM" secondAttribute="top" constant="50" id="LNG-NM-jKm"/>
+                            <constraint firstItem="wxb-ou-3yo" firstAttribute="top" secondItem="XjR-Il-gqM" secondAttribute="top" constant="75" id="LNG-NM-jKm"/>
                             <constraint firstItem="XjR-Il-gqM" firstAttribute="trailing" secondItem="5rG-PW-UAb" secondAttribute="trailing" id="Msu-0R-d2D"/>
                             <constraint firstItem="Hqk-22-NQB" firstAttribute="centerX" secondItem="wxb-ou-3yo" secondAttribute="centerX" id="NCZ-da-xsc"/>
                             <constraint firstItem="wxb-ou-3yo" firstAttribute="centerX" secondItem="f8R-tV-19S" secondAttribute="centerX" id="UHx-cb-XG1"/>
@@ -497,7 +499,6 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="9Qk-3X-VCQ"/>
                     <connections>
-                        <outlet property="imageSelectCell" destination="HZt-gf-ZwP" id="rVR-CH-bUf"/>
                         <outlet property="itemImageSelectBtn" destination="PT0-2t-Zbw" id="GOw-ER-WGH"/>
                         <outlet property="itemPriceTextField" destination="AZq-CA-ugq" id="edr-Xk-N63"/>
                         <outlet property="itemTitleTextField" destination="TvR-t2-fA7" id="9gA-P8-hbl"/>
@@ -529,7 +530,8 @@
     </scenes>
     <resources>
         <image name="AddImagePlaceholder" width="72" height="72"/>
-        <image name="TextfieldRetrunBtn" width="24" height="24"/>
+        <image name="TextFieldRetrunBtn" width="24" height="24"/>
+        <image name="TextFieldRetrunBtn_Disabled" width="24" height="24"/>
         <image name="btn_Disable" width="375" height="48"/>
         <image name="btn_Enable" width="375" height="48"/>
         <image name="circle.fill" catalog="system" width="64" height="60"/>
