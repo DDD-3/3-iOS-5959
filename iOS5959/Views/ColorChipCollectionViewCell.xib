@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="colorCell" id="xRo-4q-uzJ" customClass="ColorChipCollectionViewCell" customModule="iOS5959" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Y5b-9c-WRM">
+                <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RWj-2A-drN">
+                        <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="ToN-Jn-3mx"/>
+                            <constraint firstAttribute="width" constant="30" id="uvO-cI-idy"/>
+                            <constraint firstAttribute="width" secondItem="RWj-2A-drN" secondAttribute="height" multiplier="1:1" id="ygb-pC-3dl"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="RWj-2A-drN" secondAttribute="trailing" id="59N-hY-sF4"/>
+                    <constraint firstItem="RWj-2A-drN" firstAttribute="top" secondItem="Y5b-9c-WRM" secondAttribute="top" id="Cqh-Mp-jCq"/>
+                    <constraint firstAttribute="bottom" secondItem="RWj-2A-drN" secondAttribute="bottom" id="EWx-io-b2V"/>
+                    <constraint firstItem="RWj-2A-drN" firstAttribute="leading" secondItem="Y5b-9c-WRM" secondAttribute="leading" id="mKa-d5-lyy"/>
+                </constraints>
+            </collectionViewCellContentView>
+            <connections>
+                <outlet property="colorChipView" destination="RWj-2A-drN" id="JNX-mK-0Xp"/>
+            </connections>
+            <point key="canvasLocation" x="103" y="127"/>
+        </collectionViewCell>
+    </objects>
+</document>

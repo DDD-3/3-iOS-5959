@@ -44,7 +44,9 @@ extension SideMenuViewController: SideMenuItemDelegate {
         }
         // 수정
         let modifyAction = UIAlertAction(title: "콜렉션 수정", style: .default) { (_) in
-            
+            let modifyCollectionViewController = ModifyCollectionViewController()
+            modifyCollectionViewController.modalPresentationStyle = .fullScreen
+            self.present(modifyCollectionViewController, animated: true, completion: nil)
         }
         // 취소
         let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
