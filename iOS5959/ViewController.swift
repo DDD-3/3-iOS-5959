@@ -7,14 +7,25 @@
 //
 
 import UIKit
+import SideMenu
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        navigationController?.navigationBar.barTintColor = .white
+        navigationController?.navigationBar.tintColor = .black
+        navigationItem.title = "WishBall"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "menu"), style: .plain, target: self, action: #selector(touchedSideMenuButton))
     }
 
-
+    @objc private func touchedSideMenuButton() {
+        if let sideMenu = self.storyboard?.instantiateViewController(withIdentifier: "SideMenuNavigationController") as? SideMenuNavigationController {
+            SideMenuManager.default.leftMenuNavigationController = sideMenu
+            sideMenu.statusBarEndAlpha = 0
+            self.present(sideMenu, animated: true, completion: nil)
+        }
+    }
 }
 
