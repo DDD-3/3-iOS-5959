@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="syB-ra-Yay">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,7 +20,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <segue destination="eoD-G3-Kah" kind="show" id="fkm-Oq-mVV"/>
+                                    <segue destination="WYb-Is-y8C" kind="show" id="q1P-Lo-wTi"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -35,13 +35,13 @@
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="120.53571428571428"/>
         </scene>
-        <!--ItemMainVC-->
-        <scene sceneID="dCo-ED-lFc">
+        <!--ItemMainNavigationController-->
+        <scene sceneID="XsE-Jt-fM5">
             <objects>
-                <viewControllerPlaceholder storyboardName="ItemView" referencedIdentifier="ItemMainVC" id="eoD-G3-Kah" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="k6x-kJ-KDb"/>
+                <viewControllerPlaceholder storyboardName="ItemView" referencedIdentifier="ItemMainNavigationController" id="WYb-Is-y8C" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Vnw-yy-YZ4"/>
                 </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DxQ-pk-LTv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hwq-ST-Hlc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1671.7391304347827" y="144.64285714285714"/>
         </scene>
