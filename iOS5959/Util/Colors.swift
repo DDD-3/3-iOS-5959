@@ -15,6 +15,10 @@ extension UIColor {
                   blue: CGFloat(hex & 0x0000FF) / 255.0, alpha: 1)
     }
     
+    @nonobjc class var primaryBlack: UIColor {
+        return UIColor(red: 0.157, green: 0.157, blue: 0.157, alpha: 1)
+    }
+    
     @nonobjc class var primaryGrey: UIColor {
         return UIColor(red: 0.416, green: 0.416, blue: 0.416, alpha: 1)
     }

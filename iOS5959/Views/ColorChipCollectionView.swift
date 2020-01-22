@@ -10,6 +10,11 @@ import UIKit
 
 class ColorChipCollectionView: UICollectionView {
     
+    fileprivate var colorList: [UIColor] = [.primaryCoral, .primaryRed, .primaryPink,
+                                            .primaryIndigo, .primaryPurple, .primaryViolet,
+                                            .primaryYellow, .primaryGreen, .primarySky,
+                                            .primaryOcean, .primaryBlue, .primaryBlack]
+    
     private func configure() {
         self.delegate = self
         self.dataSource = self
@@ -36,7 +41,7 @@ class ColorChipCollectionView: UICollectionView {
 
 extension ColorChipCollectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 14
+        return colorList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -44,7 +49,7 @@ extension ColorChipCollectionView: UICollectionViewDataSource {
             cell.clipsToBounds = true
             cell.layer.masksToBounds = true
             cell.layer.cornerRadius = cell.frame.width / 2
-            cell.color = .blue
+            cell.color = colorList[indexPath.row]
             return cell
         }
         
@@ -70,6 +75,6 @@ extension ColorChipCollectionView: UICollectionViewDelegate {
 
 extension ColorChipCollectionView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 30.0, height: 30.0)
+        return CGSize(width: 35.0, height: 35.0)
     }
 }
