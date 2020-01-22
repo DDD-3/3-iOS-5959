@@ -10,6 +10,10 @@
 		1402A81EB4700E3AED544CFD /* Pods_iOS5959.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AC4AECA226FEE46C547BDDD /* Pods_iOS5959.framework */; };
 		7131D37823BDDC0700E4EA64 /* ColorChipCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7131D37723BDDC0700E4EA64 /* ColorChipCollectionViewCell.xib */; };
 		7131D37A23BDDC5E00E4EA64 /* ColorChipCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7131D37923BDDC5E00E4EA64 /* ColorChipCollectionViewCell.swift */; };
+		7140346123D8A33200643F1C /* NanumSquareRoundEB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7140345D23D8A33100643F1C /* NanumSquareRoundEB.ttf */; };
+		7140346223D8A33200643F1C /* NanumSquareRoundR.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7140345E23D8A33100643F1C /* NanumSquareRoundR.ttf */; };
+		7140346323D8A33200643F1C /* NanumSquareRoundL.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7140345F23D8A33200643F1C /* NanumSquareRoundL.ttf */; };
+		7140346423D8A33200643F1C /* NanumSquareRoundB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7140346023D8A33200643F1C /* NanumSquareRoundB.ttf */; };
 		7156BCC323B7A5E8001072CC /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7156BCC223B7A5E8001072CC /* SideMenuViewController.swift */; };
 		7156BCC523B7A60F001072CC /* SideMenuTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7156BCC423B7A60F001072CC /* SideMenuTableView.swift */; };
 		7156BCC723B7A619001072CC /* SideMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7156BCC623B7A619001072CC /* SideMenuTableViewCell.swift */; };
@@ -27,11 +31,11 @@
 		717F3940239A104B008DA87A /* iOS5959Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717F393F239A104B008DA87A /* iOS5959Tests.swift */; };
 		FA4E5AF023AE10DD0038FD6E /* ItemView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA4E5AEF23AE10DD0038FD6E /* ItemView.storyboard */; };
 		FA4E5AF223AE13950038FD6E /* ItemMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4E5AF123AE13950038FD6E /* ItemMainVC.swift */; };
-		FBA395479441A733864ECE70 /* Pods_iOS5959Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB9AF3AC2CE0CA3E77165B63 /* Pods_iOS5959Tests.framework */; };
 		FA83A10723C1BFA10073D438 /* ItemDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA83A10623C1BFA10073D438 /* ItemDetailVC.swift */; };
 		FA83A10923C39A530073D438 /* StaticTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA83A10823C39A530073D438 /* StaticTableVC.swift */; };
 		FA83A10B23C5CEB50073D438 /* Function.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA83A10A23C5CEB50073D438 /* Function.swift */; };
 		FA86A3E523CF08B9004E4807 /* CollectionSelectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA86A3E423CF08B9004E4807 /* CollectionSelectVC.swift */; };
+		FBA395479441A733864ECE70 /* Pods_iOS5959Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB9AF3AC2CE0CA3E77165B63 /* Pods_iOS5959Tests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +53,10 @@
 		43657F715DC1F2BB0227BB43 /* Pods-iOS5959Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS5959Tests.debug.xcconfig"; path = "Target Support Files/Pods-iOS5959Tests/Pods-iOS5959Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		7131D37723BDDC0700E4EA64 /* ColorChipCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ColorChipCollectionViewCell.xib; sourceTree = "<group>"; };
 		7131D37923BDDC5E00E4EA64 /* ColorChipCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorChipCollectionViewCell.swift; sourceTree = "<group>"; };
+		7140345D23D8A33100643F1C /* NanumSquareRoundEB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundEB.ttf; sourceTree = "<group>"; };
+		7140345E23D8A33100643F1C /* NanumSquareRoundR.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundR.ttf; sourceTree = "<group>"; };
+		7140345F23D8A33200643F1C /* NanumSquareRoundL.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundL.ttf; sourceTree = "<group>"; };
+		7140346023D8A33200643F1C /* NanumSquareRoundB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundB.ttf; sourceTree = "<group>"; };
 		7156BCC223B7A5E8001072CC /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		7156BCC423B7A60F001072CC /* SideMenuTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTableView.swift; sourceTree = "<group>"; };
 		7156BCC623B7A619001072CC /* SideMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewCell.swift; sourceTree = "<group>"; };
@@ -73,12 +81,11 @@
 		F205DE21DA8CD2AE525765A8 /* Pods-iOS5959Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS5959Tests.release.xcconfig"; path = "Target Support Files/Pods-iOS5959Tests/Pods-iOS5959Tests.release.xcconfig"; sourceTree = "<group>"; };
 		FA4E5AEF23AE10DD0038FD6E /* ItemView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ItemView.storyboard; sourceTree = "<group>"; };
 		FA4E5AF123AE13950038FD6E /* ItemMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemMainVC.swift; sourceTree = "<group>"; };
-		FB9AF3AC2CE0CA3E77165B63 /* Pods_iOS5959Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS5959Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA83A10623C1BFA10073D438 /* ItemDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailVC.swift; sourceTree = "<group>"; };
 		FA83A10823C39A530073D438 /* StaticTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticTableVC.swift; sourceTree = "<group>"; };
 		FA83A10A23C5CEB50073D438 /* Function.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Function.swift; sourceTree = "<group>"; };
 		FA86A3E423CF08B9004E4807 /* CollectionSelectVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionSelectVC.swift; sourceTree = "<group>"; };
-
+		FB9AF3AC2CE0CA3E77165B63 /* Pods_iOS5959Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS5959Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +126,17 @@
 				F205DE21DA8CD2AE525765A8 /* Pods-iOS5959Tests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		7140345C23D8A30900643F1C /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				7140346023D8A33200643F1C /* NanumSquareRoundB.ttf */,
+				7140345D23D8A33100643F1C /* NanumSquareRoundEB.ttf */,
+				7140345F23D8A33200643F1C /* NanumSquareRoundL.ttf */,
+				7140345E23D8A33100643F1C /* NanumSquareRoundR.ttf */,
+			);
+			path = Font;
 			sourceTree = "<group>";
 		};
 		7156BCC123B7A5DB001072CC /* SideMenu */ = {
@@ -175,6 +193,7 @@
 		717F3927239A103F008DA87A /* iOS5959 */ = {
 			isa = PBXGroup;
 			children = (
+				7140345C23D8A30900643F1C /* Font */,
 				7156BCCD23B8ECA2001072CC /* Views */,
 				7156BCCA23B8A4D9001072CC /* Util */,
 				7156BCC123B7A5DB001072CC /* SideMenu */,
@@ -297,11 +316,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				7131D37823BDDC0700E4EA64 /* ColorChipCollectionViewCell.xib in Resources */,
+				7140346123D8A33200643F1C /* NanumSquareRoundEB.ttf in Resources */,
 				717F3935239A104B008DA87A /* LaunchScreen.storyboard in Resources */,
+				7140346223D8A33200643F1C /* NanumSquareRoundR.ttf in Resources */,
 				FA4E5AF023AE10DD0038FD6E /* ItemView.storyboard in Resources */,
+				7140346323D8A33200643F1C /* NanumSquareRoundL.ttf in Resources */,
 				717F3932239A104B008DA87A /* Assets.xcassets in Resources */,
 				717F3930239A103F008DA87A /* Main.storyboard in Resources */,
 				7156BCD323BDB6FF001072CC /* ModifyCollectionViewXib.xib in Resources */,
+				7140346423D8A33200643F1C /* NanumSquareRoundB.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,7 +413,6 @@
 				717F392D239A103F008DA87A /* ViewController.swift in Sources */,
 				FA83A10B23C5CEB50073D438 /* Function.swift in Sources */,
 				717F3929239A103F008DA87A /* AppDelegate.swift in Sources */,
-
 				7156BCC323B7A5E8001072CC /* SideMenuViewController.swift in Sources */,
 				7156BCC723B7A619001072CC /* SideMenuTableViewCell.swift in Sources */,
 				7156BCD723BDC0AA001072CC /* ColorChipCollectionView.swift in Sources */,
@@ -398,11 +420,9 @@
 				717F392B239A103F008DA87A /* SceneDelegate.swift in Sources */,
 				7156BCD123BDB6EE001072CC /* ModifyCollectionView.swift in Sources */,
 				7156BCC523B7A60F001072CC /* SideMenuTableView.swift in Sources */,
-
 				FA83A10723C1BFA10073D438 /* ItemDetailVC.swift in Sources */,
 				717F392B239A103F008DA87A /* SceneDelegate.swift in Sources */,
 				FA83A10923C39A530073D438 /* StaticTableVC.swift in Sources */,
-
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

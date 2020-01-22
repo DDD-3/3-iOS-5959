@@ -55,6 +55,13 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>NanumSquareRoundR.ttf</string>
+		<string>NanumSquareRoundL.ttf</string>
+		<string>NanumSquareRoundEB.ttf</string>
+		<string>NanumSquareRoundB.ttf</string>
+	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
