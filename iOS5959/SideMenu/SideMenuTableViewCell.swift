@@ -50,6 +50,7 @@ class SideMenuTableViewCell: UITableViewCell {
     }
     
     private func configure() {
+        self.backgroundColor = .primaryCement
         addSubview(colorChipView)
         addSubview(collectionNameLabel)
         addSubview(moreButton)
@@ -70,6 +71,10 @@ class SideMenuTableViewCell: UITableViewCell {
     
     @objc private func touchedMoreButton(_ sender: UIButton) {
         delegate?.modifyCollection(index: tag)
+    }
+    
+    override func draw(_ rect: CGRect) {
+        colorChipView.layer.cornerRadius = colorChipView.frame.width / 2
     }
     
     override func awakeFromNib() {
