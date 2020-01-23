@@ -14,6 +14,7 @@
 		7140346223D8A33200643F1C /* NanumSquareRoundR.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7140345E23D8A33100643F1C /* NanumSquareRoundR.ttf */; };
 		7140346323D8A33200643F1C /* NanumSquareRoundL.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7140345F23D8A33200643F1C /* NanumSquareRoundL.ttf */; };
 		7140346423D8A33200643F1C /* NanumSquareRoundB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7140346023D8A33200643F1C /* NanumSquareRoundB.ttf */; };
+		7140346623D9545500643F1C /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7140346523D9545500643F1C /* Fonts.swift */; };
 		7156BCC323B7A5E8001072CC /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7156BCC223B7A5E8001072CC /* SideMenuViewController.swift */; };
 		7156BCC523B7A60F001072CC /* SideMenuTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7156BCC423B7A60F001072CC /* SideMenuTableView.swift */; };
 		7156BCC723B7A619001072CC /* SideMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7156BCC623B7A619001072CC /* SideMenuTableViewCell.swift */; };
@@ -57,6 +58,7 @@
 		7140345E23D8A33100643F1C /* NanumSquareRoundR.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundR.ttf; sourceTree = "<group>"; };
 		7140345F23D8A33200643F1C /* NanumSquareRoundL.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundL.ttf; sourceTree = "<group>"; };
 		7140346023D8A33200643F1C /* NanumSquareRoundB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundB.ttf; sourceTree = "<group>"; };
+		7140346523D9545500643F1C /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		7156BCC223B7A5E8001072CC /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		7156BCC423B7A60F001072CC /* SideMenuTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTableView.swift; sourceTree = "<group>"; };
 		7156BCC623B7A619001072CC /* SideMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewCell.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				7140345D23D8A33100643F1C /* NanumSquareRoundEB.ttf */,
 				7140345F23D8A33200643F1C /* NanumSquareRoundL.ttf */,
 				7140345E23D8A33100643F1C /* NanumSquareRoundR.ttf */,
+				7140346523D9545500643F1C /* Fonts.swift */,
 			);
 			path = Font;
 			sourceTree = "<group>";
@@ -422,6 +425,7 @@
 				7156BCC523B7A60F001072CC /* SideMenuTableView.swift in Sources */,
 				FA83A10723C1BFA10073D438 /* ItemDetailVC.swift in Sources */,
 				717F392B239A103F008DA87A /* SceneDelegate.swift in Sources */,
+				7140346623D9545500643F1C /* Fonts.swift in Sources */,
 				FA83A10923C39A530073D438 /* StaticTableVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
