@@ -65,7 +65,7 @@ extension SideMenuTableView: UITableViewDataSource {
         let titleLabel = UILabel(frame: CGRect(x: 0, y: 50, width: 150, height: 65))
         containerView.addSubview(titleLabel)
         titleLabel.center = containerView.center
-        titleLabel.font = UIFont.systemFont(ofSize: 12.0, weight: .heavy)
+        titleLabel.font = UIFont.nanumExtraBoldFont(ofSize: 12.0)
         titleLabel.textColor = .secondaryGrey
         titleLabel.text = "콜렉션"
         return containerView
@@ -77,8 +77,8 @@ extension SideMenuTableView: UITableViewDataSource {
         let newCollectionButton = UIButton(frame: CGRect(x: 36, y: 0, width: 150, height: 50))
         containerView.addSubview(newCollectionButton)
         newCollectionButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 11, bottom: 0, right: 0)
-        newCollectionButton.setImage(UIImage(named: "icon_ItemReason"), for: .normal)
-        newCollectionButton.titleLabel?.font = UIFont.systemFont(ofSize: 17.0)
+        newCollectionButton.setImage(UIImage(named: "icon_ItemReason")?.withRenderingMode(.alwaysOriginal).withTintColor(.inactiveBlack), for: .normal)
+        newCollectionButton.titleLabel?.font = UIFont.nanumRegularFont(ofSize: 17.0)
         newCollectionButton.setTitleColor(.inactiveBlack, for: .normal)
         newCollectionButton.setTitle("새 콜렉션 추가", for: .normal)
         return containerView

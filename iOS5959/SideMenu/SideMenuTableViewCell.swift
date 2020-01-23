@@ -32,7 +32,7 @@ class SideMenuTableViewCell: UITableViewCell {
     private let collectionNameLabel: UILabel = {
        let lb = UILabel()
         lb.translatesAutoresizingMaskIntoConstraints = false
-        lb.font = UIFont.systemFont(ofSize: 17.0)
+        lb.font = UIFont.nanumRegularFont(ofSize: 17.0)
         return lb
     }()
     

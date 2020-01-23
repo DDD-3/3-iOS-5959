@@ -31,6 +31,8 @@ class ModifyCollectionView: UIView {
         super.awakeFromNib()
         textfield.becomeFirstResponder()
         textfield.returnKeyType = .done
+        textfield.font = UIFont.nanumRegularFont(ofSize: 13.0)
+        titleLabel.font = UIFont.nanumBoldFont(ofSize: 17.0)
         baseView.clipsToBounds = true
         baseView.layer.masksToBounds = false
         baseView.layer.cornerRadius = 14.0
