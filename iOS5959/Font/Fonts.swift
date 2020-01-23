@@ -16,6 +16,26 @@ struct NanumFontName {
 }
 
 extension UIFont {
+    @objc class func nanumHeadlineBold17() -> UIFont {
+        return UIFont(name: NanumFontName.bold, size: 17.0)!
+    }
+    
+    @objc class func nanumHeadlineExtraBold12() -> UIFont {
+        return UIFont(name: NanumFontName.extraBold, size: 12.0)!
+    }
+    
+    @objc class func nanumBodyExtraBold14() -> UIFont {
+        return UIFont(name: NanumFontName.extraBold, size: 14.0)!
+    }
+    
+    @objc class func nanumBodyRegular14() -> UIFont {
+        return UIFont(name: NanumFontName.regular, size: 14.0)!
+    }
+    
+    @objc class func nanumButtonBold14() -> UIFont {
+        return UIFont(name: NanumFontName.bold, size: 14.0)!
+    }
+    
     @objc class func nanumLightFont(ofSize size: CGFloat) -> UIFont {
         return UIFont(name: NanumFontName.light, size: size)!
     }

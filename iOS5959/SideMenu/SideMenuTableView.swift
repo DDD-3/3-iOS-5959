@@ -65,7 +65,7 @@ extension SideMenuTableView: UITableViewDataSource {
         let titleLabel = UILabel(frame: CGRect(x: 0, y: 50, width: 150, height: 65))
         containerView.addSubview(titleLabel)
         titleLabel.center = containerView.center
-        titleLabel.font = UIFont.nanumExtraBoldFont(ofSize: 12.0)
+        titleLabel.font = UIFont.nanumHeadlineExtraBold12()
         titleLabel.textColor = .secondaryGrey
         titleLabel.text = "콜렉션"
         return containerView
