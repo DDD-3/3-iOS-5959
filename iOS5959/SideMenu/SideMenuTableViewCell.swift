@@ -15,6 +15,11 @@ protocol SideMenuItemDelegate: class {
 
 class SideMenuTableViewCell: UITableViewCell {
     
+    enum ItemType {
+        case whole
+        case item
+    }
+    
     weak var delegate: SideMenuItemDelegate?
     
     private let colorChipView: UIView = {
@@ -49,7 +54,7 @@ class SideMenuTableViewCell: UITableViewCell {
         }
     }
     
-    private func configure() {
+    func configure(type: ItemType) {
         self.backgroundColor = .primaryCement
         addSubview(colorChipView)
         addSubview(collectionNameLabel)
@@ -58,7 +63,6 @@ class SideMenuTableViewCell: UITableViewCell {
         colorChipView.widthAnchor.constraint(equalToConstant: 18.0).isActive = true
         colorChipView.heightAnchor.constraint(equalToConstant: 18.0).isActive = true
         colorChipView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        colorChipView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 51.0).isActive = true
         colorChipView.trailingAnchor.constraint(equalTo: self.collectionNameLabel.leadingAnchor, constant: -11.0).isActive = true
 
         collectionNameLabel.centerYAnchor.constraint(equalTo: colorChipView.centerYAnchor).isActive = true
@@ -67,6 +71,15 @@ class SideMenuTableViewCell: UITableViewCell {
         moreButton.centerYAnchor.constraint(equalTo: colorChipView.centerYAnchor).isActive = true
         moreButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -24.0).isActive = true
         moreButton.addTarget(self, action: #selector(touchedMoreButton(_:)), for: .touchUpInside)
+        
+        if type == .item {
+            colorChipView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 51.0).isActive = true
+            moreButton.isHidden = false
+        } else if type == .whole {
+            colorChipView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 18.0).isActive = true
+            moreButton.isHidden = true
+            colorChipView.backgroundColor = .black
+        }
     }
     
     @objc private func touchedMoreButton(_ sender: UIButton) {
@@ -80,12 +93,10 @@ class SideMenuTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        configure()
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        configure()
     }
     
     required init?(coder: NSCoder) {

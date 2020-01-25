@@ -30,6 +30,11 @@ extension SideMenuViewController: SideMenuItemDelegate {
     
     func selectCollection(index: Int) {
         // 콜렉션 선택
+        if index == 0 {
+            print("전체보기")
+        } else {
+            print("콜렉션 선택")
+        }
         SideMenuManager.default.leftMenuNavigationController?.dismiss(animated: true, completion: nil)
     }
     

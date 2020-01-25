@@ -44,8 +44,8 @@ extension SideMenuTableView: UITableViewDataSource {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "sideMenuCell", for: indexPath) as? SideMenuTableViewCell {
             cell.delegate = self
             cell.tag = indexPath.row
-            cell.selectionStyle = .none
-            cell.collectionName = "콜렉션 \(indexPath.row + 1)"
+            cell.configure(type: indexPath.row == 0 ? .whole : .item)
+            cell.collectionName = indexPath.row == 0 ? "전체보기" : "콜렉션 \(indexPath.row)"
             return cell
         }
         
@@ -102,7 +102,6 @@ extension SideMenuTableView: UITableViewDataSource {
 
 extension SideMenuTableView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("사이드 메뉴 선택 \(indexPath.row)")
         itemDelegate?.selectCollection(index: indexPath.row)
     }
 }
@@ -113,7 +112,6 @@ extension SideMenuTableView: SideMenuItemDelegate {
     }
     
     func modifyCollection(index: Int) {
-        print("콜렉션 설정 \(index)")
         itemDelegate?.modifyCollection(index: index)
     }
 }
