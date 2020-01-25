@@ -8,8 +8,13 @@
 
 import UIKit
 
+protocol SideMenuTableViewDelegate: class {
+    func makeNewCollection()
+}
+
 class SideMenuTableView: UITableView {
     
+    weak var newCollectDelegate: SideMenuTableViewDelegate?
     weak var itemDelegate: SideMenuItemDelegate?
     
     private func configure() {
@@ -77,11 +82,21 @@ extension SideMenuTableView: UITableViewDataSource {
         let newCollectionButton = UIButton(frame: CGRect(x: 36, y: 0, width: 150, height: 50))
         containerView.addSubview(newCollectionButton)
         newCollectionButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 11, bottom: 0, right: 0)
-        newCollectionButton.setImage(UIImage(named: "icon_ItemReason")?.withRenderingMode(.alwaysOriginal).withTintColor(.inactiveBlack), for: .normal)
+        newCollectionButton.setImage(
+            UIImage(named: "icon_ItemReason")?
+                .withRenderingMode(.alwaysOriginal)
+                .withTintColor(.inactiveBlack),
+            for: .normal)
         newCollectionButton.titleLabel?.font = UIFont.nanumRegularFont(ofSize: 17.0)
         newCollectionButton.setTitleColor(.inactiveBlack, for: .normal)
         newCollectionButton.setTitle("새 콜렉션 추가", for: .normal)
+        newCollectionButton.addTarget(self, action: #selector(touchedNewCollectionButton(_:)), for: .touchUpInside)
         return containerView
+    }
+    
+    @objc private func touchedNewCollectionButton(_ sender: UIButton) {
+        print("새 콜렉션을 추가합니다")
+        newCollectDelegate?.makeNewCollection()
     }
 }
 

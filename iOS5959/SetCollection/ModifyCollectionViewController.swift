@@ -8,7 +8,14 @@
 
 import UIKit
 
+enum EditMode {
+    case create
+    case modify
+}
+
 class ModifyCollectionViewController: UIViewController {
+    
+    var editMode: EditMode = .create
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -22,6 +29,7 @@ class ModifyCollectionViewController: UIViewController {
             return
         }
         
+        popup.editMode = editMode
         popup.delegate = self
         popup.backgroundColor = UIColor.black.withAlphaComponent(0.3)
         popup.frame = self.view.frame

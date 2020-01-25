@@ -17,6 +17,7 @@ class SideMenuViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        sideMenuTableView.newCollectDelegate = self
         sideMenuTableView.itemDelegate = self
         sideMenuTableView.reloadData()
     }
@@ -45,8 +46,11 @@ extension SideMenuViewController: SideMenuItemDelegate {
         // 수정
         let modifyAction = UIAlertAction(title: "콜렉션 수정", style: .default) { (_) in
             let modifyCollectionViewController = ModifyCollectionViewController()
+            modifyCollectionViewController.editMode = .modify
             modifyCollectionViewController.modalPresentationStyle = .fullScreen
-            self.present(modifyCollectionViewController, animated: true, completion: nil)
+            DispatchQueue.main.async {
+                self.present(modifyCollectionViewController, animated: true, completion: nil)
+            }
         }
         // 취소
         let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
@@ -66,5 +70,16 @@ extension SideMenuViewController: SideMenuItemDelegate {
         alertController.addAction(cancelAction)
         alertController.addAction(okAction)
         self.present(alertController, animated: true, completion: nil)
+    }
+}
+
+extension SideMenuViewController: SideMenuTableViewDelegate {
+    func makeNewCollection() {
+        let modifyCollectionViewController = ModifyCollectionViewController()
+        modifyCollectionViewController.editMode = .create
+        modifyCollectionViewController.modalPresentationStyle = .fullScreen
+        DispatchQueue.main.async {
+            self.present(modifyCollectionViewController, animated: true, completion: nil)
+        }
     }
 }
