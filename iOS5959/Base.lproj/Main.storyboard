@@ -29,6 +29,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="e7R-bF-gjR">
                         <barButtonItem key="leftBarButtonItem" image="menu" id="z9i-9s-9Uw"/>
+                        <barButtonItem key="rightBarButtonItem" image="list" id="bEF-b1-fwX"/>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -131,6 +132,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="list" width="24" height="24"/>
         <image name="menu" width="24" height="24"/>
     </resources>
 </document>
