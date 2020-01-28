@@ -22,6 +22,7 @@ class SideMenuTableView: UITableView {
         self.dataSource = self
         self.tableFooterView = UIView(frame: .zero)
         self.backgroundColor = .primaryCement
+        self.separatorColor = .secondaryCement
     }
     
     override init(frame: CGRect, style: UITableView.Style) {
@@ -71,12 +72,17 @@ extension SideMenuTableView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let containerView = UIView(frame: CGRect(x: 16, y: 0, width: 150, height: 65))
         containerView.backgroundColor = .primaryCement
-        let titleLabel = UILabel(frame: CGRect(x: 0, y: 50, width: 150, height: 65))
+        let titleLabel = UILabel(frame: CGRect(x: 0, y: containerView.frame.height - 6, width: 150, height: 65))
         containerView.addSubview(titleLabel)
         titleLabel.center = containerView.center
         titleLabel.font = UIFont.nanumHeadlineExtraBold12()
         titleLabel.textColor = .secondaryGrey
         titleLabel.text = "콜렉션"
+        
+        let sepFrame = CGRect(x: 0, y: containerView.frame.height - 1, width: tableView.frame.width, height: 0.5)
+        let seperatorView = UIView(frame: sepFrame)
+        seperatorView.backgroundColor = UIColor.secondaryCement
+        containerView.addSubview(seperatorView)
         return containerView
     }
     
@@ -95,6 +101,11 @@ extension SideMenuTableView: UITableViewDataSource {
         newCollectionButton.setTitleColor(.inactiveBlack, for: .normal)
         newCollectionButton.setTitle("새 콜렉션 추가", for: .normal)
         newCollectionButton.addTarget(self, action: #selector(touchedNewCollectionButton(_:)), for: .touchUpInside)
+        
+        let sepFrame = CGRect(x: 16, y: 0, width: tableView.frame.width - 16, height: 0.5)
+        let seperatorView = UIView(frame: sepFrame)
+        seperatorView.backgroundColor = UIColor.secondaryCement
+        containerView.addSubview(seperatorView)
         return containerView
     }
     
