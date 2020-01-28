@@ -46,6 +46,10 @@ extension SideMenuTableView: UITableViewDataSource {
             cell.tag = indexPath.row
             cell.configure(type: indexPath.row == 0 ? .whole : .item)
             cell.collectionName = indexPath.row == 0 ? "전체보기" : "콜렉션 \(indexPath.row)"
+            
+            let bgColorView = UIView()
+            bgColorView.backgroundColor = UIColor.secondaryCement
+            cell.selectedBackgroundView = bgColorView
             return cell
         }
         
