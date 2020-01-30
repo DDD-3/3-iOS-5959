@@ -67,7 +67,7 @@
 		7156BCD223BDB6FF001072CC /* ModifyCollectionViewXib.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ModifyCollectionViewXib.xib; sourceTree = "<group>"; };
 		7156BCD423BDB8BC001072CC /* ModifyCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ModifyCollectionViewController.swift; path = iOS5959/SetCollection/ModifyCollectionViewController.swift; sourceTree = SOURCE_ROOT; };
 		7156BCD623BDC0AA001072CC /* ColorChipCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorChipCollectionView.swift; sourceTree = "<group>"; };
-		717F3925239A103F008DA87A /* iOS5959.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOS5959.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		717F3925239A103F008DA87A /* WishBall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WishBall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		717F3928239A103F008DA87A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		717F392A239A103F008DA87A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		717F392C239A103F008DA87A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -187,7 +187,7 @@
 		717F3926239A103F008DA87A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				717F3925239A103F008DA87A /* iOS5959.app */,
+				717F3925239A103F008DA87A /* WishBall.app */,
 				717F393B239A104B008DA87A /* iOS5959Tests.xctest */,
 			);
 			name = Products;
@@ -253,7 +253,7 @@
 			);
 			name = iOS5959;
 			productName = iOS5959;
-			productReference = 717F3925239A103F008DA87A /* iOS5959.app */;
+			productReference = 717F3925239A103F008DA87A /* WishBall.app */;
 			productType = "com.apple.product-type.application";
 		};
 		717F393A239A104B008DA87A /* iOS5959Tests */ = {
@@ -596,7 +596,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ddd.iOS5959;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = WishBall;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -616,7 +616,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ddd.iOS5959;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = WishBall;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
