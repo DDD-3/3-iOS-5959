@@ -9,6 +9,9 @@
 import UIKit
 import SideMenu
 
+let selectCollectionNotification = NSNotification.Name(rawValue: "selectCollectionNotification")
+let selectWholeCollectionNotification = NSNotification.Name(rawValue: "selectWholeDataNotification")
+
 class SideMenuViewController: UIViewController {
     
     @IBOutlet fileprivate weak var sideMenuTableView: SideMenuTableView!
@@ -32,8 +35,16 @@ extension SideMenuViewController: SideMenuItemDelegate {
         // 콜렉션 선택
         if index == 0 {
             print("전체보기")
+            NotificationCenter.default.post(
+            name: selectWholeCollectionNotification,
+            object: nil,
+            userInfo: nil)
         } else {
             print("콜렉션 선택")
+            NotificationCenter.default.post(
+                name: selectCollectionNotification,
+                object: nil,
+                userInfo: ["selectCollection": index])
         }
         SideMenuManager.default.leftMenuNavigationController?.dismiss(animated: true, completion: nil)
     }

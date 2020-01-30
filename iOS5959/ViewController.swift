@@ -10,11 +10,50 @@ import UIKit
 import SideMenu
 
 class ViewController: UIViewController {
+    /// Navigation Title View
+    private var collectionTitle: UIButton!
+    /// Navigation Title
+    private var collectionTitleValue: String = "WishBall" {
+        didSet {
+            collectionTitle.setTitle(collectionTitleValue, for: .normal)
+        }
+    }
+    /// 데이터 "전체보기" 모드
+    private var showWholeCollection: Bool = false {
+        didSet {
+            collectionTitle.isEnabled = !showWholeCollection
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         setNavigationBar()
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(selectCollection(_:)),
+                                               name: selectCollectionNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(selectWholeCollection(_:)),
+                                               name: selectWholeCollectionNotification,
+                                               object: nil)
+    }
+    
+    @objc private func selectCollection(_ noti: Notification) {
+        print("콜렉션 선택 노티~")
+        showWholeCollection = false
+        // TODO: navigation title 변경
+        if let data = noti.userInfo?["selectCollection"] as? Int {
+            collectionTitleValue = "콜렉션 \(data)"
+        }
+        // TODO: 데이터 갱신
+    }
+    
+    @objc private func selectWholeCollection(_ noti: Notification) {
+        print("전체보기 선택 노티")
+        showWholeCollection = true
+        collectionTitleValue = "전체보기"
+        // TODO: 데이터 갱신
     }
 
     @objc private func touchedSideMenuButton() {
@@ -40,22 +79,22 @@ class ViewController: UIViewController {
     private func setNavigationBar() {
         navigationController?.navigationBar.barTintColor = .white
         navigationController?.navigationBar.tintColor = .black
-        navigationItem.title = "WishBall"
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "menu"), style: .plain, target: self, action: #selector(touchedSideMenuButton))
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "list"), style: .plain, target: self, action: #selector(touchedListToggleButton))
         setNavigationTitle()
     }
     
     private func setNavigationTitle() {
-        let titleButton = UIButton(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
-        titleButton.setImage(UIImage(systemName: "circle.grid.2x2"), for: .normal)
-        titleButton.setTitle("WishBall", for: .normal)
-        titleButton.setTitleColor(.black, for: .normal)
-        titleButton.titleLabel?.font = UIFont.nanumExtraBoldFont(ofSize: 17.0)
-        titleButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: 11, bottom: 0, right: 0)
-        titleButton.semanticContentAttribute = .forceRightToLeft
-        titleButton.addTarget(self, action: #selector(touchedModifyCollection), for: .touchUpInside)
-        navigationItem.titleView = titleButton
+        collectionTitle = UIButton(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
+        collectionTitle.setImage(UIImage(), for: .disabled)
+        collectionTitle.setImage(UIImage(systemName: "circle.grid.2x2"), for: .normal)
+        collectionTitle.setTitle(collectionTitleValue, for: .normal)
+        collectionTitle.setTitleColor(.black, for: .normal)
+        collectionTitle.titleLabel?.font = UIFont.nanumExtraBoldFont(ofSize: 17.0)
+        collectionTitle.imageEdgeInsets = UIEdgeInsets(top: 0, left: 11, bottom: 0, right: 0)
+        collectionTitle.semanticContentAttribute = .forceRightToLeft
+        collectionTitle.addTarget(self, action: #selector(touchedModifyCollection), for: .touchUpInside)
+        navigationItem.titleView = collectionTitle
     }
 }
 
