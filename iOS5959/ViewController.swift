@@ -27,6 +27,12 @@ class ViewController: UIViewController {
                                                object: nil)
     }
     
+    @IBAction func openWebView() {
+        let webviewstoryboard = UIStoryboard(name: "WishBallWebView", bundle: nil)
+        let webview = webviewstoryboard.instantiateViewController(withIdentifier: "WishBallWebViewController") as! WishBallWebViewController
+        self.present(webview, animated: true, completion: nil)
+    }
+    
     @objc private func selectCollection(_ noti: Notification) {
         print("콜렉션 선택 노티~")
         // TODO: navigation title 변경

@@ -134,4 +134,8 @@ extension UIColor {
     @nonobjc class var inactiveBlue: UIColor {
         return UIColor(red: 0.765, green: 0.776, blue: 0.996, alpha: 1)
     }
+    
+    @nonobjc class var wishBall2: UIColor {
+        return UIColor(red: 1, green: 0.863, blue: 0.855, alpha: 1)
+    }
 }
