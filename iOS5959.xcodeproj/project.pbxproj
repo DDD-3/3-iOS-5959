@@ -23,6 +23,7 @@
 		7156BCD323BDB6FF001072CC /* ModifyCollectionViewXib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7156BCD223BDB6FF001072CC /* ModifyCollectionViewXib.xib */; };
 		7156BCD523BDB8BC001072CC /* ModifyCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7156BCD423BDB8BC001072CC /* ModifyCollectionViewController.swift */; };
 		7156BCD723BDC0AA001072CC /* ColorChipCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7156BCD623BDC0AA001072CC /* ColorChipCollectionView.swift */; };
+		71759FBE23E5440E0034EAE0 /* CollectionTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71759FBD23E5440E0034EAE0 /* CollectionTitleView.swift */; };
 		717F3929239A103F008DA87A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717F3928239A103F008DA87A /* AppDelegate.swift */; };
 		717F392B239A103F008DA87A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717F392A239A103F008DA87A /* SceneDelegate.swift */; };
 		717F392D239A103F008DA87A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717F392C239A103F008DA87A /* ViewController.swift */; };
@@ -67,6 +68,7 @@
 		7156BCD223BDB6FF001072CC /* ModifyCollectionViewXib.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ModifyCollectionViewXib.xib; sourceTree = "<group>"; };
 		7156BCD423BDB8BC001072CC /* ModifyCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ModifyCollectionViewController.swift; path = iOS5959/SetCollection/ModifyCollectionViewController.swift; sourceTree = SOURCE_ROOT; };
 		7156BCD623BDC0AA001072CC /* ColorChipCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorChipCollectionView.swift; sourceTree = "<group>"; };
+		71759FBD23E5440E0034EAE0 /* CollectionTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionTitleView.swift; sourceTree = "<group>"; };
 		717F3925239A103F008DA87A /* WishBall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WishBall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		717F3928239A103F008DA87A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		717F392A239A103F008DA87A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 		7156BCCD23B8ECA2001072CC /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				71759FBD23E5440E0034EAE0 /* CollectionTitleView.swift */,
 				7156BCD023BDB6EE001072CC /* ModifyCollectionView.swift */,
 				7156BCD623BDC0AA001072CC /* ColorChipCollectionView.swift */,
 				7131D37923BDDC5E00E4EA64 /* ColorChipCollectionViewCell.swift */,
@@ -415,6 +418,7 @@
 				7131D37A23BDDC5E00E4EA64 /* ColorChipCollectionViewCell.swift in Sources */,
 				717F392D239A103F008DA87A /* ViewController.swift in Sources */,
 				FA83A10B23C5CEB50073D438 /* Function.swift in Sources */,
+				71759FBE23E5440E0034EAE0 /* CollectionTitleView.swift in Sources */,
 				717F3929239A103F008DA87A /* AppDelegate.swift in Sources */,
 				7156BCC323B7A5E8001072CC /* SideMenuViewController.swift in Sources */,
 				7156BCC723B7A619001072CC /* SideMenuTableViewCell.swift in Sources */,
