@@ -30,8 +30,9 @@ class ItemMainVC: UIViewController, UIGestureRecognizerDelegate {
         let roundedValue = round((sender.value/4) * 4)
             sender.value = roundedValue
         // minSize = 64/64, maxSize = 128/128
-        newItemHeightConstraint.constant = CGFloat(64 + 64 * roundedValue/2)
-        newItemWidthConstraint.constant = CGFloat(64 + 64 * roundedValue/2)
+        UIView.animate(withDuration: 0.2, animations: {() -> Void in
+            self.newItemImage.transform = CGAffineTransform(scaleX: CGFloat(1 + roundedValue/4), y: CGFloat(1 + roundedValue/4))
+        })
     }
     @IBAction func didTextEditing(_ sender: UITextField) {
         textFieldReturnBtn.isEnabled = true
