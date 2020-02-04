@@ -11,19 +11,7 @@ import SideMenu
 
 class ViewController: UIViewController {
     /// Navigation Title View
-    private var collectionTitle: UIButton!
-    /// Navigation Title
-    private var collectionTitleValue: String = "WishBall" {
-        didSet {
-            collectionTitle.setTitle(collectionTitleValue, for: .normal)
-        }
-    }
-    /// 데이터 "전체보기" 모드
-    private var showWholeCollection: Bool = false {
-        didSet {
-            collectionTitle.isEnabled = !showWholeCollection
-        }
-    }
+    private var titleView: CollectionTitleView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,20 +27,24 @@ class ViewController: UIViewController {
                                                object: nil)
     }
     
+    @IBAction func openWebView() {
+        let webviewstoryboard = UIStoryboard(name: "WishBallWebView", bundle: nil)
+        let webview = webviewstoryboard.instantiateViewController(withIdentifier: "WishBallWebViewController") as! WishBallWebViewController
+        self.present(webview, animated: true, completion: nil)
+    }
+    
     @objc private func selectCollection(_ noti: Notification) {
         print("콜렉션 선택 노티~")
-        showWholeCollection = false
         // TODO: navigation title 변경
         if let data = noti.userInfo?["selectCollection"] as? Int {
-            collectionTitleValue = "콜렉션 \(data)"
+            titleView.changeTitle(title: "콜렉션 \(data)", showWhole: false)
         }
         // TODO: 데이터 갱신
     }
     
     @objc private func selectWholeCollection(_ noti: Notification) {
         print("전체보기 선택 노티")
-        showWholeCollection = true
-        collectionTitleValue = "전체보기"
+        titleView.changeTitle(title: "전체보기", showWhole: true)
         // TODO: 데이터 갱신
     }
 
@@ -68,14 +60,6 @@ class ViewController: UIViewController {
         print("리스트 전환")
     }
     
-    @objc private func touchedModifyCollection() {
-        print("콜렉션 수정")
-        let modifyCollectionViewController = ModifyCollectionViewController()
-        modifyCollectionViewController.editMode = .modify
-        modifyCollectionViewController.modalPresentationStyle = .fullScreen
-        self.present(modifyCollectionViewController, animated: true, completion: nil)
-    }
-    
     private func setNavigationBar() {
         navigationController?.navigationBar.barTintColor = .white
         navigationController?.navigationBar.tintColor = .black
@@ -85,16 +69,18 @@ class ViewController: UIViewController {
     }
     
     private func setNavigationTitle() {
-        collectionTitle = UIButton(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
-        collectionTitle.setImage(UIImage(), for: .disabled)
-        collectionTitle.setImage(UIImage(systemName: "circle.grid.2x2"), for: .normal)
-        collectionTitle.setTitle(collectionTitleValue, for: .normal)
-        collectionTitle.setTitleColor(.black, for: .normal)
-        collectionTitle.titleLabel?.font = UIFont.nanumExtraBoldFont(ofSize: 17.0)
-        collectionTitle.imageEdgeInsets = UIEdgeInsets(top: 0, left: 11, bottom: 0, right: 0)
-        collectionTitle.semanticContentAttribute = .forceRightToLeft
-        collectionTitle.addTarget(self, action: #selector(touchedModifyCollection), for: .touchUpInside)
-        navigationItem.titleView = collectionTitle
+        titleView = CollectionTitleView(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
+        titleView.delegate = self
+        navigationItem.titleView = titleView
     }
 }
 
+extension ViewController: CollectionTitleViewDelegate {
+    func touchedModifyCollection() {
+        print("콜렉션 수정")
+        let modifyCollectionViewController = ModifyCollectionViewController()
+        modifyCollectionViewController.editMode = .modify
+        modifyCollectionViewController.modalPresentationStyle = .fullScreen
+        self.present(modifyCollectionViewController, animated: true, completion: nil)
+    }
+}
