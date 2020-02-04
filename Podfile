@@ -6,7 +6,7 @@ target 'iOS5959' do
   use_frameworks!
 
   pod 'SideMenu'
-
+  pod 'Magnetic'
   # Pods for iOS5959
 
   target 'iOS5959Tests' do

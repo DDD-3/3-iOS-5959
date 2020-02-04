@@ -8,11 +8,21 @@
 
 import UIKit
 import SideMenu
+import Magnetic
 
 class ViewController: UIViewController {
+    /// Magnetic View
+    @IBOutlet var magneticView: MagneticView!
+    var magnetic: Magnetic?
+    
     /// Navigation Title View
     private var titleView: CollectionTitleView!
 
+    override func loadView() {
+        super.loadView()
+        magnetic = magneticView.magnetic
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.

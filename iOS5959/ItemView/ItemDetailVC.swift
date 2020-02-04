@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Magnetic
 
 class ItemDetailVC: UIViewController {
     var newItemTitle: String?
@@ -16,6 +17,12 @@ class ItemDetailVC: UIViewController {
     @IBOutlet var confirmBtn: UIButton!
     @IBOutlet var confirmExtensionView: UIView!
     
+    @IBAction func confirmBtn(_ sender: Any) {
+        let mainVC = self.navigationController?.viewControllers[0] as? ViewController
+        let node = Node(text: "title", image: UIImage(named: "circle"), color: .red, radius: 30)
+        mainVC?.magnetic?.addChild(node)
+        self.navigationController?.popToRootViewController(animated: true)
+    }
     @IBAction func backBtn(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
