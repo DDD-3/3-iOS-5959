@@ -93,7 +93,7 @@ extension SideMenuTableView: UITableViewDataSource {
         containerView.addSubview(newCollectionButton)
         newCollectionButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 11, bottom: 0, right: 0)
         newCollectionButton.setImage(
-            UIImage(named: "icon_ItemReason")?
+            UIImage(systemName: "plus.circle")?
                 .withRenderingMode(.alwaysOriginal)
                 .withTintColor(.inactiveBlack),
             for: .normal)

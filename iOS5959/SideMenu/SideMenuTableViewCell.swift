@@ -44,7 +44,7 @@ class SideMenuTableViewCell: UITableViewCell {
     private let moreButton: UIButton = {
        let lb = UIButton()
         lb.translatesAutoresizingMaskIntoConstraints = false
-        lb.setImage(UIImage(systemName: "circle.grid.2x2"), for: .normal)
+        lb.setImage(UIImage(systemName: "ellipsis")?.withRenderingMode(.alwaysOriginal).withTintColor(.inactiveBlack), for: .normal)
         return lb
     }()
 
