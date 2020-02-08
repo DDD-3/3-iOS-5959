@@ -18,6 +18,11 @@ class StaticTableVC: UITableViewController, UITextFieldDelegate, UIImagePickerCo
     @IBAction func sliderValueChanged(_ sender: UISlider) {
         let roundedValue = round((sender.value/4) * 4)
         sender.value = roundedValue
+        if sender.value == 0 {
+            sender.setMinimumTrackImage(UIImage(), for: .normal)
+        }else {
+            sender.setMinimumTrackImage(UIImage(named: "SliderBackground_Fill"), for: .normal)
+        }
     }
     @IBAction func imageSelectBtn(_ sender: Any) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -43,8 +48,7 @@ class StaticTableVC: UITableViewController, UITextFieldDelegate, UIImagePickerCo
     }
     
     override func viewDidLoad() {
-        
-        slider.setMinimumTrackImage(UIImage(named: "SliderBackground_Fill"), for: .normal)
+        slider.setMinimumTrackImage(UIImage(), for: .normal)
         slider.setMaximumTrackImage(UIImage(named: "SliderBackground"), for: .normal)
         slider.setThumbImage(UIImage(named: "SliderThumb"), for: .normal)
     }

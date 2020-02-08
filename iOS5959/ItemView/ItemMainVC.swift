@@ -29,6 +29,11 @@ class ItemMainVC: UIViewController, UIGestureRecognizerDelegate {
     @IBAction func sliderValueChanged(_ sender: UISlider) {
         let roundedValue = round((sender.value/4) * 4)
             sender.value = roundedValue
+        if sender.value == 0 {
+            sender.setMinimumTrackImage(UIImage(), for: .normal)
+        }else{
+            sender.setMinimumTrackImage(UIImage(named: "SliderBackground_Fill"), for: .normal)
+        }
         // minSize = 64/64, maxSize = 128/128
         UIView.animate(withDuration: 0.2, animations: {() -> Void in
             self.newItemImage.transform = CGAffineTransform(scaleX: CGFloat(1 + roundedValue/4), y: CGFloat(1 + roundedValue/4))
@@ -88,7 +93,7 @@ class ItemMainVC: UIViewController, UIGestureRecognizerDelegate {
         keyboardExtensionViewTextField.resignFirstResponder()
     }
     override func viewDidLoad() {
-        slider.setMinimumTrackImage(UIImage(named: "SliderBackground_Fill"), for: .normal)
+        slider.setMinimumTrackImage(UIImage(), for: .normal)
         slider.setMaximumTrackImage(UIImage(named: "SliderBackground"), for: .normal)
         slider.setThumbImage(UIImage(named: "SliderThumb"), for: .normal)
         textFieldReturnBtn.isEnabled = false
