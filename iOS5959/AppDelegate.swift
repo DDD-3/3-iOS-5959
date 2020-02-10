@@ -16,6 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         self.window?.overrideUserInterfaceStyle = .light
+        
+        let firstLaunch = FirstLaunch()
+        firstLaunch.delegate = self
         return true
     }
 
@@ -36,3 +39,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+extension AppDelegate: FirstLaunchDelegate {
+    func firstLaunch() {
+        // TODO: 첫 설치
+        // TODO: 등록 API 실행
+        // TODO: Keychain에서 디바이스 UUID 가져오기
+    }
+}

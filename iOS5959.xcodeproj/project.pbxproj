@@ -10,6 +10,7 @@
 		1402A81EB4700E3AED544CFD /* Pods_iOS5959.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AC4AECA226FEE46C547BDDD /* Pods_iOS5959.framework */; };
 		7131D37823BDDC0700E4EA64 /* ColorChipCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7131D37723BDDC0700E4EA64 /* ColorChipCollectionViewCell.xib */; };
 		7131D37A23BDDC5E00E4EA64 /* ColorChipCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7131D37923BDDC5E00E4EA64 /* ColorChipCollectionViewCell.swift */; };
+		71365F7F23F1A5A200BFBBC5 /* FirstLaunch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71365F7E23F1A5A100BFBBC5 /* FirstLaunch.swift */; };
 		7140346123D8A33200643F1C /* NanumSquareRoundEB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7140345D23D8A33100643F1C /* NanumSquareRoundEB.ttf */; };
 		7140346223D8A33200643F1C /* NanumSquareRoundR.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7140345E23D8A33100643F1C /* NanumSquareRoundR.ttf */; };
 		7140346323D8A33200643F1C /* NanumSquareRoundL.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7140345F23D8A33200643F1C /* NanumSquareRoundL.ttf */; };
@@ -81,6 +82,7 @@
 		43657F715DC1F2BB0227BB43 /* Pods-iOS5959Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS5959Tests.debug.xcconfig"; path = "Target Support Files/Pods-iOS5959Tests/Pods-iOS5959Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		7131D37723BDDC0700E4EA64 /* ColorChipCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ColorChipCollectionViewCell.xib; sourceTree = "<group>"; };
 		7131D37923BDDC5E00E4EA64 /* ColorChipCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorChipCollectionViewCell.swift; sourceTree = "<group>"; };
+		71365F7E23F1A5A100BFBBC5 /* FirstLaunch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstLaunch.swift; sourceTree = "<group>"; };
 		7140345D23D8A33100643F1C /* NanumSquareRoundEB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundEB.ttf; sourceTree = "<group>"; };
 		7140345E23D8A33100643F1C /* NanumSquareRoundR.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundR.ttf; sourceTree = "<group>"; };
 		7140345F23D8A33200643F1C /* NanumSquareRoundL.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundL.ttf; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				7156BCCB23B8A4E6001072CC /* Colors.swift */,
+				71365F7E23F1A5A100BFBBC5 /* FirstLaunch.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -520,6 +523,7 @@
 				717F392B239A103F008DA87A /* SceneDelegate.swift in Sources */,
 				7156BCD123BDB6EE001072CC /* ModifyCollectionView.swift in Sources */,
 				7156BCC523B7A60F001072CC /* SideMenuTableView.swift in Sources */,
+				71365F7F23F1A5A200BFBBC5 /* FirstLaunch.swift in Sources */,
 				FA83A10723C1BFA10073D438 /* ItemDetailVC.swift in Sources */,
 				717F392B239A103F008DA87A /* SceneDelegate.swift in Sources */,
 				7140346623D9545500643F1C /* Fonts.swift in Sources */,
