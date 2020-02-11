@@ -1,20 +1,24 @@
 PODS:
   - Magnetic (3.1.2)
   - SideMenu (6.4.7)
+  - SwiftKeychainWrapper (3.4.0)
 
 DEPENDENCIES:
   - Magnetic
   - SideMenu
+  - SwiftKeychainWrapper
 
 SPEC REPOS:
   trunk:
     - Magnetic
     - SideMenu
+    - SwiftKeychainWrapper
 
 SPEC CHECKSUMS:
   Magnetic: dc24bdaa891c55d7d5edcc8b5b3d8cd64465aed1
   SideMenu: 928a015669c3afc201e1fe3a87f1b0bc8993a664
+  SwiftKeychainWrapper: 6fc49fbf7d4a6b0772917acb0e53a1639f6078d6
 
-PODFILE CHECKSUM: 74314e93ff531b813ebe007e4f2513dee37448c0
+PODFILE CHECKSUM: 06352c7d417fbee95a7bc6f68cc06d746cdef1c5
 
 COCOAPODS: 1.8.4
