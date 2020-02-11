@@ -9,6 +9,7 @@
 import UIKit
 import SideMenu
 import Magnetic
+import SwiftKeychainWrapper
 
 class ViewController: UIViewController {
     /// Magnetic View
@@ -35,6 +36,48 @@ class ViewController: UIViewController {
                                                selector: #selector(selectWholeCollection(_:)),
                                                name: selectWholeCollectionNotification,
                                                object: nil)
+        
+        requestRegistUser()
+    }
+    
+    private func requestRegistUser() {
+        let key = "userToken"
+        let firstLaunch = FirstLaunch()
+        if firstLaunch.isFirstLaunch {
+            // 설치 후 첫 실행
+            // Keychain에서 디바이스 UUID 저장하기
+            let uuidString = UUID().uuidString
+            KeychainWrapper.standard.set(uuidString, forKey: key)
+            // 등록 API 실행
+            print("등록 API 실행")
+            switch registUser(regist: Regist(token: uuidString)) {
+            case .success:
+                excuteLogin()
+            case .fail:
+                break
+            default:
+                break
+            }
+        } else {
+            let userToken = KeychainWrapper.standard.string(forKey: key)
+            UserDefaults.standard.set(userToken, forKey: key)
+            excuteLogin()
+        }
+    }
+    
+    private func excuteLogin() {
+        // Login API 실행
+        print("Login API 실행")
+        let uuidString = UserDefaults.standard.string(forKey: "userToken") ?? ""
+        print("UUID \(uuidString)")
+        switch requestLogin(regist: Regist(token: uuidString)) {
+        case .success:
+            break
+        case .fail:
+            break
+        default:
+            break
+        }
     }
     
     @IBAction func openWebView() {

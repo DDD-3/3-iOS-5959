@@ -8,16 +8,14 @@
 
 import Foundation
 
-protocol FirstLaunchDelegate: class {
-    func firstLaunch()
-}
-
 class FirstLaunch {
     // check the app first launch after install
     private let key = "wasLaunched"
     // 이미 실행했으면 true 아니면 false
     private let wasLaunchedBefore: Bool
-    var delegate: FirstLaunchDelegate?
+    var isFirstLaunch: Bool {
+        return !wasLaunchedBefore
+    }
     
     init() {
         wasLaunchedBefore = UserDefaults.standard.bool(forKey: key)
@@ -27,7 +25,6 @@ class FirstLaunch {
         } else {
             UserDefaults.standard.set(true, forKey: key)
             print("앱 처음 실행")
-            delegate?.firstLaunch()
         }
     }
 }

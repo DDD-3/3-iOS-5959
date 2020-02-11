@@ -24,6 +24,11 @@
 		7156BCD323BDB6FF001072CC /* ModifyCollectionViewXib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7156BCD223BDB6FF001072CC /* ModifyCollectionViewXib.xib */; };
 		7156BCD523BDB8BC001072CC /* ModifyCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7156BCD423BDB8BC001072CC /* ModifyCollectionViewController.swift */; };
 		7156BCD723BDC0AA001072CC /* ColorChipCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7156BCD623BDC0AA001072CC /* ColorChipCollectionView.swift */; };
+		7162137823F27BD70074BD3A /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7162137723F27BD70074BD3A /* Networking.swift */; };
+		7162137B23F27C7B0074BD3A /* Results.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7162137A23F27C7B0074BD3A /* Results.swift */; };
+		7162137E23F2804E0074BD3A /* WishBallAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7162137D23F2804E0074BD3A /* WishBallAPI.swift */; };
+		7162138023F28D930074BD3A /* Regist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7162137F23F28D930074BD3A /* Regist.swift */; };
+		7162138223F2A44E0074BD3A /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7162138123F2A44E0074BD3A /* Login.swift */; };
 		71759FBE23E5440E0034EAE0 /* CollectionTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71759FBD23E5440E0034EAE0 /* CollectionTitleView.swift */; };
 		71759FC023E54AFC0034EAE0 /* WishBallWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71759FBF23E54AFC0034EAE0 /* WishBallWebViewController.swift */; };
 		71759FC323E5579D0034EAE0 /* WishBallWebView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71759FC223E5579D0034EAE0 /* WishBallWebView.storyboard */; };
@@ -96,6 +101,11 @@
 		7156BCD223BDB6FF001072CC /* ModifyCollectionViewXib.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ModifyCollectionViewXib.xib; sourceTree = "<group>"; };
 		7156BCD423BDB8BC001072CC /* ModifyCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ModifyCollectionViewController.swift; path = iOS5959/SetCollection/ModifyCollectionViewController.swift; sourceTree = SOURCE_ROOT; };
 		7156BCD623BDC0AA001072CC /* ColorChipCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorChipCollectionView.swift; sourceTree = "<group>"; };
+		7162137723F27BD70074BD3A /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		7162137A23F27C7B0074BD3A /* Results.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Results.swift; sourceTree = "<group>"; };
+		7162137D23F2804E0074BD3A /* WishBallAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishBallAPI.swift; sourceTree = "<group>"; };
+		7162137F23F28D930074BD3A /* Regist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Regist.swift; sourceTree = "<group>"; };
+		7162138123F2A44E0074BD3A /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		71759FBD23E5440E0034EAE0 /* CollectionTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionTitleView.swift; sourceTree = "<group>"; };
 		71759FBF23E54AFC0034EAE0 /* WishBallWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishBallWebViewController.swift; sourceTree = "<group>"; };
 		71759FC223E5579D0034EAE0 /* WishBallWebView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WishBallWebView.storyboard; sourceTree = "<group>"; };
@@ -218,6 +228,25 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		7162137923F27C6C0074BD3A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7162137A23F27C7B0074BD3A /* Results.swift */,
+				7162137F23F28D930074BD3A /* Regist.swift */,
+				7162138123F2A44E0074BD3A /* Login.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7162137C23F27FB80074BD3A /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				7162137723F27BD70074BD3A /* Networking.swift */,
+				7162137D23F2804E0074BD3A /* WishBallAPI.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		71759FC123E557810034EAE0 /* WebView */ = {
 			isa = PBXGroup;
 			children = (
@@ -252,6 +281,8 @@
 		717F3927239A103F008DA87A /* iOS5959 */ = {
 			isa = PBXGroup;
 			children = (
+				7162137C23F27FB80074BD3A /* Network */,
+				7162137923F27C6C0074BD3A /* Model */,
 				71759FC123E557810034EAE0 /* WebView */,
 				7140345C23D8A30900643F1C /* Font */,
 				7156BCCD23B8ECA2001072CC /* Views */,
@@ -509,6 +540,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA86A3E523CF08B9004E4807 /* CollectionSelectVC.swift in Sources */,
+				7162137823F27BD70074BD3A /* Networking.swift in Sources */,
 				FA4E5AF223AE13950038FD6E /* ItemMainVC.swift in Sources */,
 				7156BCCC23B8A4E6001072CC /* Colors.swift in Sources */,
 				7131D37A23BDDC5E00E4EA64 /* ColorChipCollectionViewCell.swift in Sources */,
@@ -519,16 +551,20 @@
 				7156BCC323B7A5E8001072CC /* SideMenuViewController.swift in Sources */,
 				7156BCC723B7A619001072CC /* SideMenuTableViewCell.swift in Sources */,
 				7156BCD723BDC0AA001072CC /* ColorChipCollectionView.swift in Sources */,
+				7162138023F28D930074BD3A /* Regist.swift in Sources */,
 				7156BCD523BDB8BC001072CC /* ModifyCollectionViewController.swift in Sources */,
 				717F392B239A103F008DA87A /* SceneDelegate.swift in Sources */,
+				7162138223F2A44E0074BD3A /* Login.swift in Sources */,
 				7156BCD123BDB6EE001072CC /* ModifyCollectionView.swift in Sources */,
 				7156BCC523B7A60F001072CC /* SideMenuTableView.swift in Sources */,
 				71365F7F23F1A5A200BFBBC5 /* FirstLaunch.swift in Sources */,
 				FA83A10723C1BFA10073D438 /* ItemDetailVC.swift in Sources */,
 				717F392B239A103F008DA87A /* SceneDelegate.swift in Sources */,
 				7140346623D9545500643F1C /* Fonts.swift in Sources */,
+				7162137E23F2804E0074BD3A /* WishBallAPI.swift in Sources */,
 				FA83A10923C39A530073D438 /* StaticTableVC.swift in Sources */,
 				71759FC023E54AFC0034EAE0 /* WishBallWebViewController.swift in Sources */,
+				7162137B23F27C7B0074BD3A /* Results.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
