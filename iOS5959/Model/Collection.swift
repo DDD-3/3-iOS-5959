@@ -29,3 +29,8 @@ struct CollectionItem: Codable {
         case collectionType, title, color
     }
 }
+
+struct AddCollection: Codable {
+    let title: String
+    let color: String
+}

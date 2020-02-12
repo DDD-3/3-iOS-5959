@@ -43,6 +43,8 @@ class ModifyCollectionViewController: UIViewController {
 
 extension ModifyCollectionViewController: ModifyCollectionViewDelegate {
     func touchedBackgroundView() {
-        self.dismiss(animated: false, completion: nil)
+//        self.dismiss(animated: false, completion: nil)
+        // TODO: 콜렉션 추가 / 수정
+        // TODO: 콜렉션 리스트 조회
     }
 }

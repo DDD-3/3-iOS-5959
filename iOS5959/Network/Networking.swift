@@ -116,3 +116,22 @@ func requestWholeCollection(completion: @escaping(Collection) -> Void) -> Status
     
     return statusCode
 }
+
+/// 콜렉션 추가
+func addCollection(collection: AddCollection) -> StatusCode {
+    guard let url = URL(string: baseURL + WishBallAPI().collections) else {
+        return .fail
+    }
+    
+    guard let data = try? JSONEncoder().encode(collection) else {
+        return .fail
+    }
+    
+    let statusCode = networking(method: .post, url: url, data: data) { (data, response, error) in
+        if let data = data, let jsonData = try? JSONDecoder().decode(Results.self, from: data) {
+            print("Add Collection API == \(jsonData)")
+        }
+    }
+    
+    return statusCode
+}
