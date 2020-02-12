@@ -587,7 +587,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="itemImageVIew" destination="NgT-oB-8Wr" id="w1G-cC-daW"/>
+                                            <outlet property="itemImageView" destination="NgT-oB-8Wr" id="jBL-sz-MYu"/>
                                             <outlet property="itemPriceLabel" destination="XYc-0d-FCz" id="jkb-O1-vNb"/>
                                             <outlet property="itemTitleLabel" destination="FoP-AN-md0" id="qWv-QE-5Zk"/>
                                             <outlet property="selectBtn" destination="ReW-sn-89w" id="PDA-r4-03l"/>

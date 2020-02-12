@@ -69,9 +69,11 @@ class StaticTableVC: UITableViewController, UITextFieldDelegate, UIImagePickerCo
     }
     override func viewWillAppear(_ animated: Bool) {
         if let ItemDetailVC = self.parent as? ItemDetailVC {
-            print(ItemDetailVC.selectedItemURL)
-            if ItemDetailVC.selectedItemURL != nil {
-                itemURLTextField.text = ItemDetailVC.selectedItemURL
+            if ItemDetailVC.selectedItem != nil {
+                itemTitleTextField.text = ItemDetailVC.selectedItem?.selectedItemName
+                itemURLTextField.text = ItemDetailVC.selectedItem?.selectedItemName
+                itemPriceTextField.text = ItemDetailVC.selectedItem?.selectedItemPrice
+                itemImageSelectBtn.setImage(ItemDetailVC.selectedItem?.selectedItemImage, for: .normal)
             }
         }
     }

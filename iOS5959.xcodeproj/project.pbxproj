@@ -54,6 +54,7 @@
 		FAD6B69F23F3F6ED00A80471 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6B69E23F3F6ED00A80471 /* Search.swift */; };
 		FAD6B6A123F3FCF800A80471 /* SearchItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6B6A023F3FCF800A80471 /* SearchItemVC.swift */; };
 		FAD6B6A323F3FDEF00A80471 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6B6A223F3FDEF00A80471 /* SearchTableViewCell.swift */; };
+		FAD6B6A523F4339900A80471 /* SelectedItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6B6A423F4339900A80471 /* SelectedItemModel.swift */; };
 		FBA395479441A733864ECE70 /* Pods_iOS5959Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB9AF3AC2CE0CA3E77165B63 /* Pods_iOS5959Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -145,6 +146,7 @@
 		FAD6B69E23F3F6ED00A80471 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		FAD6B6A023F3FCF800A80471 /* SearchItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchItemVC.swift; sourceTree = "<group>"; tabWidth = 3; };
 		FAD6B6A223F3FDEF00A80471 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		FAD6B6A423F4339900A80471 /* SelectedItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedItemModel.swift; sourceTree = "<group>"; };
 		FB9AF3AC2CE0CA3E77165B63 /* Pods_iOS5959Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS5959Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -343,6 +345,7 @@
 				FA83A10823C39A530073D438 /* StaticTableVC.swift */,
 				FAD6B6A023F3FCF800A80471 /* SearchItemVC.swift */,
 				FAD6B6A223F3FDEF00A80471 /* SearchTableViewCell.swift */,
+				FAD6B6A423F4339900A80471 /* SelectedItemModel.swift */,
 				FA86A3E423CF08B9004E4807 /* CollectionSelectVC.swift */,
 			);
 			path = ItemView;
@@ -576,6 +579,7 @@
 				7162138923F3CF200074BD3A /* Singleton.swift in Sources */,
 				FAD6B6A123F3FCF800A80471 /* SearchItemVC.swift in Sources */,
 				717F3929239A103F008DA87A /* AppDelegate.swift in Sources */,
+				FAD6B6A523F4339900A80471 /* SelectedItemModel.swift in Sources */,
 				7156BCC323B7A5E8001072CC /* SideMenuViewController.swift in Sources */,
 				7156BCC723B7A619001072CC /* SideMenuTableViewCell.swift in Sources */,
 				FAD6B6A323F3FDEF00A80471 /* SearchTableViewCell.swift in Sources */,
