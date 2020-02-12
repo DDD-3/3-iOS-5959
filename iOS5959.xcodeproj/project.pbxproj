@@ -29,6 +29,7 @@
 		7162137E23F2804E0074BD3A /* WishBallAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7162137D23F2804E0074BD3A /* WishBallAPI.swift */; };
 		7162138023F28D930074BD3A /* Regist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7162137F23F28D930074BD3A /* Regist.swift */; };
 		7162138223F2A44E0074BD3A /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7162138123F2A44E0074BD3A /* Login.swift */; };
+		7162138523F396E60074BD3A /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7162138423F396E60074BD3A /* ViewControllerExtension.swift */; };
 		71759FBE23E5440E0034EAE0 /* CollectionTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71759FBD23E5440E0034EAE0 /* CollectionTitleView.swift */; };
 		71759FC023E54AFC0034EAE0 /* WishBallWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71759FBF23E54AFC0034EAE0 /* WishBallWebViewController.swift */; };
 		71759FC323E5579D0034EAE0 /* WishBallWebView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71759FC223E5579D0034EAE0 /* WishBallWebView.storyboard */; };
@@ -106,6 +107,7 @@
 		7162137D23F2804E0074BD3A /* WishBallAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishBallAPI.swift; sourceTree = "<group>"; };
 		7162137F23F28D930074BD3A /* Regist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Regist.swift; sourceTree = "<group>"; };
 		7162138123F2A44E0074BD3A /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		7162138423F396E60074BD3A /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
 		71759FBD23E5440E0034EAE0 /* CollectionTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionTitleView.swift; sourceTree = "<group>"; };
 		71759FBF23E54AFC0034EAE0 /* WishBallWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishBallWebViewController.swift; sourceTree = "<group>"; };
 		71759FC223E5579D0034EAE0 /* WishBallWebView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WishBallWebView.storyboard; sourceTree = "<group>"; };
@@ -247,6 +249,14 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		7162138323F396D30074BD3A /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				7162138423F396E60074BD3A /* ViewControllerExtension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		71759FC123E557810034EAE0 /* WebView */ = {
 			isa = PBXGroup;
 			children = (
@@ -281,6 +291,7 @@
 		717F3927239A103F008DA87A /* iOS5959 */ = {
 			isa = PBXGroup;
 			children = (
+				7162138323F396D30074BD3A /* Extension */,
 				7162137C23F27FB80074BD3A /* Network */,
 				7162137923F27C6C0074BD3A /* Model */,
 				71759FC123E557810034EAE0 /* WebView */,
@@ -559,6 +570,7 @@
 				7156BCC523B7A60F001072CC /* SideMenuTableView.swift in Sources */,
 				71365F7F23F1A5A200BFBBC5 /* FirstLaunch.swift in Sources */,
 				FA83A10723C1BFA10073D438 /* ItemDetailVC.swift in Sources */,
+				7162138523F396E60074BD3A /* ViewControllerExtension.swift in Sources */,
 				717F392B239A103F008DA87A /* SceneDelegate.swift in Sources */,
 				7140346623D9545500643F1C /* Fonts.swift in Sources */,
 				7162137E23F2804E0074BD3A /* WishBallAPI.swift in Sources */,
