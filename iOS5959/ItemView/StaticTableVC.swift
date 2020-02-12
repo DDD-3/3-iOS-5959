@@ -71,7 +71,7 @@ class StaticTableVC: UITableViewController, UITextFieldDelegate, UIImagePickerCo
         if let ItemDetailVC = self.parent as? ItemDetailVC {
             if ItemDetailVC.selectedItem != nil {
                 itemTitleTextField.text = ItemDetailVC.selectedItem?.selectedItemName
-                itemURLTextField.text = ItemDetailVC.selectedItem?.selectedItemName
+                itemURLTextField.text = ItemDetailVC.selectedItem?.selectedItemURL
                 itemPriceTextField.text = ItemDetailVC.selectedItem?.selectedItemPrice
                 itemImageSelectBtn.setImage(ItemDetailVC.selectedItem?.selectedItemImage, for: .normal)
             }
