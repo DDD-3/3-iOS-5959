@@ -25,15 +25,7 @@ class StaticTableVC: UITableViewController, UITextFieldDelegate, UIImagePickerCo
         }
     }
     @IBAction func imageSelectBtn(_ sender: Any) {
-        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "카메라로 촬영", style: .default, handler: {(action: UIAlertAction) in
-            self.getImage(fromSourceType: .camera)
-        }))
-        alert.addAction(UIAlertAction(title: "앨범에서 선택", style: .default, handler: {(action: UIAlertAction) in
-            self.getImage(fromSourceType: .photoLibrary)
-        }))
-        alert.addAction(UIAlertAction(title: "닫기", style: .cancel, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+        self.getImage(fromSourceType: .photoLibrary)
     }
     
     @IBAction func itemTitleTextFieldEditingChanged(_ sender: UITextField) {
