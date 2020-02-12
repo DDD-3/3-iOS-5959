@@ -29,6 +29,7 @@ class StaticTableVC: UITableViewController, UITextFieldDelegate, UIImagePickerCo
     }
     @IBAction func searchBtn(_ sender: Any) {
         guard let SearchItemVC = self.storyboard?.instantiateViewController(withIdentifier: "SearchItemVC") as? SearchItemVC else {return}
+        SearchItemVC.itemTitle = itemTitleTextField.text
         self.parent?.navigationController?.pushViewController(SearchItemVC, animated: true)
     }
     

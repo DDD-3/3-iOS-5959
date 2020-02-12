@@ -35,6 +35,7 @@ private func networking(method: HttpMethod, url: URL, data: Data, completion: @e
     urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
     urlRequest.setValue(UserDefaults.standard.string(forKey: "accessToken"), forHTTPHeaderField: "Authorization")
     urlRequest.httpBody = data
+    
     let session = URLSession(configuration: .default)
     
     let dataTask = session.dataTask(with: urlRequest) { (data, response, error) in
@@ -110,6 +111,25 @@ func requestWholeCollection(completion: @escaping(Collection) -> Void) -> Status
     let statusCode = networking(method: .get, url: url, data: Data()) { (data, response, error) in
         if let data = data, let jsonData = try? JSONDecoder().decode(Collection.self, from: data) {
             print("Collection API == \(jsonData)")
+            completion(jsonData)
+        }
+    }
+    
+    return statusCode
+}
+
+/// 네이버 쇼핑 검색 리스트 요청
+func requestSearchList(itemTitle: String, completion: @escaping(Search) -> Void) -> StatusCode {
+    guard var urlComponents = URLComponents(string: baseURL + WishBallAPI().search) else {
+        return .fail
+    }
+    urlComponents.queryItems = [URLQueryItem(name: "itemName", value: itemTitle)]
+    guard let url = urlComponents.url else {
+        return .fail
+    }
+    
+    let statusCode = networking(method: .get, url: url, data: Data()) { (data, response, error) in
+        if let data = data, let jsonData = try? JSONDecoder().decode(Search.self, from: data) {
             completion(jsonData)
         }
     }

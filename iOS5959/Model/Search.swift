@@ -11,12 +11,16 @@ import Foundation
 struct Search: Codable {
     let status: Int
     let message: String
-    let data: [searchResults]?
+    let data: searchResults
 }
 
 struct searchResults: Codable {
+    let searchResults: [searchResult]
+}
+
+struct searchResult: Codable {
     let name: String
-    let price: Int
+    let price: String
     let imageUrl: String
     let detailUrl: String
 }
