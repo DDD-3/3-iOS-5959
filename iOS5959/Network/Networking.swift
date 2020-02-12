@@ -33,10 +33,10 @@ private func networking(method: HttpMethod, url: URL, data: Data, completion: @e
     var urlRequest = URLRequest(url: url)
     urlRequest.httpMethod = method.value
     urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
-    
+    urlRequest.httpBody = data
     let session = URLSession(configuration: .default)
     
-    let dataTask = session.uploadTask(with: urlRequest, from: data) { (data, response, error) in
+    let dataTask = session.dataTask(with: urlRequest) { (data, response, error) in
         if let httpResponse = response as? HTTPURLResponse {
             statusCode = httpResponse.statusCode
         } else {
@@ -79,7 +79,7 @@ func registUser(regist: Regist) -> StatusCode {
     return statusCode
 }
 
-func requestLogin(regist: Regist) -> StatusCode {
+func requestLogin(regist: Regist, completion: @escaping(Login) -> Void) -> StatusCode {
     guard let url = URL(string: baseURL + WishBallAPI().login) else {
         return .fail
     }
@@ -89,7 +89,10 @@ func requestLogin(regist: Regist) -> StatusCode {
     }
     
     let statusCode = networking(method: .post, url: url, data: data) { (data, response, error) in
-        print("data \(response)")
+        if let data = data, let jsonData = try? JSONDecoder().decode(Login.self, from: data) {
+            print("Login API == \(jsonData)")
+            completion(jsonData)
+        }
     }
     
     return statusCode

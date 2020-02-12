@@ -48,15 +48,17 @@ class ViewController: UIViewController {
             // Keychain에서 디바이스 UUID 저장하기
             let uuidString = UUID().uuidString
             KeychainWrapper.standard.set(uuidString, forKey: key)
+            UserDefaults.standard.set(uuidString, forKey: key)
             // 등록 API 실행
             print("등록 API 실행")
+            
             switch registUser(regist: Regist(token: uuidString)) {
             case .success:
                 excuteLogin()
             case .fail:
-                break
-            default:
-                break
+                showAlertController(title: "에러 발생", message: "에러 메세지가 위치하는 곳", completionHandler: nil)
+            case .server:
+                showAlertController()
             }
         } else {
             let userToken = KeychainWrapper.standard.string(forKey: key)
@@ -70,13 +72,22 @@ class ViewController: UIViewController {
         print("Login API 실행")
         let uuidString = UserDefaults.standard.string(forKey: "userToken") ?? ""
         print("UUID \(uuidString)")
-        switch requestLogin(regist: Regist(token: uuidString)) {
+        var login: Login!
+        let statusCode = requestLogin(regist: Regist(token: uuidString)) { (result) in
+            login = result
+        }
+        switch statusCode {
         case .success:
-            break
+            if KeychainWrapper.standard.string(forKey: "accessToken") == nil {
+                KeychainWrapper.standard.set(login.data.accessToken, forKey: "accessToken")
+                KeychainWrapper.standard.set(login.data.refreshToken, forKey: "refreshToken")
+            }
+            UserDefaults.standard.set(login.data.accessToken, forKey: "accessToken")
+            // TODO: 콜렉션 조회
         case .fail:
-            break
-        default:
-            break
+            showAlertController(title: "에러 발생", message: "에러 메세지가 위치하는 곳", completionHandler: nil)
+        case .server:
+            showAlertController()
         }
     }
     
