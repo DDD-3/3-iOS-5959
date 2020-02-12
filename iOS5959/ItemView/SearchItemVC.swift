@@ -19,6 +19,7 @@ class SearchItemVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         guard let cell = tableView.cellForRow(at: IndexPath(row: sender.tag, section: 0)) as? SearchTableViewCell else {return}
         guard let ItemDetailVC = self.navigationController?.viewControllers[2] as? ItemDetailVC else {return}
         ItemDetailVC.selectedItem = SelectedItemModel(name: cell.itemTitleLabel.text ?? "", detailUrl: cell.detailURL ?? "", image: cell.itemImageView.image ?? UIImage(), price: cell.itemPriceLabel.text ?? "")
+        self.navigationController?.popViewController(animated: true)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
