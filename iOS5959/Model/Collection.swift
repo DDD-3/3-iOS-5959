@@ -8,6 +8,11 @@
 
 import Foundation
 
+enum CollectionType: String, Codable {
+    case defaultType = "DEFAULT"
+    case nonDefaultType = "NON_DEFAULT"
+}
+
 struct Collection: Codable {
     let status: Int
     let message: String
@@ -16,7 +21,8 @@ struct Collection: Codable {
 
 struct CollectionItem: Codable {
     let collectionID: Int
-    let collectionType, title, color: String
+    let collectionType: CollectionType
+    let title, color: String
 
     enum CodingKeys: String, CodingKey {
         case collectionID = "collectionId"

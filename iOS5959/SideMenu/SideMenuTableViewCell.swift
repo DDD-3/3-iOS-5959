@@ -48,9 +48,11 @@ class SideMenuTableViewCell: UITableViewCell {
         return lb
     }()
 
-    var collectionName: String = "" {
+    var collection: CollectionItem! {
         didSet {
-            collectionNameLabel.text = collectionName
+            collectionNameLabel.text = collection.title
+            colorChipView.backgroundColor = UIColor(hexString: collection.color)
+            self.tag = collection.collectionID
         }
     }
     
