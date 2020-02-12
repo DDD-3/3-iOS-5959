@@ -33,6 +33,7 @@ private func networking(method: HttpMethod, url: URL, data: Data, completion: @e
     var urlRequest = URLRequest(url: url)
     urlRequest.httpMethod = method.value
     urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    urlRequest.setValue(UserDefaults.standard.string(forKey: "accessToken"), forHTTPHeaderField: "Authorization")
     urlRequest.httpBody = data
     let session = URLSession(configuration: .default)
     
@@ -63,6 +64,7 @@ private func networking(method: HttpMethod, url: URL, data: Data, completion: @e
 
 private let baseURL = WishBallAPI().serverAddress
 
+/// 유저 등록
 func registUser(regist: Regist) -> StatusCode {
     guard let url = URL(string: baseURL + WishBallAPI().regist) else {
         return .fail
@@ -79,6 +81,7 @@ func registUser(regist: Regist) -> StatusCode {
     return statusCode
 }
 
+/// 로그인 요청
 func requestLogin(regist: Regist, completion: @escaping(Login) -> Void) -> StatusCode {
     guard let url = URL(string: baseURL + WishBallAPI().login) else {
         return .fail
@@ -91,6 +94,22 @@ func requestLogin(regist: Regist, completion: @escaping(Login) -> Void) -> Statu
     let statusCode = networking(method: .post, url: url, data: data) { (data, response, error) in
         if let data = data, let jsonData = try? JSONDecoder().decode(Login.self, from: data) {
             print("Login API == \(jsonData)")
+            completion(jsonData)
+        }
+    }
+    
+    return statusCode
+}
+
+/// 콜렉션 리스트 요청
+func requestWholeCollection(completion: @escaping(Collection) -> Void) -> StatusCode {
+    guard let url = URL(string: baseURL + WishBallAPI().collections) else {
+        return .fail
+    }
+    
+    let statusCode = networking(method: .get, url: url, data: Data()) { (data, response, error) in
+        if let data = data, let jsonData = try? JSONDecoder().decode(Collection.self, from: data) {
+            print("Collection API == \(jsonData)")
             completion(jsonData)
         }
     }

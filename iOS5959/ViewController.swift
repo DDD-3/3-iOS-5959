@@ -83,11 +83,18 @@ class ViewController: UIViewController {
                 KeychainWrapper.standard.set(login.data.refreshToken, forKey: "refreshToken")
             }
             UserDefaults.standard.set(login.data.accessToken, forKey: "accessToken")
-            // TODO: 콜렉션 조회
+            // 콜렉션 조회
+            excuteCollectionList()
         case .fail:
             showAlertController(title: "에러 발생", message: "에러 메세지가 위치하는 곳", completionHandler: nil)
         case .server:
             showAlertController()
+        }
+    }
+    
+    private func excuteCollectionList() {
+        let _ = requestWholeCollection { (collection) in
+            Singleton.shared.collectionList = collection.data
         }
     }
     

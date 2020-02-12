@@ -30,6 +30,8 @@
 		7162138023F28D930074BD3A /* Regist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7162137F23F28D930074BD3A /* Regist.swift */; };
 		7162138223F2A44E0074BD3A /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7162138123F2A44E0074BD3A /* Login.swift */; };
 		7162138523F396E60074BD3A /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7162138423F396E60074BD3A /* ViewControllerExtension.swift */; };
+		7162138723F3C8490074BD3A /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7162138623F3C8490074BD3A /* Collection.swift */; };
+		7162138923F3CF200074BD3A /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7162138823F3CF200074BD3A /* Singleton.swift */; };
 		71759FBE23E5440E0034EAE0 /* CollectionTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71759FBD23E5440E0034EAE0 /* CollectionTitleView.swift */; };
 		71759FC023E54AFC0034EAE0 /* WishBallWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71759FBF23E54AFC0034EAE0 /* WishBallWebViewController.swift */; };
 		71759FC323E5579D0034EAE0 /* WishBallWebView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71759FC223E5579D0034EAE0 /* WishBallWebView.storyboard */; };
@@ -108,6 +110,8 @@
 		7162137F23F28D930074BD3A /* Regist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Regist.swift; sourceTree = "<group>"; };
 		7162138123F2A44E0074BD3A /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		7162138423F396E60074BD3A /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
+		7162138623F3C8490074BD3A /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
+		7162138823F3CF200074BD3A /* Singleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
 		71759FBD23E5440E0034EAE0 /* CollectionTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionTitleView.swift; sourceTree = "<group>"; };
 		71759FBF23E54AFC0034EAE0 /* WishBallWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishBallWebViewController.swift; sourceTree = "<group>"; };
 		71759FC223E5579D0034EAE0 /* WishBallWebView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WishBallWebView.storyboard; sourceTree = "<group>"; };
@@ -236,6 +240,8 @@
 				7162137A23F27C7B0074BD3A /* Results.swift */,
 				7162137F23F28D930074BD3A /* Regist.swift */,
 				7162138123F2A44E0074BD3A /* Login.swift */,
+				7162138623F3C8490074BD3A /* Collection.swift */,
+				7162138823F3CF200074BD3A /* Singleton.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -558,6 +564,7 @@
 				717F392D239A103F008DA87A /* ViewController.swift in Sources */,
 				FA83A10B23C5CEB50073D438 /* Function.swift in Sources */,
 				71759FBE23E5440E0034EAE0 /* CollectionTitleView.swift in Sources */,
+				7162138923F3CF200074BD3A /* Singleton.swift in Sources */,
 				717F3929239A103F008DA87A /* AppDelegate.swift in Sources */,
 				7156BCC323B7A5E8001072CC /* SideMenuViewController.swift in Sources */,
 				7156BCC723B7A619001072CC /* SideMenuTableViewCell.swift in Sources */,
@@ -569,6 +576,7 @@
 				7156BCD123BDB6EE001072CC /* ModifyCollectionView.swift in Sources */,
 				7156BCC523B7A60F001072CC /* SideMenuTableView.swift in Sources */,
 				71365F7F23F1A5A200BFBBC5 /* FirstLaunch.swift in Sources */,
+				7162138723F3C8490074BD3A /* Collection.swift in Sources */,
 				FA83A10723C1BFA10073D438 /* ItemDetailVC.swift in Sources */,
 				7162138523F396E60074BD3A /* ViewControllerExtension.swift in Sources */,
 				717F392B239A103F008DA87A /* SceneDelegate.swift in Sources */,

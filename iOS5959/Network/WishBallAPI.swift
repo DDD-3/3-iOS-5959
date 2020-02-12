@@ -12,5 +12,6 @@ struct WishBallAPI {
     let serverAddress = "http://52.79.90.40:8080/"
     let regist = "api/users"
     let login = "api/users/login"
+    let collections = "api/collections"
 }
 
