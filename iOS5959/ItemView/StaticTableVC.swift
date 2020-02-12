@@ -10,8 +10,11 @@ import Foundation
 import UIKit
 
 class StaticTableVC: UITableViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    
     @IBOutlet var itemTitleTextField: UITextField!
     @IBOutlet var itemPriceTextField: UITextField!
+    @IBOutlet var itemURLTextField: UITextField!
     @IBOutlet var slider: UISlider!
     @IBOutlet var itemImageSelectBtn: UIButton!
     
@@ -61,6 +64,14 @@ class StaticTableVC: UITableViewController, UITextFieldDelegate, UIImagePickerCo
             }
             if ItemDetailVC.newItemPrice != nil{
                 itemPriceTextField.text = ItemDetailVC.newItemPrice
+            }
+        }
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        if let ItemDetailVC = self.parent as? ItemDetailVC {
+            print(ItemDetailVC.selectedItemURL)
+            if ItemDetailVC.selectedItemURL != nil {
+                itemURLTextField.text = ItemDetailVC.selectedItemURL
             }
         }
     }

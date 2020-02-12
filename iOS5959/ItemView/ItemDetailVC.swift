@@ -13,6 +13,7 @@ import Magnetic
 class ItemDetailVC: UIViewController {
     var newItemTitle: String?
     var newItemPrice: String?
+    var selectedItemURL: String?
     
     @IBOutlet var confirmBtn: UIButton!
     @IBOutlet var confirmExtensionView: UIView!

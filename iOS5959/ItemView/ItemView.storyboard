@@ -507,6 +507,7 @@
                         <outlet property="itemImageSelectBtn" destination="PT0-2t-Zbw" id="GOw-ER-WGH"/>
                         <outlet property="itemPriceTextField" destination="AZq-CA-ugq" id="edr-Xk-N63"/>
                         <outlet property="itemTitleTextField" destination="TvR-t2-fA7" id="9gA-P8-hbl"/>
+                        <outlet property="itemURLTextField" destination="77V-Rj-gNd" id="vKK-UY-ZEh"/>
                         <outlet property="slider" destination="I8n-SY-rYd" id="vap-6u-LUE"/>
                     </connections>
                 </tableViewController>
@@ -569,6 +570,9 @@
                                                         <constraint firstAttribute="height" constant="32" id="TO9-1M-XhA"/>
                                                     </constraints>
                                                     <state key="normal" title="확인"/>
+                                                    <connections>
+                                                        <action selector="selectBtn:" destination="YQ6-92-A6U" eventType="touchUpInside" id="mzM-qd-hs5"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -586,6 +590,7 @@
                                             <outlet property="itemImageVIew" destination="NgT-oB-8Wr" id="w1G-cC-daW"/>
                                             <outlet property="itemPriceLabel" destination="XYc-0d-FCz" id="jkb-O1-vNb"/>
                                             <outlet property="itemTitleLabel" destination="FoP-AN-md0" id="qWv-QE-5Zk"/>
+                                            <outlet property="selectBtn" destination="ReW-sn-89w" id="PDA-r4-03l"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

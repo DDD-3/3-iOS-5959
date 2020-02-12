@@ -15,6 +15,12 @@ class SearchItemVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     @IBOutlet var tableView: UITableView!
     
+    @IBAction func selectBtn(_ sender: UIButton) {
+        guard let cell = tableView.cellForRow(at: IndexPath(row: sender.tag, section: 0)) as? SearchTableViewCell else {return}
+        guard let ItemDetailVC = self.navigationController?.viewControllers[2] as? ItemDetailVC else {return}
+        ItemDetailVC.selectedItemURL = cell.detailURL
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return searchList?.data.searchResults.count ?? 0
     }
@@ -24,6 +30,8 @@ class SearchItemVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         if searchList?.data != nil {
             cell.itemTitleLabel.text = searchList!.data.searchResults[indexPath.row].name
             cell.itemPriceLabel.text = "\(searchList!.data.searchResults[indexPath.row].price)"
+            cell.detailURL = searchList?.data.searchResults[indexPath.row].detailUrl
+            cell.selectBtn.tag = indexPath.row
             
             let imageURL = URL(string: searchList!.data.searchResults[indexPath.row].imageUrl)
             if let data = try? Data(contentsOf: imageURL!) {
@@ -39,6 +47,7 @@ class SearchItemVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         tableView.dataSource = self
         searchRequest(itemTitle: itemTitle ?? "")
     }
+    
     
     private func searchRequest(itemTitle: String){
         // Search API 실행

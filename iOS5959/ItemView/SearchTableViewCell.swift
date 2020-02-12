@@ -10,7 +10,15 @@ import Foundation
 import UIKit
 
 class SearchTableViewCell: UITableViewCell {
+    var detailURL: String?
+    
+    @IBOutlet var selectBtn: UIButton!
     @IBOutlet var itemImageVIew: UIImageView!
     @IBOutlet var itemTitleLabel: UILabel!
     @IBOutlet var itemPriceLabel: UILabel!
+    
+    @IBAction func selectBtn(_ sender: Any) {
+        
+    }
+    
 }
