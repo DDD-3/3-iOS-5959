@@ -27,6 +27,10 @@ class StaticTableVC: UITableViewController, UITextFieldDelegate, UIImagePickerCo
     @IBAction func imageSelectBtn(_ sender: Any) {
         self.getImage(fromSourceType: .photoLibrary)
     }
+    @IBAction func searchBtn(_ sender: Any) {
+        guard let SearchItemVC = self.storyboard?.instantiateViewController(withIdentifier: "SearchItemVC") as? SearchItemVC else {return}
+        self.parent?.navigationController?.pushViewController(SearchItemVC, animated: true)
+    }
     
     @IBAction func itemTitleTextFieldEditingChanged(_ sender: UITextField) {
         guard let ItemDetailVC = self.parent as? ItemDetailVC else{return}
