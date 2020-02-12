@@ -9,6 +9,7 @@
 import UIKit
 import SideMenu
 import Magnetic
+import SwiftKeychainWrapper
 
 class ViewController: UIViewController {
     /// Magnetic View
@@ -35,6 +36,66 @@ class ViewController: UIViewController {
                                                selector: #selector(selectWholeCollection(_:)),
                                                name: selectWholeCollectionNotification,
                                                object: nil)
+        
+        requestRegistUser()
+    }
+    
+    private func requestRegistUser() {
+        let key = "userToken"
+        let firstLaunch = FirstLaunch()
+        if firstLaunch.isFirstLaunch {
+            // 설치 후 첫 실행
+            // Keychain에서 디바이스 UUID 저장하기
+            let uuidString = UUID().uuidString
+            KeychainWrapper.standard.set(uuidString, forKey: key)
+            UserDefaults.standard.set(uuidString, forKey: key)
+            // 등록 API 실행
+            print("등록 API 실행")
+            
+            switch registUser(regist: Regist(token: uuidString)) {
+            case .success:
+                excuteLogin()
+            case .fail:
+                showAlertController(title: "에러 발생", message: "에러 메세지가 위치하는 곳", completionHandler: nil)
+            case .server:
+                showAlertController()
+            }
+        } else {
+            let userToken = KeychainWrapper.standard.string(forKey: key)
+            UserDefaults.standard.set(userToken, forKey: key)
+            excuteLogin()
+        }
+    }
+    
+    private func excuteLogin() {
+        // Login API 실행
+        print("Login API 실행")
+        let uuidString = UserDefaults.standard.string(forKey: "userToken") ?? ""
+        print("UUID \(uuidString)")
+        var login: Login!
+        let statusCode = requestLogin(regist: Regist(token: uuidString)) { (result) in
+            login = result
+        }
+        switch statusCode {
+        case .success:
+            if KeychainWrapper.standard.string(forKey: "accessToken") == nil {
+                KeychainWrapper.standard.set(login.data.accessToken, forKey: "accessToken")
+                KeychainWrapper.standard.set(login.data.refreshToken, forKey: "refreshToken")
+            }
+            UserDefaults.standard.set(login.data.accessToken, forKey: "accessToken")
+            // 콜렉션 조회
+            excuteCollectionList()
+        case .fail:
+            showAlertController(title: "에러 발생", message: "에러 메세지가 위치하는 곳", completionHandler: nil)
+        case .server:
+            showAlertController()
+        }
+    }
+    
+    private func excuteCollectionList() {
+        let _ = requestWholeCollection { (collection) in
+            Singleton.shared.collectionList = collection.data
+        }
     }
     
     @IBAction func openWebView() {

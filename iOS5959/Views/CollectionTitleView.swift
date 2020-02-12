@@ -18,7 +18,7 @@ class CollectionTitleView: UIView {
     private var title: UIButton = {
        let lb = UIButton(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
         lb.setImage(UIImage(), for: .disabled)
-        lb.setImage(UIImage(systemName: "circle.grid.2x2"), for: .normal)
+        lb.setImage(UIImage(systemName: "ellipsis"), for: .normal)
         lb.setTitleColor(.black, for: .normal)
         lb.titleLabel?.font = UIFont.nanumExtraBoldFont(ofSize: 17.0)
         lb.imageEdgeInsets = UIEdgeInsets(top: 0, left: 11, bottom: 0, right: 0)

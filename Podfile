@@ -7,6 +7,7 @@ target 'iOS5959' do
 
   pod 'SideMenu'
   pod 'Magnetic'
+  pod 'SwiftKeychainWrapper'
   # Pods for iOS5959
 
   target 'iOS5959Tests' do

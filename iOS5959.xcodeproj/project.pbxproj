@@ -10,6 +10,7 @@
 		1402A81EB4700E3AED544CFD /* Pods_iOS5959.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AC4AECA226FEE46C547BDDD /* Pods_iOS5959.framework */; };
 		7131D37823BDDC0700E4EA64 /* ColorChipCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7131D37723BDDC0700E4EA64 /* ColorChipCollectionViewCell.xib */; };
 		7131D37A23BDDC5E00E4EA64 /* ColorChipCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7131D37923BDDC5E00E4EA64 /* ColorChipCollectionViewCell.swift */; };
+		71365F7F23F1A5A200BFBBC5 /* FirstLaunch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71365F7E23F1A5A100BFBBC5 /* FirstLaunch.swift */; };
 		7140346123D8A33200643F1C /* NanumSquareRoundEB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7140345D23D8A33100643F1C /* NanumSquareRoundEB.ttf */; };
 		7140346223D8A33200643F1C /* NanumSquareRoundR.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7140345E23D8A33100643F1C /* NanumSquareRoundR.ttf */; };
 		7140346323D8A33200643F1C /* NanumSquareRoundL.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7140345F23D8A33200643F1C /* NanumSquareRoundL.ttf */; };
@@ -23,6 +24,14 @@
 		7156BCD323BDB6FF001072CC /* ModifyCollectionViewXib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7156BCD223BDB6FF001072CC /* ModifyCollectionViewXib.xib */; };
 		7156BCD523BDB8BC001072CC /* ModifyCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7156BCD423BDB8BC001072CC /* ModifyCollectionViewController.swift */; };
 		7156BCD723BDC0AA001072CC /* ColorChipCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7156BCD623BDC0AA001072CC /* ColorChipCollectionView.swift */; };
+		7162137823F27BD70074BD3A /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7162137723F27BD70074BD3A /* Networking.swift */; };
+		7162137B23F27C7B0074BD3A /* Results.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7162137A23F27C7B0074BD3A /* Results.swift */; };
+		7162137E23F2804E0074BD3A /* WishBallAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7162137D23F2804E0074BD3A /* WishBallAPI.swift */; };
+		7162138023F28D930074BD3A /* Regist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7162137F23F28D930074BD3A /* Regist.swift */; };
+		7162138223F2A44E0074BD3A /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7162138123F2A44E0074BD3A /* Login.swift */; };
+		7162138523F396E60074BD3A /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7162138423F396E60074BD3A /* ViewControllerExtension.swift */; };
+		7162138723F3C8490074BD3A /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7162138623F3C8490074BD3A /* Collection.swift */; };
+		7162138923F3CF200074BD3A /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7162138823F3CF200074BD3A /* Singleton.swift */; };
 		71759FBE23E5440E0034EAE0 /* CollectionTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71759FBD23E5440E0034EAE0 /* CollectionTitleView.swift */; };
 		71759FC023E54AFC0034EAE0 /* WishBallWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71759FBF23E54AFC0034EAE0 /* WishBallWebViewController.swift */; };
 		71759FC323E5579D0034EAE0 /* WishBallWebView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71759FC223E5579D0034EAE0 /* WishBallWebView.storyboard */; };
@@ -81,6 +90,7 @@
 		43657F715DC1F2BB0227BB43 /* Pods-iOS5959Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS5959Tests.debug.xcconfig"; path = "Target Support Files/Pods-iOS5959Tests/Pods-iOS5959Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		7131D37723BDDC0700E4EA64 /* ColorChipCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ColorChipCollectionViewCell.xib; sourceTree = "<group>"; };
 		7131D37923BDDC5E00E4EA64 /* ColorChipCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorChipCollectionViewCell.swift; sourceTree = "<group>"; };
+		71365F7E23F1A5A100BFBBC5 /* FirstLaunch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstLaunch.swift; sourceTree = "<group>"; };
 		7140345D23D8A33100643F1C /* NanumSquareRoundEB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundEB.ttf; sourceTree = "<group>"; };
 		7140345E23D8A33100643F1C /* NanumSquareRoundR.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundR.ttf; sourceTree = "<group>"; };
 		7140345F23D8A33200643F1C /* NanumSquareRoundL.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundL.ttf; sourceTree = "<group>"; };
@@ -94,6 +104,14 @@
 		7156BCD223BDB6FF001072CC /* ModifyCollectionViewXib.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ModifyCollectionViewXib.xib; sourceTree = "<group>"; };
 		7156BCD423BDB8BC001072CC /* ModifyCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ModifyCollectionViewController.swift; path = iOS5959/SetCollection/ModifyCollectionViewController.swift; sourceTree = SOURCE_ROOT; };
 		7156BCD623BDC0AA001072CC /* ColorChipCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorChipCollectionView.swift; sourceTree = "<group>"; };
+		7162137723F27BD70074BD3A /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		7162137A23F27C7B0074BD3A /* Results.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Results.swift; sourceTree = "<group>"; };
+		7162137D23F2804E0074BD3A /* WishBallAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishBallAPI.swift; sourceTree = "<group>"; };
+		7162137F23F28D930074BD3A /* Regist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Regist.swift; sourceTree = "<group>"; };
+		7162138123F2A44E0074BD3A /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		7162138423F396E60074BD3A /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
+		7162138623F3C8490074BD3A /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
+		7162138823F3CF200074BD3A /* Singleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
 		71759FBD23E5440E0034EAE0 /* CollectionTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionTitleView.swift; sourceTree = "<group>"; };
 		71759FBF23E54AFC0034EAE0 /* WishBallWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishBallWebViewController.swift; sourceTree = "<group>"; };
 		71759FC223E5579D0034EAE0 /* WishBallWebView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WishBallWebView.storyboard; sourceTree = "<group>"; };
@@ -197,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				7156BCCB23B8A4E6001072CC /* Colors.swift */,
+				71365F7E23F1A5A100BFBBC5 /* FirstLaunch.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -213,6 +232,35 @@
 				7156BCD223BDB6FF001072CC /* ModifyCollectionViewXib.xib */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		7162137923F27C6C0074BD3A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7162137A23F27C7B0074BD3A /* Results.swift */,
+				7162137F23F28D930074BD3A /* Regist.swift */,
+				7162138123F2A44E0074BD3A /* Login.swift */,
+				7162138623F3C8490074BD3A /* Collection.swift */,
+				7162138823F3CF200074BD3A /* Singleton.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7162137C23F27FB80074BD3A /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				7162137723F27BD70074BD3A /* Networking.swift */,
+				7162137D23F2804E0074BD3A /* WishBallAPI.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		7162138323F396D30074BD3A /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				7162138423F396E60074BD3A /* ViewControllerExtension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		71759FC123E557810034EAE0 /* WebView */ = {
@@ -249,6 +297,9 @@
 		717F3927239A103F008DA87A /* iOS5959 */ = {
 			isa = PBXGroup;
 			children = (
+				7162138323F396D30074BD3A /* Extension */,
+				7162137C23F27FB80074BD3A /* Network */,
+				7162137923F27C6C0074BD3A /* Model */,
 				71759FC123E557810034EAE0 /* WebView */,
 				7140345C23D8A30900643F1C /* Font */,
 				7156BCCD23B8ECA2001072CC /* Views */,
@@ -506,25 +557,34 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA86A3E523CF08B9004E4807 /* CollectionSelectVC.swift in Sources */,
+				7162137823F27BD70074BD3A /* Networking.swift in Sources */,
 				FA4E5AF223AE13950038FD6E /* ItemMainVC.swift in Sources */,
 				7156BCCC23B8A4E6001072CC /* Colors.swift in Sources */,
 				7131D37A23BDDC5E00E4EA64 /* ColorChipCollectionViewCell.swift in Sources */,
 				717F392D239A103F008DA87A /* ViewController.swift in Sources */,
 				FA83A10B23C5CEB50073D438 /* Function.swift in Sources */,
 				71759FBE23E5440E0034EAE0 /* CollectionTitleView.swift in Sources */,
+				7162138923F3CF200074BD3A /* Singleton.swift in Sources */,
 				717F3929239A103F008DA87A /* AppDelegate.swift in Sources */,
 				7156BCC323B7A5E8001072CC /* SideMenuViewController.swift in Sources */,
 				7156BCC723B7A619001072CC /* SideMenuTableViewCell.swift in Sources */,
 				7156BCD723BDC0AA001072CC /* ColorChipCollectionView.swift in Sources */,
+				7162138023F28D930074BD3A /* Regist.swift in Sources */,
 				7156BCD523BDB8BC001072CC /* ModifyCollectionViewController.swift in Sources */,
 				717F392B239A103F008DA87A /* SceneDelegate.swift in Sources */,
+				7162138223F2A44E0074BD3A /* Login.swift in Sources */,
 				7156BCD123BDB6EE001072CC /* ModifyCollectionView.swift in Sources */,
 				7156BCC523B7A60F001072CC /* SideMenuTableView.swift in Sources */,
+				71365F7F23F1A5A200BFBBC5 /* FirstLaunch.swift in Sources */,
+				7162138723F3C8490074BD3A /* Collection.swift in Sources */,
 				FA83A10723C1BFA10073D438 /* ItemDetailVC.swift in Sources */,
+				7162138523F396E60074BD3A /* ViewControllerExtension.swift in Sources */,
 				717F392B239A103F008DA87A /* SceneDelegate.swift in Sources */,
 				7140346623D9545500643F1C /* Fonts.swift in Sources */,
+				7162137E23F2804E0074BD3A /* WishBallAPI.swift in Sources */,
 				FA83A10923C39A530073D438 /* StaticTableVC.swift in Sources */,
 				71759FC023E54AFC0034EAE0 /* WishBallWebViewController.swift in Sources */,
+				7162137B23F27C7B0074BD3A /* Results.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

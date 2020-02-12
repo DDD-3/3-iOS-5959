@@ -48,9 +48,14 @@ class StaticTableVC: UITableViewController, UITextFieldDelegate, UIImagePickerCo
     }
     
     override func viewDidLoad() {
+        // MARK: Slider Default Set
         slider.setMinimumTrackImage(UIImage(), for: .normal)
         slider.setMaximumTrackImage(UIImage(named: "SliderBackground"), for: .normal)
         slider.setThumbImage(UIImage(named: "SliderThumb"), for: .normal)
+        
+        // MARK: Touch Outside Handler
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
     }
     override func viewDidAppear(_ animated: Bool) {
         if let ItemDetailVC = self.parent as? ItemDetailVC {
@@ -61,6 +66,10 @@ class StaticTableVC: UITableViewController, UITextFieldDelegate, UIImagePickerCo
                 itemPriceTextField.text = ItemDetailVC.newItemPrice
             }
         }
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
     
     func getImage(fromSourceType sourceType: UIImagePickerController.SourceType) {
@@ -79,3 +88,4 @@ class StaticTableVC: UITableViewController, UITextFieldDelegate, UIImagePickerCo
         dismiss(animated: true, completion: nil)
     }
 }
+

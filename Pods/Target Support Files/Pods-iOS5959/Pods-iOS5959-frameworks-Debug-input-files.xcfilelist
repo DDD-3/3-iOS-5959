@@ -1,3 +1,4 @@
 ${PODS_ROOT}/Target Support Files/Pods-iOS5959/Pods-iOS5959-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/Magnetic/Magnetic.framework
 ${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework
+${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper/SwiftKeychainWrapper.framework
