@@ -9,12 +9,13 @@
 import UIKit
 
 protocol SideMenuTableViewDelegate: class {
+    func showWholeCollection()
     func makeNewCollection()
 }
 
 class SideMenuTableView: UITableView {
     
-    weak var newCollectDelegate: SideMenuTableViewDelegate?
+    weak var sidemenuDelegate: SideMenuTableViewDelegate?
     weak var itemDelegate: SideMenuItemDelegate?
     var collectionList: [CollectionItem] = []
     
@@ -22,8 +23,8 @@ class SideMenuTableView: UITableView {
         self.delegate = self
         self.dataSource = self
         self.tableFooterView = UIView(frame: .zero)
-        self.backgroundColor = .primaryCement
-        self.separatorColor = .secondaryCement
+        self.backgroundColor = .white
+        self.separatorColor = .primaryCement
     }
     
     override init(frame: CGRect, style: UITableView.Style) {
@@ -45,11 +46,11 @@ extension SideMenuTableView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "sideMenuCell", for: indexPath) as? SideMenuTableViewCell {
             cell.delegate = self
-            cell.configure(type: indexPath.row == 0 ? .whole : .item)
+            cell.configure()
             cell.collection = collectionList[indexPath.row]
             
             let bgColorView = UIView()
-            bgColorView.backgroundColor = UIColor.secondaryCement
+            bgColorView.backgroundColor = UIColor.primaryCement
             cell.selectedBackgroundView = bgColorView
             return cell
         }
@@ -62,56 +63,59 @@ extension SideMenuTableView: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 56
+        return 48
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 65
+        return 48
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let containerView = UIView(frame: CGRect(x: 16, y: 0, width: 150, height: 65))
-        containerView.backgroundColor = .primaryCement
-        let titleLabel = UILabel(frame: CGRect(x: 0, y: containerView.frame.height - 6, width: 150, height: 65))
+        let containerView = UIView(frame: CGRect(x: 24, y: 0, width: 150, height: 48))
+        containerView.backgroundColor = .white
+        let titleLabel = UILabel(frame: CGRect(x: 0, y: containerView.frame.height - 6,
+                                               width: 150, height: 48))
         containerView.addSubview(titleLabel)
         titleLabel.center = containerView.center
-        titleLabel.font = UIFont.nanumHeadlineExtraBold12()
-        titleLabel.textColor = .secondaryGrey
-        titleLabel.text = "콜렉션"
+        titleLabel.font = UIFont.nanumBodyRegular14()
+        titleLabel.textColor = .black
+        titleLabel.text = "전체보기"
         
-        let sepFrame = CGRect(x: 0, y: containerView.frame.height - 1, width: tableView.frame.width, height: 0.5)
+        let sepFrame = CGRect(x: 0, y: containerView.frame.height - 1,
+                              width: tableView.frame.width, height: 0.5)
         let seperatorView = UIView(frame: sepFrame)
-        seperatorView.backgroundColor = UIColor.secondaryCement
+        seperatorView.backgroundColor = UIColor.primaryCement
         containerView.addSubview(seperatorView)
+        containerView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(touchedWholeCollection)))
         return containerView
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let containerView = UIView(frame: CGRect(x: 0, y: 0, width: 150, height: 50))
-        containerView.backgroundColor = .primaryCement
-        let newCollectionButton = UIButton(frame: CGRect(x: 36, y: 0, width: 150, height: 50))
+        let containerView = UIView(frame: CGRect(x: 24, y: 0, width: 150, height: 48))
+        containerView.backgroundColor = .white
+        let newCollectionButton = UIButton(frame: CGRect(x: 0, y: 0, width: 150, height: 48))
         containerView.addSubview(newCollectionButton)
-        newCollectionButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 11, bottom: 0, right: 0)
-        newCollectionButton.setImage(
-            UIImage(systemName: "plus.circle")?
-                .withRenderingMode(.alwaysOriginal)
-                .withTintColor(.inactiveBlack),
-            for: .normal)
-        newCollectionButton.titleLabel?.font = UIFont.nanumRegularFont(ofSize: 17.0)
+        newCollectionButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 0)
+        newCollectionButton.setImage(UIImage(named: "icon_plus_circle"), for: .normal)
+        newCollectionButton.titleLabel?.font = UIFont.nanumBodyRegular14()
         newCollectionButton.setTitleColor(.inactiveBlack, for: .normal)
         newCollectionButton.setTitle("새 콜렉션 추가", for: .normal)
         newCollectionButton.addTarget(self, action: #selector(touchedNewCollectionButton(_:)), for: .touchUpInside)
         
-        let sepFrame = CGRect(x: 16, y: 0, width: tableView.frame.width - 16, height: 0.5)
+        let sepFrame = CGRect(x: 5, y: 0, width: tableView.frame.width - 5, height: 0.5)
         let seperatorView = UIView(frame: sepFrame)
-        seperatorView.backgroundColor = UIColor.secondaryCement
+        seperatorView.backgroundColor = UIColor.primaryCement
         containerView.addSubview(seperatorView)
         return containerView
     }
     
+    @objc private func touchedWholeCollection() {
+        sidemenuDelegate?.showWholeCollection()
+    }
+    
     @objc private func touchedNewCollectionButton(_ sender: UIButton) {
         print("새 콜렉션을 추가합니다")
-        newCollectDelegate?.makeNewCollection()
+        sidemenuDelegate?.makeNewCollection()
     }
 }
 

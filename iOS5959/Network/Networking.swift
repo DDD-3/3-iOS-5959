@@ -14,6 +14,7 @@ enum HttpMethod: String {
     case post
     case put
     case delete
+    case patch
     
     var value: String {
         return rawValue
@@ -150,6 +151,22 @@ func modifyCollection(collection: AddCollection, collectionId id: String) -> Sta
     let statusCode = networking(method: .post, url: url, data: data) { (data, response, error) in
         if let data = data, let jsonData = try? JSONDecoder().decode(EditCollectionResponse.self, from: data) {
             print("Modify Collection API == \(jsonData)")
+        }
+    }
+    
+    return statusCode
+}
+
+/// 기본 콜렉션 설정
+/// - Parameter id: 콜렉션 ID
+func requestSetCollectionToDefault(collectionID id: Int) -> StatusCode {
+    guard let url = URL(string: baseURL + WishBallAPI().collections + "/\(id)/default") else {
+        return .fail
+    }
+    
+    let statusCode = networking(method: .patch, url: url, data: Data()) { (data, response, error) in
+        if let data = data, let jsonData = try? JSONDecoder().decode(EditCollectionResponse.self, from: data) {
+            print("Set Default Collection API == \(jsonData)")
         }
     }
     
