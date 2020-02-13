@@ -34,43 +34,46 @@ class SideMenuViewController: UIViewController {
 
 extension SideMenuViewController: SideMenuItemDelegate {
     func modifyCollection(index: Int) {
-        showModifyCollectionSetting()
+        showModifyCollectionSetting(index: index)
     }
     
     func selectCollection(index: Int) {
         // 콜렉션 선택
-        if index == 0 {
+        if index == -1 {
             print("전체보기")
             NotificationCenter.default.post(
             name: selectWholeCollectionNotification,
             object: nil,
             userInfo: nil)
         } else {
-            print("콜렉션 선택")
+            let collection = Singleton.shared.getCurrentCollection(collectionId: index)
+            Singleton.shared.currentCollection = collection
             NotificationCenter.default.post(
                 name: selectCollectionNotification,
                 object: nil,
-                userInfo: ["selectCollection": index])
+                userInfo: ["collection": collection])
         }
-        
-        Singleton.shared.currentCollection = collectionList[index]
         SideMenuManager.default.leftMenuNavigationController?.dismiss(animated: true, completion: nil)
     }
     
-    private func showModifyCollectionSetting() {
+    private func showModifyCollectionSetting(index: Int) {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         // 삭제
         let deleteAction = UIAlertAction(title: "콜렉션 삭제", style: .destructive) { (_) in
-            self.showAlertController(title: "콜렉션 삭제", description: "해당 콜렉션을 삭제하시겠습니까?\n콜렉션 내 모든 상품도 함께 삭제됩니다.")
+            self.showAlertController(title: "콜렉션 삭제", message: "해당 콜렉션을 삭제하시겠습니까?\n콜렉션 내 모든 상품도 함께 삭제됩니다.")
         }
         // 기본 설정
         let setDefaultAction = UIAlertAction(title: "기본 콜렉션으로 설정", style: .default) { (_) in
-            self.showAlertController(title: "기본 콜렉션으로 설정", description: "기본 콜렉션으로 설정하시겠습니까?")
+            self.showAlertController(title: "기본 콜렉션으로 설정", message: "기본 콜렉션으로 설정하시겠습니까?")
         }
         // 수정
         let modifyAction = UIAlertAction(title: "콜렉션 수정", style: .default) { (_) in
             let modifyCollectionViewController = ModifyCollectionViewController()
             modifyCollectionViewController.editMode = .modify
+            // 사이드메뉴에서 수정하려는 콜렉션 아이템 추출
+            let collection = Singleton.shared.getCurrentCollection(collectionId: index)
+            // 수정할 콜렉션 property 전달
+            modifyCollectionViewController.currentCollection = collection
             DispatchQueue.main.async {
                 self.present(modifyCollectionViewController, animated: true, completion: nil)
             }
@@ -81,17 +84,6 @@ extension SideMenuViewController: SideMenuItemDelegate {
         alertController.addAction(setDefaultAction)
         alertController.addAction(modifyAction)
         alertController.addAction(cancelAction)
-        self.present(alertController, animated: true, completion: nil)
-    }
-    
-    private func showAlertController(title: String?, description message: String?) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "아니오", style: .cancel, handler: nil)
-        let okAction = UIAlertAction(title: "예", style: .default) { (_) in
-            // TODO: Handler
-        }
-        alertController.addAction(cancelAction)
-        alertController.addAction(okAction)
         self.present(alertController, animated: true, completion: nil)
     }
 }

@@ -16,7 +16,7 @@ class SideMenuTableView: UITableView {
     
     weak var newCollectDelegate: SideMenuTableViewDelegate?
     weak var itemDelegate: SideMenuItemDelegate?
-    var collectionList = Singleton.shared.collectionList
+    var collectionList: [CollectionItem] = []
     
     private func configure() {
         self.delegate = self
@@ -45,7 +45,6 @@ extension SideMenuTableView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "sideMenuCell", for: indexPath) as? SideMenuTableViewCell {
             cell.delegate = self
-            cell.tag = indexPath.row
             cell.configure(type: indexPath.row == 0 ? .whole : .item)
             cell.collection = collectionList[indexPath.row]
             
@@ -118,7 +117,7 @@ extension SideMenuTableView: UITableViewDataSource {
 
 extension SideMenuTableView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        itemDelegate?.selectCollection(index: indexPath.row)
+        itemDelegate?.selectCollection(index: collectionList[indexPath.row].collectionID)
     }
 }
 

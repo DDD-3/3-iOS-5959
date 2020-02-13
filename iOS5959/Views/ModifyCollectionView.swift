@@ -90,8 +90,6 @@ class ModifyCollectionView: UIView {
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
-        item = Singleton.shared.currentCollection
-                
         // editMode에 따른 값 설정
         switch editMode {
         case .create:

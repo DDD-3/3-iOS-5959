@@ -135,3 +135,23 @@ func addCollection(collection: AddCollection) -> StatusCode {
     
     return statusCode
 }
+
+/// 콜렉션 수정
+/// - Parameter id: String
+func modifyCollection(collection: AddCollection, collectionId id: String) -> StatusCode {
+    guard let url = URL(string: baseURL + WishBallAPI().collections + "/\(id)") else {
+        return .fail
+    }
+    
+    guard let data = try? JSONEncoder().encode(collection) else {
+        return .fail
+    }
+    
+    let statusCode = networking(method: .post, url: url, data: data) { (data, response, error) in
+        if let data = data, let jsonData = try? JSONDecoder().decode(EditCollectionResponse.self, from: data) {
+            print("Modify Collection API == \(jsonData)")
+        }
+    }
+    
+    return statusCode
+}

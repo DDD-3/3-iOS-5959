@@ -16,6 +16,10 @@ class Singleton {
     /// 현재 선택한 콜렉션
     var currentCollection: CollectionItem?
     
+    func getCurrentCollection(collectionId id: Int) -> CollectionItem? {
+        return collectionList.filter { $0.collectionID == id }.first
+    }
+    
     static let shared = Singleton()
     
     private init() {

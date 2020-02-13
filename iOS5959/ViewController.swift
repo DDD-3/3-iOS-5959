@@ -105,10 +105,10 @@ class ViewController: UIViewController {
     }
     
     @objc private func selectCollection(_ noti: Notification) {
-        print("콜렉션 선택 노티~")
-        // TODO: navigation title 변경
-        if let data = noti.userInfo?["selectCollection"] as? Int {
-            titleView.changeTitle(title: "콜렉션 \(data)", showWhole: false)
+        print("콜렉션을 선택했습니다")
+        // navigation title 변경
+        if let data = noti.userInfo?["collection"] as? CollectionItem {
+            titleView.changeTitle(title: data.title, showWhole: false)
         }
         // TODO: 데이터 갱신
     }
@@ -148,9 +148,9 @@ class ViewController: UIViewController {
 
 extension ViewController: CollectionTitleViewDelegate {
     func touchedModifyCollection() {
-        print("콜렉션 수정")
         let modifyCollectionViewController = ModifyCollectionViewController()
         modifyCollectionViewController.editMode = .modify
+        modifyCollectionViewController.currentCollection = Singleton.shared.currentCollection
         self.present(modifyCollectionViewController, animated: true, completion: nil)
     }
 }

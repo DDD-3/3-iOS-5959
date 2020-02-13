@@ -16,6 +16,8 @@ enum EditMode {
 class ModifyCollectionViewController: UIViewController {
     
     var editMode: EditMode = .create
+    var collectionId: String = ""
+    var currentCollection: CollectionItem?
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -30,6 +32,7 @@ class ModifyCollectionViewController: UIViewController {
         }
         
         popup.editMode = editMode
+        popup.item = currentCollection
         popup.delegate = self
         popup.backgroundColor = UIColor.black.withAlphaComponent(0.3)
         popup.frame = self.view.frame
@@ -52,11 +55,12 @@ extension ModifyCollectionViewController: ModifyCollectionViewDelegate {
         case .create:
             excuteAddCollection(collection: AddCollection(title: name, color: color.toHexString()))
         case .modify:
-            print("콜렉션 수정 API 실행")
+            excuteModifyCollection(collection: AddCollection(title: name, color: color.toHexString()), collectionId: collectionId)
         }
     }
     
-    func excuteAddCollection(collection: AddCollection) {
+    /// 콜렉션 추가
+    fileprivate func excuteAddCollection(collection: AddCollection) {
         let statusCode = addCollection(collection: collection)
         switch statusCode {
         case .success:
@@ -67,6 +71,21 @@ extension ModifyCollectionViewController: ModifyCollectionViewDelegate {
                 Singleton.shared.collectionList = collection.data
                 self.dismiss(animated: true, completion: nil)
             }
+        case .fail:
+            showAlertController(title: "에러 발생", message: "에러", completionHandler: nil)
+        case .server:
+            showAlertController()
+        }
+    }
+    
+    /// 콜렉션 수정
+    fileprivate func excuteModifyCollection(collection: AddCollection, collectionId: String) {
+        print("콜렉션 수정 API 실행")
+        let statusCode = modifyCollection(collection: collection, collectionId: collectionId)
+        switch statusCode {
+        case .success:
+            // TODO: Singleton에 있는 컬렉션 리스트에 항목 변경
+            self.dismiss(animated: true, completion: nil)
         case .fail:
             showAlertController(title: "에러 발생", message: "에러", completionHandler: nil)
         case .server:
