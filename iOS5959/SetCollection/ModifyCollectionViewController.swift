@@ -47,8 +47,30 @@ extension ModifyCollectionViewController: ModifyCollectionViewDelegate {
     }
     
     func touchedConfirmButton(color: UIColor, name: String) {
-        self.dismiss(animated: true, completion: nil)
-        // TODO: 콜렉션 추가 / 수정
-        // TODO: 콜렉션 리스트 조회
+        // 콜렉션 추가 / 수정
+        switch editMode {
+        case .create:
+            excuteAddCollection(collection: AddCollection(title: name, color: color.toHexString()))
+        case .modify:
+            print("콜렉션 수정 API 실행")
+        }
+    }
+    
+    func excuteAddCollection(collection: AddCollection) {
+        let statusCode = addCollection(collection: collection)
+        switch statusCode {
+        case .success:
+            print("콜렉션 생성 성공")
+            // TODO: 콜렉션 리스트 조회
+            let _ = requestWholeCollection { (collection) in
+                print("콜렉션 리스트 조회")
+                Singleton.shared.collectionList = collection.data
+                self.dismiss(animated: true, completion: nil)
+            }
+        case .fail:
+            showAlertController(title: "에러 발생", message: "에러", completionHandler: nil)
+        case .server:
+            showAlertController()
+        }
     }
 }

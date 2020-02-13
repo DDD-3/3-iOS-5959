@@ -81,12 +81,11 @@ class ModifyCollectionView: UIView {
     
     /// 확인 버튼 선택 target method
     @objc private func touchedConfirmButton(_ sender: UIButton) {
-        guard let collectionName = textfield.text else {
-            return
+        if let collectionName = textfield.text {
+            // remove Notification observer
+            delegate?.touchedConfirmButton(color: colorChipCollectionView.currentColor, name: collectionName)
+            NotificationCenter.default.removeObserver(self, name: selectCollectionColorNotification, object: nil)
         }
-        // remove Notification observer
-        delegate?.touchedConfirmButton(color: colorChipCollectionView.currentColor, name: collectionName)
-        NotificationCenter.default.removeObserver(self, name: selectCollectionColorNotification, object: nil)
     }
     
     override func draw(_ rect: CGRect) {
