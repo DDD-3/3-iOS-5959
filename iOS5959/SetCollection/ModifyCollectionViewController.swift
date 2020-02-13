@@ -16,7 +16,6 @@ enum EditMode {
 class ModifyCollectionViewController: UIViewController {
     
     var editMode: EditMode = .create
-    var collectionId: String = ""
     var currentCollection: CollectionItem?
     
     init() {
@@ -53,9 +52,9 @@ extension ModifyCollectionViewController: ModifyCollectionViewDelegate {
         // 콜렉션 추가 / 수정
         switch editMode {
         case .create:
-            excuteAddCollection(collection: AddCollection(title: name, color: color.toHexString()))
+            excuteAddCollection(collection: AddCollection(title: name, color: "PINK"))
         case .modify:
-            excuteModifyCollection(collection: AddCollection(title: name, color: color.toHexString()), collectionId: collectionId)
+            excuteModifyCollection(collection: AddCollection(title: name, color: "PINK"), collectionId: currentCollection!.collectionID)
         }
     }
     
@@ -66,11 +65,8 @@ extension ModifyCollectionViewController: ModifyCollectionViewDelegate {
         case .success:
             print("콜렉션 생성 성공")
             // TODO: 콜렉션 리스트 조회
-            let _ = requestWholeCollection { (collection) in
-                print("콜렉션 리스트 조회")
-                Singleton.shared.collectionList = collection.data
-                self.dismiss(animated: true, completion: nil)
-            }
+            NotificationCenter.default.post(name: requestCollectionListNotification, object: nil)
+            self.dismiss(animated: true, completion: nil)
         case .fail:
             showAlertController(title: "에러 발생", message: "에러", completionHandler: nil)
         case .server:
@@ -79,12 +75,14 @@ extension ModifyCollectionViewController: ModifyCollectionViewDelegate {
     }
     
     /// 콜렉션 수정
-    fileprivate func excuteModifyCollection(collection: AddCollection, collectionId: String) {
+    fileprivate func excuteModifyCollection(collection: AddCollection, collectionId: Int) {
         print("콜렉션 수정 API 실행")
         let statusCode = modifyCollection(collection: collection, collectionId: collectionId)
         switch statusCode {
         case .success:
-            // TODO: Singleton에 있는 컬렉션 리스트에 항목 변경
+            // Singleton에 있는 컬렉션 리스트에 항목 변경
+            // TODO: 메인 타이틀 변경
+            NotificationCenter.default.post(name: requestCollectionListNotification, object: nil)
             self.dismiss(animated: true, completion: nil)
         case .fail:
             showAlertController(title: "에러 발생", message: "에러", completionHandler: nil)

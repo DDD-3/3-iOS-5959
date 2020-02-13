@@ -139,7 +139,7 @@ func addCollection(collection: AddCollection) -> StatusCode {
 
 /// 콜렉션 수정
 /// - Parameter id: String
-func modifyCollection(collection: AddCollection, collectionId id: String) -> StatusCode {
+func modifyCollection(collection: AddCollection, collectionId id: Int) -> StatusCode {
     guard let url = URL(string: baseURL + WishBallAPI().collections + "/\(id)") else {
         return .fail
     }
@@ -148,7 +148,7 @@ func modifyCollection(collection: AddCollection, collectionId id: String) -> Sta
         return .fail
     }
     
-    let statusCode = networking(method: .post, url: url, data: data) { (data, response, error) in
+    let statusCode = networking(method: .put, url: url, data: data) { (data, response, error) in
         if let data = data, let jsonData = try? JSONDecoder().decode(EditCollectionResponse.self, from: data) {
             print("Modify Collection API == \(jsonData)")
         }
@@ -167,6 +167,22 @@ func requestSetCollectionToDefault(collectionID id: Int) -> StatusCode {
     let statusCode = networking(method: .patch, url: url, data: Data()) { (data, response, error) in
         if let data = data, let jsonData = try? JSONDecoder().decode(EditCollectionResponse.self, from: data) {
             print("Set Default Collection API == \(jsonData)")
+        }
+    }
+    
+    return statusCode
+}
+
+/// 콜렉션 삭제
+/// - Parameter id: 콜렉션 ID
+func requestDeleteCollection(collectionID id: Int) -> StatusCode {
+    guard let url = URL(string: baseURL + WishBallAPI().collections + "/\(id)") else {
+        return .fail
+    }
+    
+    let statusCode = networking(method: .delete, url: url, data: Data()) { (data, response, error) in
+        if let data = data, let jsonData = try? JSONDecoder().decode(Results.self, from: data) {
+            print("Delete Collection API == \(jsonData)")
         }
     }
     

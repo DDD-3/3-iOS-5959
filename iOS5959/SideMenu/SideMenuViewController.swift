@@ -11,6 +11,7 @@ import SideMenu
 
 let selectCollectionNotification = NSNotification.Name(rawValue: "selectCollectionNotification")
 let selectWholeCollectionNotification = NSNotification.Name(rawValue: "selectWholeDataNotification")
+let requestCollectionListNotification = NSNotification.Name(rawValue: "requestCollectionListNotification")
 
 class SideMenuViewController: UIViewController {
     
@@ -25,6 +26,20 @@ class SideMenuViewController: UIViewController {
         sideMenuTableView.itemDelegate = self
         sideMenuTableView.collectionList = collectionList
         sideMenuTableView.reloadData()
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(excuteCollectionListObserver),
+                                               name: requestCollectionListNotification, object: nil)
+    }
+    
+    @objc private func excuteCollectionListObserver() {
+        print("콜렉션이 수정/삭제/추가되어 리스트를 조회합니다")
+        let _ = requestWholeCollection { (collection) in
+            DispatchQueue.main.async {
+                Singleton.shared.collectionList = collection.data
+                self.sideMenuTableView.collectionList = collection.data
+                self.sideMenuTableView.reloadData()
+            }
+        }
     }
 }
 
@@ -51,7 +66,7 @@ extension SideMenuViewController: SideMenuItemDelegate {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         // 삭제
         let deleteAction = UIAlertAction(title: "콜렉션 삭제", style: .destructive) { (_) in
-            self.showAlertController(title: "콜렉션 삭제", message: "해당 콜렉션을 삭제하시겠습니까?\n콜렉션 내 모든 상품도 함께 삭제됩니다.")
+            self.showDeleteCollection(collection: collection)
         }
         // 기본 설정
         let setDefaultAction = UIAlertAction(title: "기본 콜렉션으로 설정", style: .default) { (_) in
@@ -74,6 +89,32 @@ extension SideMenuViewController: SideMenuItemDelegate {
         alertController.addAction(modifyAction)
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    private func showDeleteCollection(collection: CollectionItem?) {
+        // 콜렉션 타입이 기본인 경우 삭제 불가
+        guard let collection = collection else {
+            return
+        }
+        guard collection.collectionType != .defaultType else {
+            showAlertController(title: "알림", message: "기본 콜렉션은 삭제할 수 없습니다", completionHandler: nil)
+            return
+        }
+            
+        // 기본 아닌 경우 삭제 진행
+        showWarningAlertController(title: "콜렉션 삭제", message: "해당 콜렉션을 삭제하시겠습니까?\n콜렉션 내 모든 상품도 함께 삭제됩니다.") { (_) in
+            // 삭제 API 호출
+            let statusCode = requestDeleteCollection(collectionID: collection.collectionID)
+            
+            switch statusCode {
+            case .success:
+                NotificationCenter.default.post(name: requestCollectionListNotification, object: nil)
+            case .fail:
+                self.showAlertController(title: "에러 발생", message: "에러", completionHandler: nil)
+            case .server:
+                self.showAlertController()
+            }
+        }
     }
     
     private func showSetDefaultCollection(collection: CollectionItem?) {
