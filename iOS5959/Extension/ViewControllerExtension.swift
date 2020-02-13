@@ -26,8 +26,8 @@ extension UIViewController {
     /// 네/아니오 alert
     func showWarningAlertController(title: String, message: String, completionHandler: ((UIAlertAction) -> Void)? = nil) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "예", style: .cancel, handler: nil)
-        let confirmAction = UIAlertAction(title: "아니오", style: .default) { (action) in
+        let cancelAction = UIAlertAction(title: "아니오", style: .cancel, handler: nil)
+        let confirmAction = UIAlertAction(title: "예", style: .default) { (action) in
             completionHandler?(action)
         }
         alertController.addAction(cancelAction)
