@@ -42,8 +42,12 @@ class ModifyCollectionViewController: UIViewController {
 }
 
 extension ModifyCollectionViewController: ModifyCollectionViewDelegate {
-    func touchedBackgroundView() {
-//        self.dismiss(animated: false, completion: nil)
+    func touchedCancelButton() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func touchedConfirmButton(color: UIColor, name: String) {
+        self.dismiss(animated: true, completion: nil)
         // TODO: 콜렉션 추가 / 수정
         // TODO: 콜렉션 리스트 조회
     }

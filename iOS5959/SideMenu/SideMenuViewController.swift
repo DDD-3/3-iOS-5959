@@ -14,14 +14,20 @@ let selectWholeCollectionNotification = NSNotification.Name(rawValue: "selectWho
 
 class SideMenuViewController: UIViewController {
     
+    fileprivate var collectionList = Singleton.shared.collectionList
+    fileprivate let wholeCollection = CollectionItem(collectionID: -1,
+                                                     collectionType: .nonDefaultType,
+                                                     title: "전체보기", color: "#000000")
     @IBOutlet fileprivate weak var sideMenuTableView: SideMenuTableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        collectionList.insert(wholeCollection, at: 0)
         sideMenuTableView.newCollectDelegate = self
         sideMenuTableView.itemDelegate = self
+        sideMenuTableView.collectionList = collectionList
         sideMenuTableView.reloadData()
     }
 }
@@ -46,6 +52,8 @@ extension SideMenuViewController: SideMenuItemDelegate {
                 object: nil,
                 userInfo: ["selectCollection": index])
         }
+        
+        Singleton.shared.currentCollection = collectionList[index]
         SideMenuManager.default.leftMenuNavigationController?.dismiss(animated: true, completion: nil)
     }
     
@@ -63,7 +71,6 @@ extension SideMenuViewController: SideMenuItemDelegate {
         let modifyAction = UIAlertAction(title: "콜렉션 수정", style: .default) { (_) in
             let modifyCollectionViewController = ModifyCollectionViewController()
             modifyCollectionViewController.editMode = .modify
-            modifyCollectionViewController.modalPresentationStyle = .fullScreen
             DispatchQueue.main.async {
                 self.present(modifyCollectionViewController, animated: true, completion: nil)
             }
@@ -93,7 +100,6 @@ extension SideMenuViewController: SideMenuTableViewDelegate {
     func makeNewCollection() {
         let modifyCollectionViewController = ModifyCollectionViewController()
         modifyCollectionViewController.editMode = .create
-        modifyCollectionViewController.modalPresentationStyle = .fullScreen
         DispatchQueue.main.async {
             self.present(modifyCollectionViewController, animated: true, completion: nil)
         }

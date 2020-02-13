@@ -13,6 +13,9 @@ class Singleton {
     /// 콜렉션 리스트
     var collectionList: [CollectionItem] = []
     
+    /// 현재 선택한 콜렉션
+    var currentCollection: CollectionItem?
+    
     static let shared = Singleton()
     
     private init() {

@@ -16,10 +16,7 @@ class SideMenuTableView: UITableView {
     
     weak var newCollectDelegate: SideMenuTableViewDelegate?
     weak var itemDelegate: SideMenuItemDelegate?
-    fileprivate var collectionList = Singleton.shared.collectionList
-    fileprivate let wholeCollection = CollectionItem(collectionID: -1,
-                                                     collectionType: .nonDefaultType,
-                                                     title: "전체보기", color: "#000000")
+    var collectionList = Singleton.shared.collectionList
     
     private func configure() {
         self.delegate = self
@@ -27,7 +24,6 @@ class SideMenuTableView: UITableView {
         self.tableFooterView = UIView(frame: .zero)
         self.backgroundColor = .primaryCement
         self.separatorColor = .secondaryCement
-        collectionList.insert(wholeCollection, at: 0)
     }
     
     override init(frame: CGRect, style: UITableView.Style) {

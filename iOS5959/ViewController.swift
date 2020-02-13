@@ -151,7 +151,6 @@ extension ViewController: CollectionTitleViewDelegate {
         print("콜렉션 수정")
         let modifyCollectionViewController = ModifyCollectionViewController()
         modifyCollectionViewController.editMode = .modify
-        modifyCollectionViewController.modalPresentationStyle = .fullScreen
         self.present(modifyCollectionViewController, animated: true, completion: nil)
     }
 }
