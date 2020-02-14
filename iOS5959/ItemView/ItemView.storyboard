@@ -254,7 +254,7 @@
                                                         <constraint firstAttribute="width" constant="24" id="fGo-P7-bUq"/>
                                                     </constraints>
                                                 </imageView>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="상품명" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TvR-t2-fA7">
+                                                <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="상품명" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TvR-t2-fA7">
                                                     <rect key="frame" x="48" y="19.666666666666668" width="36.333333333333343" height="17.000000000000004"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -262,7 +262,7 @@
                                                         <action selector="itemTitleTextFieldEditingChanged:" destination="ecY-R6-cJh" eventType="editingChanged" id="xnv-Es-T8q"/>
                                                     </connections>
                                                 </textField>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Hg-qO-ADa" userLabel="SearchBtn">
+                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Hg-qO-ADa" userLabel="SearchBtn">
                                                     <rect key="frame" x="345" y="17" width="20" height="22"/>
                                                     <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <state key="normal" image="magnifyingglass" catalog="system"/>
@@ -272,6 +272,7 @@
                                                 </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="9Hg-qO-ADa" firstAttribute="leading" relation="lessThanOrEqual" secondItem="TvR-t2-fA7" secondAttribute="trailing" priority="999" constant="10" id="1f2-mS-UIe"/>
                                                 <constraint firstItem="TvR-t2-fA7" firstAttribute="centerY" secondItem="2aq-Um-UI5" secondAttribute="centerY" id="DMW-Vg-Lye"/>
                                                 <constraint firstItem="9Hg-qO-ADa" firstAttribute="centerY" secondItem="2aq-Um-UI5" secondAttribute="centerY" id="DUk-Fb-ZKB"/>
                                                 <constraint firstAttribute="trailing" secondItem="9Hg-qO-ADa" secondAttribute="trailing" constant="10" id="QfL-0y-b3T"/>

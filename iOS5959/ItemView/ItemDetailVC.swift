@@ -20,7 +20,7 @@ class ItemDetailVC: UIViewController {
     
     @IBAction func confirmBtn(_ sender: Any) {
         let mainVC = self.navigationController?.viewControllers[0] as? ViewController
-        let node = Node(text: "title", image: UIImage(named: "circle"), color: .red, radius: 30)
+        let node = Node(text: selectedItem?.selectedItemName, image: UIImage(named: "find"), color: .red, radius: 30)
         mainVC?.magnetic?.addChild(node)
         self.navigationController?.popToRootViewController(animated: true)
     }
