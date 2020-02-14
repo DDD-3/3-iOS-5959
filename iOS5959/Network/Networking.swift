@@ -272,3 +272,17 @@ func postWishItem(wishItemData: Data) -> StatusCode {
     })
     return statusCode
 }
+
+/// 위시 아이템 삭제
+func deleteWishItem(wishItemId: Int) -> StatusCode{
+    guard let url = URL(string: baseURL + WishBallAPI().wishItems + "/\(wishItemId)") else {
+        return .fail
+    }
+    
+    let statusCode = networking(method: .delete, contentType: .applicationJson, url: url, data: Data(), completion: {(data, response, error) in
+        if let data = data {
+            print(String(data: data, encoding: .utf8))
+        }
+    })
+    return statusCode
+}

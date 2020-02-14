@@ -13,12 +13,16 @@ import SwiftKeychainWrapper
 
 class ViewController: UIViewController, MagneticDelegate {
     func magnetic(_ magnetic: Magnetic, didSelect node: Node) {
-        let alert = UIAlertController(title: "Alert", message: "node Selected", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
-        present(alert, animated: true, completion: nil)
+        let ItemViewStoryboard = UIStoryboard(name: "ItemView", bundle: nil)
+        guard let ItemDetailVC = ItemViewStoryboard.instantiateViewController(identifier: "ItemDetailVC") as? ItemDetailVC else {return}
+        
         for node in magnetic.selectedChildren{
             node.deselectedAnimation()
         }
+        
+        ItemDetailVC.nodeTagID = Int(node.accessibilityHint!)
+        ItemDetailVC.selectedNode = node
+        self.navigationController?.pushViewController(ItemDetailVC, animated: true)
     }
     
     func magnetic(_ magnetic: Magnetic, didDeselect node: Node) {
@@ -52,12 +56,11 @@ class ViewController: UIViewController, MagneticDelegate {
                                                object: nil)
         requestRegistUser()
         magnetic = magneticView.magnetic
+        loadMagneticDataSource(magnetic: magnetic!)
         magneticView.magnetic.magneticDelegate = self
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        loadMagneticDataSource(magnetic: magnetic!)
-    }
+
     private func requestRegistUser() {
         let key = "userToken"
         let firstLaunch = FirstLaunch()
@@ -187,6 +190,7 @@ class ViewController: UIViewController, MagneticDelegate {
                 if data.collectionID == Singleton.shared.currentCollection?.collectionID {
                     for wishItem in data.wishItems {
                         let node = Node(text: wishItem.name, image: UIImage(named: "find"), color: UIColor.blue, radius: (CGFloat(30 + 30 * wishItem.importance / 5)), marginScale: 1)
+                        node.accessibilityHint = "\(wishItem.wishItemID)"
                         magnetic.addChild(node)
                     }
                 }

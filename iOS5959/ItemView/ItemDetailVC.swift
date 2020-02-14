@@ -16,14 +16,17 @@ class ItemDetailVC: UIViewController {
     var newItemImportance: Int?
     var selectedItem: SelectedItemModel?
     
+    var nodeTagID: Int?
+    var selectedNode: Node?
+    
     @IBOutlet var confirmBtn: UIButton!
     @IBOutlet var confirmExtensionView: UIView!
     
     @IBAction func confirmBtn(_ sender: Any) {
+        if nodeTagID != nil {
+            print("WishItem수정 Logic")
+        }else{
         let mainVC = self.navigationController?.viewControllers[0] as? ViewController
-        let node = Node(text: selectedItem?.selectedItemName, image: UIImage(named: "find"), color: .red, radius: 30)
-        mainVC?.magnetic?.addChild(node)
-        
         
         selectedItem?.selectedItemImage = UIImage(named: "find")!
         guard let imageData = selectedItem?.selectedItemImage.jpegData(compressionQuality: 1.0) else {
@@ -49,7 +52,7 @@ class ItemDetailVC: UIViewController {
             print("##initializing AddWishItem Failure")
         }
  
-
+        }
         self.navigationController?.popToRootViewController(animated: true)
     }
     @IBAction func backBtn(_ sender: Any) {
@@ -58,12 +61,32 @@ class ItemDetailVC: UIViewController {
     @IBAction func trashBtn(_ sender: Any) {
         let alert = UIAlertController(title: "상품삭제", message: "해당 상품을 삭제하시겠습니까?\n복구할 수 없습니다", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "아니오", style: .cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: "예", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "예", style: .default, handler: {(_) in
+            if let wishItemId = self.nodeTagID {
+                switch deleteWishItem(wishItemId: wishItemId){
+                case .success:
+                    print("삭제 요청 성공")
+                    guard let mainVC = self.navigationController?.viewControllers[0] as? ViewController else {return}
+                    mainVC.magnetic?.removeChildren(in: [self.selectedNode!])
+                    self.navigationController?.popViewController(animated: true)
+                case .fail:
+                    print("삭제 요청 실패")
+                case .server:
+                    print("Server Failure")
+                }
+            }
+        }))
         present(alert, animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
-        
+        print(nodeTagID)
+        if let nodeTagID = nodeTagID {
+            let statusCode = requestWishItem(wishItemID: nodeTagID, completion: {(item) in
+                self.newItemTitle = item.data.name
+                self.newItemPrice = "\(item.data.price)"
+            })
+        }
     }
     override func viewDidAppear(_ animated: Bool) {
     }
