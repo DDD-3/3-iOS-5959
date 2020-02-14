@@ -17,12 +17,10 @@ class WishBallWebViewController: UIViewController {
     
     weak var delegate: WishBallWebViewControllerDelegate?
     
-    @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var closeButton: UIButton!
+    @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet var webView: WKWebView!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var forwardButton: UIButton!
-    @IBOutlet weak var refreshButton: UIButton!
     @IBOutlet weak var chooseItemButton: UIButton!
     
     override func viewDidLoad() {
@@ -52,10 +50,6 @@ class WishBallWebViewController: UIViewController {
         }
     }
     
-    @objc private func touchedRefreshButton(_ sender: UIButton) {
-        webView.reload()
-    }
-    
     @objc private func touchedChooseItemButton(_ sender: UIButton) {
         delegate?.chooseItem()
     }
@@ -67,35 +61,39 @@ class WishBallWebViewController: UIViewController {
     }
     
     private func commonInit() {
-        searchBar.searchTextField.keyboardType = .URL
-        searchBar.searchTextField.font = UIFont.nanumRegularFont(ofSize: 17.0)
-        searchBar.placeholder = "URL"
-        searchBar.delegate = self
+        searchTextField.borderStyle = .none
+        searchTextField.keyboardType = .URL
+        searchTextField.font = UIFont.nanumButtonBold14()
+        searchTextField.placeholder = "URL"
+        searchTextField.clearButtonMode = .whileEditing
+        searchTextField.delegate = self
+        searchTextField.returnKeyType = .go
         webView.navigationDelegate = self
         chooseItemButton.clipsToBounds = true
         chooseItemButton.layer.cornerRadius = 4.0
-        chooseItemButton.setTitleColor(.white, for: .normal)
-        chooseItemButton.backgroundColor = .wishBall2
-        chooseItemButton.titleLabel?.font = UIFont.nanumHeadlineExtraBold12()
+        chooseItemButton.setTitleColor(.primaryCoral, for: .normal)
+        chooseItemButton.layer.borderColor = UIColor.primaryCoral.cgColor
+        chooseItemButton.layer.borderWidth = 1.0
+        chooseItemButton.backgroundColor = .white
+        chooseItemButton.titleLabel?.font = UIFont.nanumButtonBold14()
         
-        closeButton.addTarget(self, action: #selector(touchedCloseButton(_:)), for: .touchUpInside)
         backButton.addTarget(self, action: #selector(touchedBackButton(_:)), for: .touchUpInside)
         forwardButton.addTarget(self, action: #selector(touchedForwardButton(_:)), for: .touchUpInside)
-        refreshButton.addTarget(self, action: #selector(touchedRefreshButton(_:)), for: .touchUpInside)
         chooseItemButton.addTarget(self, action: #selector(touchedChooseItemButton(_:)), for: .touchUpInside)
     }
 }
 
-extension WishBallWebViewController: UISearchBarDelegate {
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        self.requestWebPage(url: searchBar.text)
+extension WishBallWebViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.requestWebPage(url: textField.text)
         self.view.endEditing(true)
+        return true
     }
 }
 
 extension WishBallWebViewController: WKNavigationDelegate {
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         // 현재 웹페이지 URL searchBar에 표시하기
-        self.searchBar.text = webView.url?.absoluteString
+        self.searchTextField.text = webView.url?.absoluteString
     }
 }

@@ -95,6 +95,14 @@ class ViewController: UIViewController {
     private func excuteCollectionList() {
         let _ = requestWholeCollection { (collection) in
             Singleton.shared.collectionList = collection.data
+            self.setDefaultCollection()
+        }
+    }
+    
+    private func setDefaultCollection() {
+        Singleton.shared.currentCollection = Singleton.shared.defaultCollection
+        DispatchQueue.main.async {
+            self.titleView.changeTitle(title: Singleton.shared.currentCollection!.title, showWhole: false)
         }
     }
     
@@ -105,10 +113,10 @@ class ViewController: UIViewController {
     }
     
     @objc private func selectCollection(_ noti: Notification) {
-        print("콜렉션 선택 노티~")
-        // TODO: navigation title 변경
-        if let data = noti.userInfo?["selectCollection"] as? Int {
-            titleView.changeTitle(title: "콜렉션 \(data)", showWhole: false)
+        print("콜렉션을 선택했습니다")
+        // navigation title 변경
+        if let data = noti.userInfo?["collection"] as? CollectionItem {
+            titleView.changeTitle(title: data.title, showWhole: false)
         }
         // TODO: 데이터 갱신
     }
@@ -134,8 +142,8 @@ class ViewController: UIViewController {
     private func setNavigationBar() {
         navigationController?.navigationBar.barTintColor = .white
         navigationController?.navigationBar.tintColor = .black
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "menu"), style: .plain, target: self, action: #selector(touchedSideMenuButton))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "list"), style: .plain, target: self, action: #selector(touchedListToggleButton))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "icon_menu"), style: .plain, target: self, action: #selector(touchedSideMenuButton))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "icon_list"), style: .plain, target: self, action: #selector(touchedListToggleButton))
         setNavigationTitle()
     }
     
@@ -148,10 +156,9 @@ class ViewController: UIViewController {
 
 extension ViewController: CollectionTitleViewDelegate {
     func touchedModifyCollection() {
-        print("콜렉션 수정")
         let modifyCollectionViewController = ModifyCollectionViewController()
         modifyCollectionViewController.editMode = .modify
-        modifyCollectionViewController.modalPresentationStyle = .fullScreen
+        modifyCollectionViewController.currentCollection = Singleton.shared.currentCollection
         self.present(modifyCollectionViewController, animated: true, completion: nil)
     }
 }

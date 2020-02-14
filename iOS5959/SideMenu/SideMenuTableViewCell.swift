@@ -14,12 +14,6 @@ protocol SideMenuItemDelegate: class {
 }
 
 class SideMenuTableViewCell: UITableViewCell {
-    
-    enum ItemType {
-        case whole
-        case item
-    }
-    
     weak var delegate: SideMenuItemDelegate?
     
     private let colorChipView: UIView = {
@@ -37,14 +31,24 @@ class SideMenuTableViewCell: UITableViewCell {
     private let collectionNameLabel: UILabel = {
        let lb = UILabel()
         lb.translatesAutoresizingMaskIntoConstraints = false
-        lb.font = UIFont.nanumRegularFont(ofSize: 17.0)
+        lb.font = UIFont.nanumBodyRegular14()
+        return lb
+    }()
+    
+    private let defaultTypeLabel: UILabel = {
+        let lb = UILabel()
+        lb.translatesAutoresizingMaskIntoConstraints = false
+        lb.font = UIFont.nanumBodyRegular14()
+        lb.text = "(기본)"
         return lb
     }()
     
     private let moreButton: UIButton = {
        let lb = UIButton()
         lb.translatesAutoresizingMaskIntoConstraints = false
-        lb.setImage(UIImage(systemName: "ellipsis")?.withRenderingMode(.alwaysOriginal).withTintColor(.inactiveBlack), for: .normal)
+        lb.setImage(UIImage(named: "icon_ellipsis")?
+            .withRenderingMode(.alwaysOriginal)
+            .withTintColor(.black), for: .normal)
         return lb
     }()
 
@@ -53,35 +57,36 @@ class SideMenuTableViewCell: UITableViewCell {
             collectionNameLabel.text = collection.title
             colorChipView.backgroundColor = UIColor(hexString: collection.color)
             self.tag = collection.collectionID
+            defaultTypeLabel.isHidden = collection.collectionType == .nonDefaultType
         }
     }
     
-    func configure(type: ItemType) {
-        self.backgroundColor = .primaryCement
+    func configure() {
+        self.backgroundColor = .white
+        let stackView = UIStackView(arrangedSubviews: [collectionNameLabel, defaultTypeLabel])
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
+        
         addSubview(colorChipView)
-        addSubview(collectionNameLabel)
         addSubview(moreButton)
+        addSubview(stackView)
         
         colorChipView.widthAnchor.constraint(equalToConstant: 18.0).isActive = true
         colorChipView.heightAnchor.constraint(equalToConstant: 18.0).isActive = true
         colorChipView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        colorChipView.trailingAnchor.constraint(equalTo: self.collectionNameLabel.leadingAnchor, constant: -11.0).isActive = true
+        colorChipView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 24.0).isActive = true
+        colorChipView.trailingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: -11.0).isActive = true
 
-        collectionNameLabel.centerYAnchor.constraint(equalTo: colorChipView.centerYAnchor).isActive = true
-        collectionNameLabel.trailingAnchor.constraint(equalTo: self.moreButton.leadingAnchor).isActive = true
+        stackView.centerYAnchor.constraint(equalTo: colorChipView.centerYAnchor).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: moreButton.leadingAnchor, constant: -5.0).isActive = true
         
         moreButton.centerYAnchor.constraint(equalTo: colorChipView.centerYAnchor).isActive = true
         moreButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -24.0).isActive = true
         moreButton.addTarget(self, action: #selector(touchedMoreButton(_:)), for: .touchUpInside)
-        
-        if type == .item {
-            colorChipView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 51.0).isActive = true
-            moreButton.isHidden = false
-        } else if type == .whole {
-            colorChipView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 18.0).isActive = true
-            moreButton.isHidden = true
-            colorChipView.backgroundColor = .black
-        }
+
+        collectionNameLabel.setContentHuggingPriority(.defaultLow, for: .horizontal)
+        moreButton.setContentHuggingPriority(.defaultHigh, for: .horizontal)
     }
     
     @objc private func touchedMoreButton(_ sender: UIButton) {
@@ -108,5 +113,6 @@ class SideMenuTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         collectionNameLabel.text = nil
+        defaultTypeLabel.isHidden = true
     }
 }

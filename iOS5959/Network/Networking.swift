@@ -10,10 +10,11 @@ import Foundation
 import SystemConfiguration
 
 enum HttpMethod: String {
-    case get
-    case post
-    case put
-    case delete
+    case get = "GET"
+    case post = "POST"
+    case put = "PUT"
+    case delete = "DELETE"
+    case patch = "PATCH"
     
     var value: String {
         return rawValue
@@ -118,6 +119,7 @@ func requestWholeCollection(completion: @escaping(Collection) -> Void) -> Status
     return statusCode
 }
 
+
 /// 네이버 쇼핑 검색 리스트 요청
 func requestSearchList(itemTitle: String, completion: @escaping(Search) -> Void) -> StatusCode {
     guard var urlComponents = URLComponents(string: baseURL + WishBallAPI().search) else {
@@ -130,6 +132,110 @@ func requestSearchList(itemTitle: String, completion: @escaping(Search) -> Void)
     
     let statusCode = networking(method: .get, url: url, data: Data()) { (data, response, error) in
         if let data = data, let jsonData = try? JSONDecoder().decode(Search.self, from: data) {
+            completion(jsonData)
+        }
+    }
+    
+    return statusCode
+}
+
+/// 콜렉션 추가
+func addCollection(collection: AddCollection) -> StatusCode {
+    guard let url = URL(string: baseURL + WishBallAPI().collections) else {
+        return .fail
+    }
+    
+    guard let data = try? JSONEncoder().encode(collection) else {
+        return .fail
+    }
+    
+    let statusCode = networking(method: .post, url: url, data: data) { (data, response, error) in
+        if let data = data, let jsonData = try? JSONDecoder().decode(Results.self, from: data) {
+            print("Add Collection API == \(jsonData)")
+        }
+    }
+    
+    return statusCode
+}
+
+/// 콜렉션 수정
+/// - Parameter id: String
+func modifyCollection(collection: AddCollection, collectionId id: Int) -> StatusCode {
+    guard let url = URL(string: baseURL + WishBallAPI().collections + "/\(id)") else {
+        return .fail
+    }
+    
+    guard let data = try? JSONEncoder().encode(collection) else {
+        return .fail
+    }
+    
+    let statusCode = networking(method: .put, url: url, data: data) { (data, response, error) in
+        if let data = data, let jsonData = try? JSONDecoder().decode(EditCollectionResponse.self, from: data) {
+            print("Modify Collection API == \(jsonData)")
+        }
+    }
+    
+    return statusCode
+}
+
+/// 기본 콜렉션 설정
+/// - Parameter id: 콜렉션 ID
+func requestSetCollectionToDefault(collectionID id: Int) -> StatusCode {
+    guard let url = URL(string: baseURL + WishBallAPI().collections + "/\(id)/default") else {
+        return .fail
+    }
+    
+    let statusCode = networking(method: .patch, url: url, data: Data()) { (data, response, error) in
+        if let data = data, let jsonData = try? JSONDecoder().decode(EditCollectionResponse.self, from: data) {
+            print("Set Default Collection API == \(jsonData)")
+        }
+    }
+    
+    return statusCode
+}
+
+/// 콜렉션 삭제
+/// - Parameter id: 콜렉션 ID
+func requestDeleteCollection(collectionID id: Int) -> StatusCode {
+    guard let url = URL(string: baseURL + WishBallAPI().collections + "/\(id)") else {
+        return .fail
+    }
+    
+    let statusCode = networking(method: .delete, url: url, data: Data()) { (data, response, error) in
+        if let data = data, let jsonData = try? JSONDecoder().decode(Results.self, from: data) {
+            print("Delete Collection API == \(jsonData)")
+        }
+    }
+    
+    return statusCode
+}
+
+/// 위시 아이템 전체 조회
+func requestWishItems(completion: @escaping(Wish) -> Void) -> StatusCode {
+    guard let url = URL(string: baseURL + WishBallAPI().wishItems) else {
+        return .fail
+    }
+    
+    let statusCode = networking(method: .get, url: url, data: Data()) { (data, response, error) in
+        if let data = data, let jsonData = try? JSONDecoder().decode(Wish.self, from: data) {
+            print("Get WishItems API == \(jsonData)")
+            completion(jsonData)
+        }
+    }
+    
+    return statusCode
+}
+
+/// 위시 아이템 단건 조회
+/// - Parameter id: 위시 아이템 ID
+func requestWishItem(wishItemID id: Int, completion: @escaping(OneWishItem) -> Void) -> StatusCode {
+    guard let url = URL(string: baseURL + WishBallAPI().wishItems + "\(id)") else {
+        return .fail
+    }
+    
+    let statusCode = networking(method: .get, url: url, data: Data()) { (data, response, error) in
+        if let data = data, let jsonData = try? JSONDecoder().decode(OneWishItem.self, from: data) {
+            print("Get One WishItem API == \(jsonData)")
             completion(jsonData)
         }
     }

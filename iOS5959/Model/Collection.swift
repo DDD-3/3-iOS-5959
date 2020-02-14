@@ -29,3 +29,14 @@ struct CollectionItem: Codable {
         case collectionType, title, color
     }
 }
+
+struct AddCollection: Codable {
+    let title: String
+    let color: String
+}
+
+struct EditCollectionResponse: Codable {
+    let status: Int
+    let message: String
+    let data: CollectionItem?
+}

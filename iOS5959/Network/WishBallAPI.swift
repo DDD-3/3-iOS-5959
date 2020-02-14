@@ -14,5 +14,6 @@ struct WishBallAPI {
     let login = "api/users/login"
     let collections = "api/collections"
     let search = "api/v1/search"
+    let wishItems = "api/wishitems"
 }
 
