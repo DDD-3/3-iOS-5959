@@ -21,19 +21,28 @@ enum HttpMethod: String {
     }
 }
 
+enum ContentType: String {
+    case applicationJson = "application/json"
+    case multipartFormData = "multipart/form-data"
+    
+    var value: String {
+        return rawValue
+    }
+}
+
 enum StatusCode {
     case success
     case fail
     case server
 }
 
-private func networking(method: HttpMethod, url: URL, data: Data, completion: @escaping(Data?, URLResponse?, Error?) -> Void) -> StatusCode {
+private func networking(method: HttpMethod, contentType: ContentType, url: URL, data: Data, completion: @escaping(Data?, URLResponse?, Error?) -> Void) -> StatusCode {
     var statusCode: Int = -1
     let semaphore = DispatchSemaphore(value: 0)
     
     var urlRequest = URLRequest(url: url)
     urlRequest.httpMethod = method.value
-    urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    urlRequest.setValue(contentType.value, forHTTPHeaderField: "Content-Type")
     urlRequest.setValue(UserDefaults.standard.string(forKey: "accessToken"), forHTTPHeaderField: "Authorization")
     urlRequest.httpBody = data
     
@@ -76,7 +85,7 @@ func registUser(regist: Regist) -> StatusCode {
         return .fail
     }
     
-    let statusCode = networking(method: .post, url: url, data: data) { (data, response, error) in
+    let statusCode = networking(method: .post, contentType: .applicationJson, url: url, data: data) { (data, response, error) in
         print("data \(response)")
     }
     
@@ -93,7 +102,7 @@ func requestLogin(regist: Regist, completion: @escaping(Login) -> Void) -> Statu
         return .fail
     }
     
-    let statusCode = networking(method: .post, url: url, data: data) { (data, response, error) in
+    let statusCode = networking(method: .post, contentType: .applicationJson, url: url, data: data) { (data, response, error) in
         if let data = data, let jsonData = try? JSONDecoder().decode(Login.self, from: data) {
             print("Login API == \(jsonData)")
             completion(jsonData)
@@ -109,7 +118,7 @@ func requestWholeCollection(completion: @escaping(Collection) -> Void) -> Status
         return .fail
     }
     
-    let statusCode = networking(method: .get, url: url, data: Data()) { (data, response, error) in
+    let statusCode = networking(method: .get, contentType: .applicationJson, url: url, data: Data()) { (data, response, error) in
         if let data = data, let jsonData = try? JSONDecoder().decode(Collection.self, from: data) {
             print("Collection API == \(jsonData)")
             completion(jsonData)
@@ -130,7 +139,7 @@ func requestSearchList(itemTitle: String, completion: @escaping(Search) -> Void)
         return .fail
     }
     
-    let statusCode = networking(method: .get, url: url, data: Data()) { (data, response, error) in
+    let statusCode = networking(method: .get, contentType: .applicationJson, url: url, data: Data()) { (data, response, error) in
         if let data = data, let jsonData = try? JSONDecoder().decode(Search.self, from: data) {
             completion(jsonData)
         }
@@ -149,7 +158,7 @@ func addCollection(collection: AddCollection) -> StatusCode {
         return .fail
     }
     
-    let statusCode = networking(method: .post, url: url, data: data) { (data, response, error) in
+    let statusCode = networking(method: .post, contentType: .applicationJson, url: url, data: data) { (data, response, error) in
         if let data = data, let jsonData = try? JSONDecoder().decode(Results.self, from: data) {
             print("Add Collection API == \(jsonData)")
         }
@@ -169,7 +178,7 @@ func modifyCollection(collection: AddCollection, collectionId id: Int) -> Status
         return .fail
     }
     
-    let statusCode = networking(method: .put, url: url, data: data) { (data, response, error) in
+    let statusCode = networking(method: .put, contentType: .applicationJson, url: url, data: data) { (data, response, error) in
         if let data = data, let jsonData = try? JSONDecoder().decode(EditCollectionResponse.self, from: data) {
             print("Modify Collection API == \(jsonData)")
         }
@@ -185,7 +194,7 @@ func requestSetCollectionToDefault(collectionID id: Int) -> StatusCode {
         return .fail
     }
     
-    let statusCode = networking(method: .patch, url: url, data: Data()) { (data, response, error) in
+    let statusCode = networking(method: .patch, contentType: .applicationJson, url: url, data: Data()) { (data, response, error) in
         if let data = data, let jsonData = try? JSONDecoder().decode(EditCollectionResponse.self, from: data) {
             print("Set Default Collection API == \(jsonData)")
         }
@@ -201,7 +210,7 @@ func requestDeleteCollection(collectionID id: Int) -> StatusCode {
         return .fail
     }
     
-    let statusCode = networking(method: .delete, url: url, data: Data()) { (data, response, error) in
+    let statusCode = networking(method: .delete, contentType: .applicationJson, url: url, data: Data()) { (data, response, error) in
         if let data = data, let jsonData = try? JSONDecoder().decode(Results.self, from: data) {
             print("Delete Collection API == \(jsonData)")
         }
@@ -216,7 +225,7 @@ func requestWishItems(completion: @escaping(Wish) -> Void) -> StatusCode {
         return .fail
     }
     
-    let statusCode = networking(method: .get, url: url, data: Data()) { (data, response, error) in
+    let statusCode = networking(method: .get, contentType: .applicationJson, url: url, data: Data()) { (data, response, error) in
         if let data = data, let jsonData = try? JSONDecoder().decode(Wish.self, from: data) {
             print("Get WishItems API == \(jsonData)")
             completion(jsonData)
@@ -233,7 +242,7 @@ func requestWishItem(wishItemID id: Int, completion: @escaping(OneWishItem) -> V
         return .fail
     }
     
-    let statusCode = networking(method: .get, url: url, data: Data()) { (data, response, error) in
+    let statusCode = networking(method: .get, contentType: .applicationJson, url: url, data: Data()) { (data, response, error) in
         if let data = data, let jsonData = try? JSONDecoder().decode(OneWishItem.self, from: data) {
             print("Get One WishItem API == \(jsonData)")
             completion(jsonData)
