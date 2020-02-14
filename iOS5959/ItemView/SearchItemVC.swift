@@ -18,7 +18,7 @@ class SearchItemVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     @IBAction func selectBtn(_ sender: UIButton) {
         guard let cell = tableView.cellForRow(at: IndexPath(row: sender.tag, section: 0)) as? SearchTableViewCell else {return}
         guard let ItemDetailVC = self.navigationController?.viewControllers[2] as? ItemDetailVC else {return}
-        ItemDetailVC.selectedItem = SelectedItemModel(name: cell.itemTitleLabel.text ?? "", detailUrl: cell.detailURL ?? "", image: cell.itemImageView.image ?? UIImage(), price: cell.itemPriceLabel.text ?? "")
+        ItemDetailVC.selectedItem = SelectedItemModel(name: cell.itemTitleLabel.text ?? "", detailUrl: cell.detailURL ?? "", image: cell.itemImageView.image ?? UIImage(), price: cell.itemPriceLabel.text ?? "", importance: 0)
         self.navigationController?.popViewController(animated: true)
     }
     

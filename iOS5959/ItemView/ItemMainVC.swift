@@ -177,6 +177,7 @@ class ItemMainVC: UIViewController, UIGestureRecognizerDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ItemDetailSegue"{
             let ItemDetailVC = segue.destination as! ItemDetailVC
+            ItemDetailVC.newItemImportance = Int(slider.value)
             if !newItemTitleLabel.text!.isEmpty && (newItemTitleLabel.text != "이름입력"){
                 ItemDetailVC.newItemTitle = newItemTitleLabel.text
             }

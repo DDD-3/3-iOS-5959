@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="X4i-TZ-F8J">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="X4i-TZ-F8J">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -254,15 +254,15 @@
                                                         <constraint firstAttribute="width" constant="24" id="fGo-P7-bUq"/>
                                                     </constraints>
                                                 </imageView>
-                                                <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="상품명" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TvR-t2-fA7">
-                                                    <rect key="frame" x="48" y="19.666666666666668" width="36.333333333333343" height="17.000000000000004"/>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="상품명" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TvR-t2-fA7">
+                                                    <rect key="frame" x="48" y="19.666666666666668" width="287" height="17.000000000000004"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
                                                         <action selector="itemTitleTextFieldEditingChanged:" destination="ecY-R6-cJh" eventType="editingChanged" id="xnv-Es-T8q"/>
                                                     </connections>
                                                 </textField>
-                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Hg-qO-ADa" userLabel="SearchBtn">
+                                                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Hg-qO-ADa" userLabel="SearchBtn">
                                                     <rect key="frame" x="345" y="17" width="20" height="22"/>
                                                     <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <state key="normal" image="magnifyingglass" catalog="system"/>
@@ -484,6 +484,9 @@
                                                     <rect key="frame" x="48" y="19.666666666666668" width="311" height="17.000000000000004"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="itemMemoTextFiledDidEdting:" destination="ecY-R6-cJh" eventType="editingChanged" id="Q09-Sw-lPL"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -506,6 +509,7 @@
                     <navigationItem key="navigationItem" id="9Qk-3X-VCQ"/>
                     <connections>
                         <outlet property="itemImageSelectBtn" destination="PT0-2t-Zbw" id="GOw-ER-WGH"/>
+                        <outlet property="itemMemoTextField" destination="h7G-rx-DHm" id="YSm-km-Vev"/>
                         <outlet property="itemPriceTextField" destination="AZq-CA-ugq" id="edr-Xk-N63"/>
                         <outlet property="itemTitleTextField" destination="TvR-t2-fA7" id="9gA-P8-hbl"/>
                         <outlet property="itemURLTextField" destination="77V-Rj-gNd" id="vKK-UY-ZEh"/>

@@ -42,9 +42,15 @@ private func networking(method: HttpMethod, contentType: ContentType, url: URL, 
     
     var urlRequest = URLRequest(url: url)
     urlRequest.httpMethod = method.value
+    if contentType == .multipartFormData {
+        urlRequest.setValue("multipart/form-data; boundary=\(UUID().uuidString)", forHTTPHeaderField: "Content-Type")
+    }else {
     urlRequest.setValue(contentType.value, forHTTPHeaderField: "Content-Type")
+    }
     urlRequest.setValue(UserDefaults.standard.string(forKey: "accessToken"), forHTTPHeaderField: "Authorization")
     urlRequest.httpBody = data
+    
+
     
     let session = URLSession(configuration: .default)
     
@@ -249,5 +255,18 @@ func requestWishItem(wishItemID id: Int, completion: @escaping(OneWishItem) -> V
         }
     }
     
+    return statusCode
+}
+
+/// 위시 아이템 등록
+func postWishItem(wishItemData: Data) -> StatusCode {
+    guard let url = URL(string: baseURL + WishBallAPI().wishItems) else {
+        return .fail
+    }
+
+    let statusCode = networking(method: .post, contentType: .multipartFormData, url: url, data: wishItemData, completion: { (data, response, error) in
+        print(String(data: data!, encoding: .utf8))
+        
+    })
     return statusCode
 }

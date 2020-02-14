@@ -53,3 +53,14 @@ struct OneWishItem: Codable {
     let message: String
     let data: WishItem
 }
+
+/// 위시아이템 등록
+struct AddWishItem: Codable {
+    let targetCollectionId: Int
+    let name: String
+    let importance: Int
+    let price: String
+    let memo: String
+    let purchasingUrl: String
+    let imageFile: Data
+}

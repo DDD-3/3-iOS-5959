@@ -15,6 +15,7 @@ class StaticTableVC: UITableViewController, UITextFieldDelegate, UIImagePickerCo
     @IBOutlet var itemTitleTextField: UITextField!
     @IBOutlet var itemPriceTextField: UITextField!
     @IBOutlet var itemURLTextField: UITextField!
+    @IBOutlet var itemMemoTextField: UITextField!
     @IBOutlet var slider: UISlider!
     @IBOutlet var itemImageSelectBtn: UIButton!
     
@@ -34,6 +35,10 @@ class StaticTableVC: UITableViewController, UITextFieldDelegate, UIImagePickerCo
         guard let SearchItemVC = self.storyboard?.instantiateViewController(withIdentifier: "SearchItemVC") as? SearchItemVC else {return}
         SearchItemVC.itemTitle = itemTitleTextField.text
         self.parent?.navigationController?.pushViewController(SearchItemVC, animated: true)
+    }
+    @IBAction func itemMemoTextFiledDidEdting(_ sender: UITextField) {
+        guard let ItemDetailVC = self.parent as? ItemDetailVC else{return}
+        ItemDetailVC.selectedItem?.selectedItemMemo = sender.text ?? ""
     }
     
     @IBAction func itemTitleTextFieldEditingChanged(_ sender: UITextField) {
