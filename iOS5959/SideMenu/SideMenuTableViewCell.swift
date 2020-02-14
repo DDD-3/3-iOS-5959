@@ -61,29 +61,30 @@ class SideMenuTableViewCell: UITableViewCell {
     
     func configure() {
         self.backgroundColor = .white
+        let stackView = UIStackView(arrangedSubviews: [collectionNameLabel, defaultTypeLabel])
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
+        
         addSubview(colorChipView)
-        addSubview(collectionNameLabel)
         addSubview(moreButton)
-        addSubview(defaultTypeLabel)
+        addSubview(stackView)
         
         colorChipView.widthAnchor.constraint(equalToConstant: 18.0).isActive = true
         colorChipView.heightAnchor.constraint(equalToConstant: 18.0).isActive = true
         colorChipView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         colorChipView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 24.0).isActive = true
-        colorChipView.trailingAnchor.constraint(equalTo: self.collectionNameLabel.leadingAnchor, constant: -11.0).isActive = true
+        colorChipView.trailingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: -11.0).isActive = true
 
-        collectionNameLabel.centerYAnchor.constraint(equalTo: colorChipView.centerYAnchor).isActive = true
+        stackView.centerYAnchor.constraint(equalTo: colorChipView.centerYAnchor).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: moreButton.leadingAnchor, constant: -5.0).isActive = true
         
         moreButton.centerYAnchor.constraint(equalTo: colorChipView.centerYAnchor).isActive = true
         moreButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -24.0).isActive = true
         moreButton.addTarget(self, action: #selector(touchedMoreButton(_:)), for: .touchUpInside)
-        
-        if defaultTypeLabel.isHidden {
-//            collectionNameLabel.trailingAnchor.constraint(equalTo: self.moreButton.leadingAnchor).isActive = true
-        } else {
-            collectionNameLabel.trailingAnchor.constraint(equalTo: self.defaultTypeLabel.leadingAnchor).isActive = true
-//            defaultTypeLabel.trailingAnchor.constraint(equalTo: self.moreButton.leadingAnchor).isActive = true
-        }
+
+        collectionNameLabel.setContentHuggingPriority(.defaultLow, for: .horizontal)
+        moreButton.setContentHuggingPriority(.defaultHigh, for: .horizontal)
     }
     
     @objc private func touchedMoreButton(_ sender: UIButton) {

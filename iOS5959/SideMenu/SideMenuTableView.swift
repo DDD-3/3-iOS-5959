@@ -25,6 +25,9 @@ class SideMenuTableView: UITableView {
         self.tableFooterView = UIView(frame: .zero)
         self.backgroundColor = .white
         self.separatorColor = .primaryCement
+        self.rowHeight = 48
+        self.sectionHeaderHeight = 48
+        self.sectionFooterHeight = 48
     }
     
     override init(frame: CGRect, style: UITableView.Style) {
@@ -62,26 +65,18 @@ extension SideMenuTableView: UITableViewDataSource {
         return collectionList.count
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 48
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 48
-    }
-    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let containerView = UIView(frame: CGRect(x: 24, y: 0, width: 150, height: 48))
+        let containerView = UIView(frame: CGRect(x: 24, y: 0, width: 150, height: tableView.sectionHeaderHeight))
         containerView.backgroundColor = .white
-        let titleLabel = UILabel(frame: CGRect(x: 0, y: containerView.frame.height - 6,
-                                               width: 150, height: 48))
+        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0,
+                                               width: containerView.frame.width, height: containerView.frame.height))
         containerView.addSubview(titleLabel)
         titleLabel.center = containerView.center
         titleLabel.font = UIFont.nanumBodyRegular14()
         titleLabel.textColor = .black
         titleLabel.text = "전체보기"
         
-        let sepFrame = CGRect(x: 0, y: containerView.frame.height - 1,
+        let sepFrame = CGRect(x: 0, y: containerView.frame.height - 5,
                               width: tableView.frame.width, height: 0.5)
         let seperatorView = UIView(frame: sepFrame)
         seperatorView.backgroundColor = UIColor.primaryCement
@@ -91,9 +86,9 @@ extension SideMenuTableView: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let containerView = UIView(frame: CGRect(x: 24, y: 0, width: 150, height: 48))
+        let containerView = UIView(frame: CGRect(x: 24, y: 0, width: 150, height: tableView.sectionFooterHeight))
         containerView.backgroundColor = .white
-        let newCollectionButton = UIButton(frame: CGRect(x: 0, y: 0, width: 150, height: 48))
+        let newCollectionButton = UIButton(frame: CGRect(x: 0, y: 0, width: containerView.frame.width, height: containerView.frame.height))
         containerView.addSubview(newCollectionButton)
         newCollectionButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 0)
         newCollectionButton.setImage(UIImage(named: "icon_plus_circle"), for: .normal)
@@ -102,7 +97,7 @@ extension SideMenuTableView: UITableViewDataSource {
         newCollectionButton.setTitle("새 콜렉션 추가", for: .normal)
         newCollectionButton.addTarget(self, action: #selector(touchedNewCollectionButton(_:)), for: .touchUpInside)
         
-        let sepFrame = CGRect(x: 5, y: 0, width: tableView.frame.width - 5, height: 0.5)
+        let sepFrame = CGRect(x: 5, y: 0, width: containerView.frame.width - 5, height: 0.5)
         let seperatorView = UIView(frame: sepFrame)
         seperatorView.backgroundColor = UIColor.primaryCement
         containerView.addSubview(seperatorView)
