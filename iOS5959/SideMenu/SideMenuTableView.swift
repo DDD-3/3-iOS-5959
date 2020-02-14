@@ -17,7 +17,12 @@ class SideMenuTableView: UITableView {
     
     weak var sidemenuDelegate: SideMenuTableViewDelegate?
     weak var itemDelegate: SideMenuItemDelegate?
+    /// 콜렉션 리스트
     var collectionList: [CollectionItem] = []
+    /// 현재 선택된 콜렉션 Index
+    fileprivate var selectedIndex: Int {
+        return collectionList.firstIndex(where: { $0.collectionID == Singleton.shared.currentCollection?.collectionID }) ?? 0
+    }
     
     private func configure() {
         self.delegate = self
@@ -51,6 +56,9 @@ extension SideMenuTableView: UITableViewDataSource {
             cell.delegate = self
             cell.configure()
             cell.collection = collectionList[indexPath.row]
+            // 현재 선택한 row selected
+            tableView.selectRow(at: IndexPath(row: selectedIndex, section: 0),
+                                animated: false, scrollPosition: .none)
             
             let bgColorView = UIView()
             bgColorView.backgroundColor = UIColor.primaryCement
