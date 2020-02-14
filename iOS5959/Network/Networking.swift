@@ -188,3 +188,36 @@ func requestDeleteCollection(collectionID id: Int) -> StatusCode {
     
     return statusCode
 }
+
+/// 위시 아이템 전체 조회
+func requestWishItems(completion: @escaping(Wish) -> Void) -> StatusCode {
+    guard let url = URL(string: baseURL + WishBallAPI().wishItems) else {
+        return .fail
+    }
+    
+    let statusCode = networking(method: .get, url: url, data: Data()) { (data, response, error) in
+        if let data = data, let jsonData = try? JSONDecoder().decode(Wish.self, from: data) {
+            print("Get WishItems API == \(jsonData)")
+            completion(jsonData)
+        }
+    }
+    
+    return statusCode
+}
+
+/// 위시 아이템 단건 조회
+/// - Parameter id: 위시 아이템 ID
+func requestWishItem(wishItemID id: Int, completion: @escaping(OneWishItem) -> Void) -> StatusCode {
+    guard let url = URL(string: baseURL + WishBallAPI().wishItems + "\(id)") else {
+        return .fail
+    }
+    
+    let statusCode = networking(method: .get, url: url, data: Data()) { (data, response, error) in
+        if let data = data, let jsonData = try? JSONDecoder().decode(OneWishItem.self, from: data) {
+            print("Get One WishItem API == \(jsonData)")
+            completion(jsonData)
+        }
+    }
+    
+    return statusCode
+}
