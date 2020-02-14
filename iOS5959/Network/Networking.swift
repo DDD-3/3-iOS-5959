@@ -169,7 +169,8 @@ func addCollection(collection: AddCollection) -> StatusCode {
 
 /// 콜렉션 수정
 /// - Parameter id: String
-func modifyCollection(collection: AddCollection, collectionId id: Int) -> StatusCode {
+func modifyCollection(collection: AddCollection, collectionId id: Int,
+                      completion: @escaping(EditCollectionResponse) -> Void) -> StatusCode {
     guard let url = URL(string: baseURL + WishBallAPI().collections + "/\(id)") else {
         return .fail
     }
@@ -181,6 +182,7 @@ func modifyCollection(collection: AddCollection, collectionId id: Int) -> Status
     let statusCode = networking(method: .put, contentType: .applicationJson, url: url, data: data) { (data, response, error) in
         if let data = data, let jsonData = try? JSONDecoder().decode(EditCollectionResponse.self, from: data) {
             print("Modify Collection API == \(jsonData)")
+            completion(jsonData)
         }
     }
     

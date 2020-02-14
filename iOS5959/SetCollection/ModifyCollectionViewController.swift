@@ -13,6 +13,8 @@ enum EditMode {
     case modify
 }
 
+let requestChangeMainTitleNotification = NSNotification.Name(rawValue: "requestChangeMainTitleNotification")
+
 class ModifyCollectionViewController: UIViewController {
     
     var editMode: EditMode = .create
@@ -77,12 +79,26 @@ extension ModifyCollectionViewController: ModifyCollectionViewDelegate {
     /// 콜렉션 수정
     fileprivate func excuteModifyCollection(collection: AddCollection, collectionId: Int) {
         print("콜렉션 수정 API 실행")
-        let statusCode = modifyCollection(collection: collection, collectionId: collectionId)
+        var data: EditCollectionResponse?
+        let statusCode = modifyCollection(collection: collection, collectionId: collectionId) { (response) in
+            data = response
+        }
+        
         switch statusCode {
         case .success:
-            // Singleton에 있는 컬렉션 리스트에 항목 변경
-            // TODO: 메인 타이틀 변경
-            NotificationCenter.default.post(name: requestCollectionListNotification, object: nil)
+            if collectionId == Singleton.shared.currentCollection?.collectionID {
+                print("선택된 콜렉션의 정보를 수정합니다")
+                // TODO: 응답으로 받은 콜렉션 한건 교체
+                Singleton.shared.currentCollection = data?.data
+                let item = Singleton.shared.collectionList.firstIndex(where: { $0.collectionID == data?.data?.collectionID })!
+                Singleton.shared.collectionList[item] = Singleton.shared.currentCollection!
+                // TODO: 메인 타이틀 변경 노티 발송
+                NotificationCenter.default.post(name: requestChangeMainTitleNotification, object: nil)
+            } else {
+                print("사이드메뉴에서 정보를 수정합니다")
+                // Singleton에 있는 컬렉션 리스트 변경
+                NotificationCenter.default.post(name: requestCollectionListNotification, object: nil)
+            }
             self.dismiss(animated: true, completion: nil)
         case .fail:
             showAlertController(title: "에러 발생", message: "에러", completionHandler: nil)
