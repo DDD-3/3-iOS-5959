@@ -47,7 +47,7 @@ struct WishItem: Codable {
     }
 }
 
-/// 위시아이템 단건 조회 
+/// 위시아이템 단건 조회
 struct OneWishItem: Codable {
     let status: Int
     let message: String

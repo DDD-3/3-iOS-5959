@@ -134,8 +134,8 @@ class ViewController: UIViewController {
     private func setNavigationBar() {
         navigationController?.navigationBar.barTintColor = .white
         navigationController?.navigationBar.tintColor = .black
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "menu"), style: .plain, target: self, action: #selector(touchedSideMenuButton))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "list"), style: .plain, target: self, action: #selector(touchedListToggleButton))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "icon_menu"), style: .plain, target: self, action: #selector(touchedSideMenuButton))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "icon_list"), style: .plain, target: self, action: #selector(touchedListToggleButton))
         setNavigationTitle()
     }
     

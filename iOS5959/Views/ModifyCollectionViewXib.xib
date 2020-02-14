@@ -31,7 +31,7 @@
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vYa-Nl-JnQ">
                                     <rect key="frame" x="350" y="0.0" width="24" height="24"/>
-                                    <state key="normal" image="icon_Check"/>
+                                    <state key="normal" image="icon_check"/>
                                 </button>
                             </subviews>
                         </stackView>
@@ -112,7 +112,7 @@
         </view>
     </objects>
     <resources>
-        <image name="icon_Check" width="24" height="24"/>
         <image name="icon_cancel" width="24" height="24"/>
+        <image name="icon_check" width="24" height="24"/>
     </resources>
 </document>

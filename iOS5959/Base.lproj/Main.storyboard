@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="syB-ra-Yay">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="syB-ra-Yay">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -45,8 +45,8 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="e7R-bF-gjR">
-                        <barButtonItem key="leftBarButtonItem" image="menu" id="z9i-9s-9Uw"/>
-                        <barButtonItem key="rightBarButtonItem" image="list" id="bEF-b1-fwX"/>
+                        <barButtonItem key="leftBarButtonItem" image="icon_menu" id="z9i-9s-9Uw"/>
+                        <barButtonItem key="rightBarButtonItem" image="icon_list" id="bEF-b1-fwX"/>
                     </navigationItem>
                     <connections>
                         <outlet property="magneticView" destination="VFQ-ZM-E5z" id="gkI-eE-5MD"/>
@@ -152,7 +152,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="list" width="24" height="24"/>
-        <image name="menu" width="24" height="24"/>
+        <image name="icon_list" width="24" height="24"/>
+        <image name="icon_menu" width="24" height="24"/>
     </resources>
 </document>
