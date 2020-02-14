@@ -10,11 +10,11 @@ import Foundation
 import SystemConfiguration
 
 enum HttpMethod: String {
-    case get
-    case post
-    case put
-    case delete
-    case patch
+    case get = "GET"
+    case post = "POST"
+    case put = "PUT"
+    case delete = "DELETE"
+    case patch = "PATCH"
     
     var value: String {
         return rawValue

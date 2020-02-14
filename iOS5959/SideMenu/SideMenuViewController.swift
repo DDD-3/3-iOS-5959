@@ -117,9 +117,28 @@ extension SideMenuViewController: SideMenuItemDelegate {
         }
     }
     
+    /// 기본 콜렉션 설정
     private func showSetDefaultCollection(collection: CollectionItem?) {
+        guard let collection = collection else {
+            return
+        }
+        
+        // 기본 콜렉션인 경우 재설정 불가
+        guard collection.collectionType != .defaultType else {
+            showAlertController(title: "알림", message: "기본 콜렉션으로 설정되어있습니다", completionHandler: nil)
+            return
+        }
         showWarningAlertController(title: "기본 콜렉션으로 설정", message: "기본 콜렉션으로 설정하시겠습니까?") { (_) in
-            requestSetCollectionToDefault(collectionID: collection!.collectionID)
+            // 기본 콜렉션 설정 API 실행
+            let statusCode = requestSetCollectionToDefault(collectionID: collection.collectionID)
+            switch statusCode {
+            case .success:
+                NotificationCenter.default.post(name: requestCollectionListNotification, object: nil)
+            case .fail:
+                self.showAlertController(title: "에러 발생", message: "에러", completionHandler: nil)
+            case .server:
+                self.showAlertController()
+            }
         }
     }
 }

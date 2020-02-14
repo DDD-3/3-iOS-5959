@@ -38,5 +38,5 @@ struct AddCollection: Codable {
 struct EditCollectionResponse: Codable {
     let status: Int
     let message: String
-    let data: CollectionItem
+    let data: CollectionItem?
 }
