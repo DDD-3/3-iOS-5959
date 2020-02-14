@@ -95,6 +95,14 @@ class ViewController: UIViewController {
     private func excuteCollectionList() {
         let _ = requestWholeCollection { (collection) in
             Singleton.shared.collectionList = collection.data
+            self.setDefaultCollection()
+        }
+    }
+    
+    private func setDefaultCollection() {
+        Singleton.shared.currentCollection = Singleton.shared.defaultCollection
+        DispatchQueue.main.async {
+            self.titleView.changeTitle(title: Singleton.shared.currentCollection!.title, showWhole: false)
         }
     }
     

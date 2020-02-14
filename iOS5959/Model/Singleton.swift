@@ -20,6 +20,11 @@ class Singleton {
         return collectionList.filter { $0.collectionID == id }.first
     }
     
+    /// 사용자 기본 콜렉션
+    var defaultCollection: CollectionItem? {
+        return collectionList.filter { $0.collectionType == CollectionType.defaultType }.first
+    }
+    
     static let shared = Singleton()
     
     private init() {
