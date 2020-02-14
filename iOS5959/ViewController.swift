@@ -11,7 +11,20 @@ import SideMenu
 import Magnetic
 import SwiftKeychainWrapper
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, MagneticDelegate {
+    func magnetic(_ magnetic: Magnetic, didSelect node: Node) {
+        let alert = UIAlertController(title: "Alert", message: "node Selected", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+        for node in magnetic.selectedChildren{
+            node.deselectedAnimation()
+        }
+    }
+    
+    func magnetic(_ magnetic: Magnetic, didDeselect node: Node) {
+        
+    }
+    
     /// Magnetic View
     @IBOutlet var magneticView: MagneticView!
     var magnetic: Magnetic?
@@ -19,10 +32,6 @@ class ViewController: UIViewController {
     /// Navigation Title View
     private var titleView: CollectionTitleView!
 
-    override func loadView() {
-        super.loadView()
-        magnetic = magneticView.magnetic
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,8 +51,13 @@ class ViewController: UIViewController {
                                                name: requestChangeMainTitleNotification,
                                                object: nil)
         requestRegistUser()
+        magnetic = magneticView.magnetic
+        magneticView.magnetic.magneticDelegate = self
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        loadMagneticDataSource(magnetic: magnetic!)
+    }
     private func requestRegistUser() {
         let key = "userToken"
         let firstLaunch = FirstLaunch()
@@ -161,6 +175,28 @@ class ViewController: UIViewController {
         titleView = CollectionTitleView(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
         titleView.delegate = self
         navigationItem.titleView = titleView
+    }
+    
+    private func loadMagneticDataSource(magnetic: Magnetic) {
+        var wish: Wish!
+        let statusCode = requestWishItems(completion: {(result) in
+            wish = result})
+        switch statusCode {
+        case .success:
+            for data in wish.data! {
+                if data.collectionID == Singleton.shared.currentCollection?.collectionID {
+                    for wishItem in data.wishItems {
+                        let node = Node(text: wishItem.name, image: UIImage(named: "find"), color: UIColor.blue, radius: (CGFloat(30 + 30 * wishItem.importance / 5)), marginScale: 1)
+                        magnetic.addChild(node)
+                    }
+                }
+            }
+        case .fail:
+            print("Request Wish Items Fetch Failure")
+        case .server:
+            print("Request Wish Items Error on Server")
+        
+        }
     }
 }
 
