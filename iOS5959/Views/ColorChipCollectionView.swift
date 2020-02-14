@@ -36,6 +36,15 @@ class ColorChipCollectionView: UICollectionView {
         self.register(UINib(nibName: "ColorChipCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: cellIdentifier)
     }
     
+    fileprivate func deSelectAllRows() {
+        for section in 0..<self.numberOfSections {
+            for row in 0..<self.numberOfItems(inSection: section) {
+                let indexPath = IndexPath(row: row, section: section)
+                collectionView(self, didDeselectItemAt: indexPath)
+            }
+        }
+    }
+    
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
         configure()
@@ -73,7 +82,7 @@ extension ColorChipCollectionView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // cell을 선택하면 체크 이미지를 표시합니다
         if let cell = collectionView.cellForItem(at: indexPath) as? ColorChipCollectionViewCell {
-            print("cell 선택 \(cell)")
+            deSelectAllRows()
             cell.showCheck()
         }
         
@@ -87,7 +96,6 @@ extension ColorChipCollectionView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         // 다른 cell을 선택하면 체크 이미지를 숨깁니다
         if let cell = collectionView.cellForItem(at: indexPath) as? ColorChipCollectionViewCell {
-            print("cell 선택 해제 \(cell)")
             cell.hideCheck()
         }
     }

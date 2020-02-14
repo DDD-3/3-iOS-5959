@@ -92,15 +92,21 @@ extension SideMenuViewController: SideMenuItemDelegate {
     }
     
     private func showDeleteCollection(collection: CollectionItem?) {
-        // 콜렉션 타입이 기본인 경우 삭제 불가
         guard let collection = collection else {
             return
         }
+        
+        // 콜렉션 타입이 기본인 경우 삭제 불가
         guard collection.collectionType != .defaultType else {
             showAlertController(title: "알림", message: "기본 콜렉션은 삭제할 수 없습니다", completionHandler: nil)
             return
         }
-            
+        
+        // 현재 선택된 콜렉션인 경우 삭제 불가
+        guard collection.collectionID != Singleton.shared.currentCollection?.collectionID else {
+            showAlertController(title: "알림", message: "현재 선택된 콜렉션은 삭제할 수 없습니다", completionHandler: nil)
+            return
+        }
         // 기본 아닌 경우 삭제 진행
         showWarningAlertController(title: "콜렉션 삭제", message: "해당 콜렉션을 삭제하시겠습니까?\n콜렉션 내 모든 상품도 함께 삭제됩니다.") { (_) in
             // 삭제 API 호출

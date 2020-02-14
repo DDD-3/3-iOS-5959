@@ -36,7 +36,11 @@ class ViewController: UIViewController {
                                                selector: #selector(selectWholeCollection(_:)),
                                                name: selectWholeCollectionNotification,
                                                object: nil)
-        
+        // 콜렉션 수정에 대한 노티 (현재 선택된 타이틀이 변경된 경우 체크해서 메인 타이틀 변경)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(changeTitleObserver(_:)),
+                                               name: requestChangeMainTitleNotification,
+                                               object: nil)
         requestRegistUser()
     }
     
@@ -110,6 +114,12 @@ class ViewController: UIViewController {
         let webviewstoryboard = UIStoryboard(name: "WishBallWebView", bundle: nil)
         let webview = webviewstoryboard.instantiateViewController(withIdentifier: "WishBallWebViewController") as! WishBallWebViewController
         self.present(webview, animated: true, completion: nil)
+    }
+    
+    @objc private func changeTitleObserver(_ noti: Notification) {
+        DispatchQueue.main.async {
+            self.titleView.changeTitle(title: Singleton.shared.currentCollection!.title, showWhole: false)
+        }
     }
     
     @objc private func selectCollection(_ noti: Notification) {
