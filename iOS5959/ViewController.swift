@@ -32,6 +32,7 @@ class ViewController: UIViewController, MagneticDelegate {
     /// Magnetic View
     @IBOutlet var magneticView: MagneticView!
     var magnetic: Magnetic?
+    var magneticSecondView: MagneticView!
     
     /// Navigation Title View
     private var titleView: CollectionTitleView!
@@ -55,11 +56,19 @@ class ViewController: UIViewController, MagneticDelegate {
                                                name: requestChangeMainTitleNotification,
                                                object: nil)
         requestRegistUser()
-        magnetic = magneticView.magnetic
-        loadMagneticDataSource(magnetic: magnetic!)
-        magneticView.magnetic.magneticDelegate = self
+        magneticSecondView = MagneticView(frame: magneticView.bounds)
+        magneticView.addSubview(magneticSecondView)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        magneticSecondView.removeFromSuperview()
+        magneticSecondView = MagneticView(frame: magneticView.bounds)
+        magneticView.addSubview(magneticSecondView)
+        magnetic = magneticSecondView.magnetic
+        sleep(1)
+        loadMagneticDataSource(magnetic: magnetic!)
+        magneticSecondView.magnetic.magneticDelegate = self
+    }
 
     private func requestRegistUser() {
         let key = "userToken"
