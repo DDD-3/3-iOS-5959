@@ -130,7 +130,7 @@ class ItemDetailVC: UIViewController {
         
         var request = URLRequest(url: URL(string: "http://52.79.90.40:8080/api/wishitems")!,timeoutInterval: Double.infinity)
         
-        request.addValue("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJjcnlzdGFsUmltIiwiaWQiOjUsImV4cCI6MTU4MjEyNzA1MSwiaWF0IjoxNTgxNjk1MDUxfQ.WUlARJXHIXrOD8H_KS3DJ1RVWmbHZJuciw9pBikPM7k", forHTTPHeaderField: "Authorization")
+        request.addValue(UserDefaults.standard.string(forKey: "accessToken")!, forHTTPHeaderField: "Authorization")
         request.addValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
 
         request.httpMethod = "POST"
@@ -210,7 +210,7 @@ class ItemDetailVC: UIViewController {
         
         var request = URLRequest(url: URL(string: "http://52.79.90.40:8080/api/wishitems")!,timeoutInterval: Double.infinity)
         
-        request.addValue("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJjcnlzdGFsUmltIiwiaWQiOjUsImV4cCI6MTU4MjEyNzA1MSwiaWF0IjoxNTgxNjk1MDUxfQ.WUlARJXHIXrOD8H_KS3DJ1RVWmbHZJuciw9pBikPM7k", forHTTPHeaderField: "Authorization")
+        request.addValue(UserDefaults.standard.string(forKey: "accessToken")!, forHTTPHeaderField: "Authorization")
         request.addValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
 
         request.httpMethod = "POST"
